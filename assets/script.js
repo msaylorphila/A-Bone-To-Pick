@@ -21,7 +21,7 @@ fetch("https://api.petfinder.com/v2/oauth2/token", {
   }).then(function (response){
     return response.json()
   }).then(function (data){
-    console.log(data.types[0])
+    console.log(data)
 
   })
 })
