@@ -14,7 +14,8 @@ fetch("https://api.petfinder.com/v2/oauth2/token", {
 })
 .then(function (credentials) {
     console.log(credentials) 
-    fetch("https://api.petfinder.com/v2/types", {
+    fetch("https://api.petfinder.com/v2/animals?type=dog&location=19145"
+    , {
     headers: {
       Authorization: "Bearer " + credentials.access_token
     }   
@@ -25,3 +26,4 @@ fetch("https://api.petfinder.com/v2/oauth2/token", {
 
   })
 })
+//api.petfinder.com/v2/{CATEGORY}/{ACTION}?{parameter_1}={value_1}&{parameter_2}={value_2}
