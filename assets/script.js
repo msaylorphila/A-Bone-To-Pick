@@ -1,10 +1,15 @@
-var apiKey = "uKG2SiK0W8aXLAwxchcJPB34yUOTNmhcTbFrnkScrYNAfgvmHU";
+var pfApiKey = "uKG2SiK0W8aXLAwxchcJPB34yUOTNmhcTbFrnkScrYNAfgvmHU";
 var pfSecret = "pkUPWjL7ux0HicwKDrP0aKXCV9GZv1emPlCXhGmg";
+var dogApiKey = "7VT9G3psGTVpzFOhgUZsag==6qGoaeaUyBn1jA8n";
+var inputEl = document.getElementById('zipInput');
+var zipcode = inputEl.value;
+
+
 
 
 
 fetch("https://api.petfinder.com/v2/oauth2/token", {
-  body: "grant_type=client_credentials&client_id=" + apiKey + "&client_secret=" + pfSecret,
+  body: "grant_type=client_credentials&client_id=" + pfApiKey + "&client_secret=" + pfSecret,
   headers: {
     "Content-Type": "application/x-www-form-urlencoded"
   },
@@ -14,7 +19,7 @@ fetch("https://api.petfinder.com/v2/oauth2/token", {
 })
 .then(function (credentials) {
     console.log(credentials) 
-    fetch("https://api.petfinder.com/v2/animals?type=dog&location=19145"
+    fetch("https://api.petfinder.com/v2/animals?type=dog&location=" + zipcode
     , {
     headers: {
       Authorization: "Bearer " + credentials.access_token
