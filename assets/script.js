@@ -50,6 +50,7 @@ function getDogInfo(data) {
         var breedsPrimary = dogSelect.breeds.primary;
         var dogCardArr = [name, age, contact, descriptionFromPF, genderFromPF, photo, status, breedsMixed, breedsPrimary]
         console.log(dogCardArr)
+        dogApiByBreed(breedsPrimary)
        
 }
 }
@@ -65,7 +66,9 @@ dogFormEl.addEventListener('submit', function (event) { getPetsByZip(event)})
 
 // *****************simple fetch for dog api, better to have variables for 
 // apiKey in the headers and greyhound(breed name) in url*****************
-fetch('https://api.api-ninjas.com/v1/dogs?name=greyhound', {
+
+function dogApiByBreed(breedsPrimary){
+fetch('https://api.api-ninjas.com/v1/dogs?name=' + breedsPrimary, {
   method: "GET",
   headers: {"X-Api-Key" : "7VT9G3psGTVpzFOhgUZsag==6qGoaeaUyBn1jA8n"},
   contentType: "application/json"
@@ -76,3 +79,4 @@ fetch('https://api.api-ninjas.com/v1/dogs?name=greyhound', {
   .then(function(data) {
     console.log(data);
   })
+}
