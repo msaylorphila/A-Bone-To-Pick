@@ -28,4 +28,16 @@ fetch("https://api.petfinder.com/v2/oauth2/token", {
 })
 //api.petfinder.com/v2/{CATEGORY}/{ACTION}?{parameter_1}={value_1}&{parameter_2}={value_2}
 
-var dogKey = "7VT9G3psGTVpzFOhgUZsag==6qGoaeaUyBn1jA8n"
+// *****************simple fetch for dog api, better to have variables for 
+// apiKey in the headers and greyhound(breed name) in url*****************
+fetch('https://api.api-ninjas.com/v1/dogs?name=greyhound', {
+  method: "GET",
+  headers: {"X-Api-Key" : "7VT9G3psGTVpzFOhgUZsag==6qGoaeaUyBn1jA8n"},
+  contentType: "application/json"
+})
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function(data) {
+    console.log(data);
+  })
