@@ -10,3 +10,4 @@
  # then That dogs card and energy levels are added to local storage so that when I want to view all the dogs I have shared I see all the dogs I have shared
  
 
+![application-image](./assets/images/dog-card-example.png)
