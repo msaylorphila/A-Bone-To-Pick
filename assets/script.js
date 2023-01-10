@@ -2,13 +2,24 @@ var pfApiKey = "uKG2SiK0W8aXLAwxchcJPB34yUOTNmhcTbFrnkScrYNAfgvmHU";
 var pfSecret = "pkUPWjL7ux0HicwKDrP0aKXCV9GZv1emPlCXhGmg";
 var dogApiKey = "7VT9G3psGTVpzFOhgUZsag==6qGoaeaUyBn1jA8n";
 var inputEl = document.getElementById('zipInput');
-var zipcode = inputEl.value;
+var dogFormEl = document.getElementById('dogForm')
 
 
 
+// Age- card
+// Contact - dog info page
+// description- dog info page
+// gender- both
+// name-both
+// photos
+// status
+// breeds.mixed - both
+// breeds.primary- card
 
-
-fetch("https://api.petfinder.com/v2/oauth2/token", {
+function getPetsByZip(event){
+  event.preventDefault();
+ 
+  fetch("https://api.petfinder.com/v2/oauth2/token", {
   body: "grant_type=client_credentials&client_id=" + pfApiKey + "&client_secret=" + pfSecret,
   headers: {
     "Content-Type": "application/x-www-form-urlencoded"
@@ -19,7 +30,9 @@ fetch("https://api.petfinder.com/v2/oauth2/token", {
 })
 .then(function (credentials) {
     console.log(credentials) 
-    fetch("https://api.petfinder.com/v2/animals?type=dog&location=" + zipcode
+    var zipcode = inputEl.value;
+    var bla = "https://api.petfinder.com/v2/animals?type=dog&location=" + zipcode + "&sort=distance"
+    fetch(bla
     , {
     headers: {
       Authorization: "Bearer " + credentials.access_token
@@ -32,5 +45,8 @@ fetch("https://api.petfinder.com/v2/oauth2/token", {
   })
 })
 //api.petfinder.com/v2/{CATEGORY}/{ACTION}?{parameter_1}={value_1}&{parameter_2}={value_2}
+}
 
-var dogKey = "7VT9G3psGTVpzFOhgUZsag==6qGoaeaUyBn1jA8n"
+
+// searchFormEl.addEventListener('submit', function (event) { getWeather(event, searchInput.value) });
+dogForm.addEventListener('submit', function (event) { getPetsByZip(event)})
