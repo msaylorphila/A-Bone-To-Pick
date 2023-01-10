@@ -48,5 +48,24 @@ function getPetsByZip(event){
 }
 
 
-// searchFormEl.addEventListener('submit', function (event) { getWeather(event, searchInput.value) });
+
+
+
+
 dogForm.addEventListener('submit', function (event) { getPetsByZip(event)})
+
+
+
+// *****************simple fetch for dog api, better to have variables for 
+// apiKey in the headers and greyhound(breed name) in url*****************
+fetch('https://api.api-ninjas.com/v1/dogs?name=greyhound', {
+  method: "GET",
+  headers: {"X-Api-Key" : "7VT9G3psGTVpzFOhgUZsag==6qGoaeaUyBn1jA8n"},
+  contentType: "application/json"
+})
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function(data) {
+    console.log(data);
+  })
