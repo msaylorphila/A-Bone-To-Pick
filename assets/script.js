@@ -5,17 +5,6 @@ var inputEl = document.getElementById('zipInput');
 var dogFormEl = document.getElementById('dogForm')
 
 
-
-// Age- card
-// Contact - dog info page
-// description- dog info page
-// gender- both
-// name-both
-// photos
-// status
-// breeds.mixed - both
-// breeds.primary- card
-
 function getPetsByZip(event){
   event.preventDefault();
  
@@ -41,10 +30,28 @@ function getPetsByZip(event){
     return response.json()
   }).then(function (data){
     console.log(data)
-
+    getDogInfo(data)
   })
 })
 //api.petfinder.com/v2/{CATEGORY}/{ACTION}?{parameter_1}={value_1}&{parameter_2}={value_2}
+}
+
+function getDogInfo(data) {
+    for (var i = 0; i <6; i++) {
+        var dogSelect = data.animals[i];
+        var name = dogSelect.name;
+        var age = dogSelect.age;
+        var contact = dogSelect.contact.email;
+        var descriptionFromPF = dogSelect.description;
+        var genderFromPF = dogSelect.gender;
+        var photo = dogSelect.primary_photo_cropped.full;// we'll have to convert this to a png
+        var status = dogSelect.status; //displays as "adoptable"
+        var breedsMixed = dogSelect.breeds.mixed; //displays as true/false
+        var breedsPrimary = dogSelect.breeds.primary;
+        var dogCardArr = [name, age, contact, descriptionFromPF, genderFromPF, photo, status, breedsMixed, breedsPrimary]
+        console.log(dogCardArr)
+       
+}
 }
 
 
@@ -52,7 +59,7 @@ function getPetsByZip(event){
 
 
 
-dogForm.addEventListener('submit', function (event) { getPetsByZip(event)})
+dogFormEl.addEventListener('submit', function (event) { getPetsByZip(event)})
 
 
 
