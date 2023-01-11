@@ -50,7 +50,7 @@ function getDogInfo(data) {
         var breedsPrimary = dogSelect.breeds.primary;
         var dogCardArr = [name, age, contact, descriptionFromPF, genderFromPF, photo, status, breedsMixed, breedsPrimary]
         console.log(dogCardArr)
-        dogApiByBreed(breedsPrimary)
+        dogApiByBreed(breedsPrimary, genderFromPF) //added genderFromPF to pass it to dogApi for height/weight
        
 }
 }
@@ -67,7 +67,7 @@ dogFormEl.addEventListener('submit', function (event) { getPetsByZip(event)})
 // *****************simple fetch for dog api, better to have variables for 
 // apiKey in the headers and greyhound(breed name) in url*****************
 
-function dogApiByBreed(breedsPrimary){
+function dogApiByBreed(breedsPrimary, genderFromPF){
 fetch('https://api.api-ninjas.com/v1/dogs?name=' + breedsPrimary, {
   method: "GET",
   headers: {"X-Api-Key" : "7VT9G3psGTVpzFOhgUZsag==6qGoaeaUyBn1jA8n"},
@@ -78,5 +78,35 @@ fetch('https://api.api-ninjas.com/v1/dogs?name=' + breedsPrimary, {
   })
   .then(function(data) {
     console.log(data);
+    getDogStats(data, genderFromPF);
   })
 }
+
+function getDogStats (data, genderFromPF) {
+  var breed = data[0];
+  var barking = breed.barking;
+  var energy = breed.energy;
+  var goodWithChildren = breed.good_with_children;
+  var playfulness = breed.playfulness;
+  var protectiveness = breed.protectiveness;
+  var trainability = breed.trainability;
+  var minHeightFemale = breed.min_height_female;
+  var maxHeightFemale = breed.max_height_female;
+  var minWeightFemale = breed.min_weight_female;
+  var maxWeightFemale = breed.max_weight_female;
+  var minHeightMale = breed.min_height_male;
+  var maxHeightMale = breed.max_height_male;
+  var minWeightMale = breed.min_weight_male;
+  var maxWeightMale = breed.max_weight_male;
+  var femaleStatsArr = [barking, energy, goodWithChildren, playfulness, protectiveness, trainability, minHeightFemale, maxHeightFemale, minWeightFemale, maxWeightFemale];
+  var maleStatsArr = [barking, energy, goodWithChildren, playfulness, protectiveness, trainability, minHeightMale, maxHeightMale, minWeightMale, maxWeightMale];
+  if (genderFromPF == "Female") {
+    console.log(femaleStatsArr);
+    console.log("I am a girl");
+  } else {
+    console.log(maleStatsArr);
+    console.log("bro");
+  };
+}
+
+
