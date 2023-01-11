@@ -9,6 +9,7 @@
     <title>Document</title>
 </head>
 <body>
+  <!-- first navbar from bulma, took out the nav-end buttons -->
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <a class="navbar-item" href="https://bulma.io">
@@ -29,7 +30,7 @@
             </a>
       
             <a class="navbar-item">
-              Documentation
+              Your Collection
             </a>
       
             <div class="navbar-item has-dropdown is-hoverable">
@@ -54,28 +55,17 @@
               </div>
             </div>
           </div>
-      
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <div class="buttons">
-                <a class="button is-primary">
-                  <strong>Sign up</strong>
-                </a>
-                <a class="button is-light">
-                  Log in
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
       </nav>
     <section class="section">
-        <form id="dogForm" class="control">
-            <input id="zipInput" class="input" type="text" placeholder="Zip code">
+        <form id="dogForm" class="control column is-3 is-3-mobile">
+            <input id="zipInput" class="input" type="text" placeholder="Zip Code">
           </div>
           <div class="control">
             <div class="select">
               <select>
+                <!-- Do we have to put all 200 dog breeds in here? -->
+                <!-- Probably better as a input with autofill capabilities -->
                 <option>Golden Retriever</option>
                 <option>Bulldog</option>
                 <option>Husky</option>
