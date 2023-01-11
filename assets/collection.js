@@ -1,151 +1,60 @@
 // GET https://api.petfinder.com/v2/animals/{id}
-var currentDog = {
-    name: "john"
-
-}
-
-console.log(currentDog)
-currentDog.sex = "female"
-
-console.log(currentDog)
-
-
-
-var pfApiKey = "uKG2SiK0W8aXLAwxchcJPB34yUOTNmhcTbFrnkScrYNAfgvmHU";
-var pfSecret = "pkUPWjL7ux0HicwKDrP0aKXCV9GZv1emPlCXhGmg";
-var dogApiKey = "7VT9G3psGTVpzFOhgUZsag==6qGoaeaUyBn1jA8n";
-var inputEl = document.getElementById('zipInput');
-var dogFormEl = document.getElementById('dogForm')
-
-
-function getPetsByZip(event) {
-  event.preventDefault();
-
-  fetch("https://api.petfinder.com/v2/oauth2/token", {
-    body: "grant_type=client_credentials&client_id=" + pfApiKey + "&client_secret=" + pfSecret,
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    method: "POST"
-  }).then(function (response) {
-    return response.json();
-  })
-    .then(function (credentials) {
-      console.log(credentials)
-      var zipcode = inputEl.value;
-      var bla = "https://api.petfinder.com/v2/animals?type=dog&location=" + zipcode + "&sort=distance"
-      fetch(bla
-        , {
-          headers: {
-            Authorization: "Bearer " + credentials.access_token
-          }
-        }).then(function (response) {
-          return response.json()
-        }).then(function (data) {
-          console.log(data)
-          getDogInfo(data)
-        })
-    })
-  //api.petfinder.com/v2/{CATEGORY}/{ACTION}?{parameter_1}={value_1}&{parameter_2}={value_2}
-}
-
-function getDogInfo(data) {
-  for (var i = 0; i < 3; i++) {
-    console.log(data)
-    var dogSelect = data.animals[i];
-    var dogID = dogSelect.id;
-    var orgID = dogSelect.organization_id;
-    var name = dogSelect.name;
-    var age = dogSelect.age;
-    var contact = dogSelect.contact.email;
-    var descriptionFromPF = dogSelect.description;
-    var genderFromPF = dogSelect.gender;
-    var photo = dogSelect.primary_photo_cropped.full;// we'll have to convert this to a png
-    var status = dogSelect.status; //displays as "adoptable"
-    var breedsMixed = dogSelect.breeds.mixed; //displays as true/false
-    var breedsPrimary = dogSelect.breeds.primary;
-    var currentDog = {
-      ID: dogID,
-      name: name,
-      age: age,
-      sex: genderFromPF,
-      photo: photo,
-      breed: breedsPrimary
-    }
+var doggyDash= document.querySelector('.doggy-dash');
+var dogCollection = JSON.parse(localStorage.getItem("dogCollectionArr"));
+for (i=0; i<dogCollection.length; i++){
+    let currentDog= dogCollection[i];
     console.log(currentDog)
-    var dogCardArr = [name, age, contact, descriptionFromPF, genderFromPF, photo, status, breedsMixed, breedsPrimary]
-    // collectCurrentDog(currentDog)// console.log(dogCardArr)
-    dogApiByBreed(currentDog, breedsPrimary, genderFromPF) //added genderFromPF to pass it to dogApi for height/weight
-
-  }
+    makeDogCard(currentDog);
 }
-function collectCurrentDog(currentDog) {
-  console.log(currentDog)
-  var dogCollection = JSON.parse(localStorage.getItem("dogCollectionArr"))
+console.log(doggyDash)
+
+function makeDogCard(currentDog) {
+    var dogCard= document.createElement('div');
+    dogCard.setAttribute('class', "card");
+    var dogCardBorder = document.createElement('div');
+    dogCardBorder.setAttribute('class', 'card-border');
+    dogCard.appendChild(dogCardBorder);
+    var cardHeader= document.createElement('div');
+    cardHeader.setAttribute('class', 'card-header');
+    dogCardBorder.appendChild(cardHeader);
+    var name = document.createElement('span');
+    name.setAttribute('class', 'name');
+    name.textContent = currentDog.name;
+    cardHeader.appendChild(name)
+    var age = document.createElement('span');
+    age.textContent= currentDog.age;
+    age.setAttribute('class', 'age');
+    cardHeader.appendChild(age);
+    var breed = document.createElement('span')
+    breed.setAttribute('class', 'breed');
+    breed.textContent= currentDog.breed;
+    cardHeader.appendChild(breed);
+    var photo= document.createElement('img');
+    photo.setAttribute('src', currentDog.photo);
+    photo.setAttribute('alt', "photo of Doggo")
+    dogCardBorder.appendChild(photo)
+    var dogAttr= document.createElement('div');
+    dogAttr.setAttribute('class', 'dog-attributes');
+    dogCardBorder.appendChild(dogAttr)
+    var size= document.createElement('span');
+    size.setAttribute('class', 'size');
+    size.textContent= currentDog.size
+    dogAttr.appendChild(size)
+    var houseTrained = document.createElement('span');
+    houseTrained.setAttribute('class', 'house-trained');
+    if (currentDog.houseTrained === true){
+         houseTrained.textContent= currentDog.trained;
+    }   else{
+         houseTrained.textContent ="peepee alert"
+    }
+    dogAttr.appendChild(houseTrained)
+    var dogStats = document.createElement('div')
+    dogStats.setAttribute('class', 'dog-stats')
+    
+
   
-  if (dogCollection == null) {
-    dogCollection = [];
-  }; 
-  dogCollection.push(currentDog)
-  console.log(dogCollection)
-  localStorage.setItem('dogCollectionArr', JSON.stringify(dogCollection))
-}
 
 
 
-
-
-dogFormEl.addEventListener('submit', function (event) { getPetsByZip(event) })
-
-
-
-// *****************simple fetch for dog api, better to have variables for 
-// apiKey in the headers and greyhound(breed name) in url*****************
-
-function dogApiByBreed(currentDog, breedsPrimary, genderFromPF) {
-  fetch('https://api.api-ninjas.com/v1/dogs?name=' + breedsPrimary, {
-    method: "GET",
-    headers: { "X-Api-Key": "7VT9G3psGTVpzFOhgUZsag==6qGoaeaUyBn1jA8n" },
-    contentType: "application/json"
-  })
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data);
-      getDogStats(data, genderFromPF,currentDog);
-    })
-}
-
-function getDogStats(data, genderFromPF,currentDog) {
-  var breed = data[0];
-  var barking = breed.barking;
-  var energy = breed.energy;
-  var goodWithChildren = breed.good_with_children;
-  var playfulness = breed.playfulness;
-  var protectiveness = breed.protectiveness;
-  var trainability = breed.trainability;
-  currentDog.energy = energy
-  currentDog.playfulness = playfulness
-  currentDog.protectiveness= protectiveness
-  currentDog.trainability = trainability
-  currentDog.barking = barking
-  var minHeightFemale = breed.min_height_female;
-  var maxHeightFemale = breed.max_height_female;
-  var minWeightFemale = breed.min_weight_female;
-  var maxWeightFemale = breed.max_weight_female;
-  var minHeightMale = breed.min_height_male;
-  var maxHeightMale = breed.max_height_male;
-  var minWeightMale = breed.min_weight_male;
-  var maxWeightMale = breed.max_weight_male;
-  var femaleStatsArr = [barking, energy, goodWithChildren, playfulness, protectiveness, trainability, minHeightFemale, maxHeightFemale, minWeightFemale, maxWeightFemale];
-  var maleStatsArr = [barking, energy, goodWithChildren, playfulness, protectiveness, trainability, minHeightMale, maxHeightMale, minWeightMale, maxWeightMale];
-  if (genderFromPF == "Female") {
-    console.log(femaleStatsArr);
-    console.log("I am a girl");
-  } else {
-    console.log(maleStatsArr);
-    console.log("bro");
-  };
-  collectCurrentDog(currentDog)
-}
+    doggyDash.appendChild(dogCard)
+  }

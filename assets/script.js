@@ -3,6 +3,12 @@ var pfSecret = "pkUPWjL7ux0HicwKDrP0aKXCV9GZv1emPlCXhGmg";
 var dogApiKey = "7VT9G3psGTVpzFOhgUZsag==6qGoaeaUyBn1jA8n";
 var inputEl = document.getElementById('zipInput');
 var dogFormEl = document.getElementById('dogForm')
+// ***************
+// --------------
+// This section for below for dog card related queeryselectors
+// ---------------
+// **************
+
 
 
 function getPetsByZip(event) {
@@ -18,7 +24,7 @@ function getPetsByZip(event) {
     return response.json();
   })
     .then(function (credentials) {
-      console.log(credentials)
+      console.log(credentials);
       var zipcode = inputEl.value;
       var bla = "https://api.petfinder.com/v2/animals?type=dog&location=" + zipcode + "&sort=distance"
       fetch(bla
@@ -27,19 +33,34 @@ function getPetsByZip(event) {
             Authorization: "Bearer " + credentials.access_token
           }
         }).then(function (response) {
-          return response.json()
+          return response.json();
         }).then(function (data) {
-          console.log(data)
-          getDogInfo(data)
+          console.log(data);
+          getDogInfo(data);
         })
     })
   //api.petfinder.com/v2/{CATEGORY}/{ACTION}?{parameter_1}={value_1}&{parameter_2}={value_2}
 }
+function dogApiByBreed(currentDog, breedsPrimary, genderFromPF) {
+  fetch('https://api.api-ninjas.com/v1/dogs?name=' + breedsPrimary, {
+    method: "GET",
+    headers: { "X-Api-Key": "7VT9G3psGTVpzFOhgUZsag==6qGoaeaUyBn1jA8n" },
+    contentType: "application/json"
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      getDogStats(data, genderFromPF, currentDog);
+    })
+}
 
 function getDogInfo(data) {
   for (var i = 0; i < 3; i++) {
-    console.log(data)
+    console.log(data);
     var dogSelect = data.animals[i];
+    var houseTrained = dogSelect.attributes.house_trained;
+    console.log(houseTrained)
     var dogID = dogSelect.id;
     var orgID = dogSelect.organization_id;
     var name = dogSelect.name;
@@ -51,60 +72,26 @@ function getDogInfo(data) {
     var status = dogSelect.status; //displays as "adoptable"
     var breedsMixed = dogSelect.breeds.mixed; //displays as true/false
     var breedsPrimary = dogSelect.breeds.primary;
+    var size =dogSelect.size;
     var currentDog = {
       ID: dogID,
       name: name,
       age: age,
       sex: genderFromPF,
       photo: photo,
-      breed: breedsPrimary
-    }
+      breed: breedsPrimary,
+      size: size,
+      trained: houseTrained,
+    };
     console.log(currentDog)
     var dogCardArr = [name, age, contact, descriptionFromPF, genderFromPF, photo, status, breedsMixed, breedsPrimary]
     // collectCurrentDog(currentDog)// console.log(dogCardArr)
-    dogApiByBreed(currentDog, breedsPrimary, genderFromPF) //added genderFromPF to pass it to dogApi for height/weight
+    dogApiByBreed(currentDog, breedsPrimary, genderFromPF); //added genderFromPF to pass it to dogApi for height/weight
 
   }
 }
-function collectCurrentDog(currentDog) {
-  console.log(currentDog)
-  var dogCollection = JSON.parse(localStorage.getItem("dogCollectionArr"))
-  
-  if (dogCollection == null) {
-    dogCollection = [];
-  }; 
-  dogCollection.push(currentDog)
-  console.log(dogCollection)
-  localStorage.setItem('dogCollectionArr', JSON.stringify(dogCollection))
-}
-
-
-
-
-
-dogFormEl.addEventListener('submit', function (event) { getPetsByZip(event) })
-
-
-
-// *****************simple fetch for dog api, better to have variables for 
-// apiKey in the headers and greyhound(breed name) in url*****************
-
-function dogApiByBreed(currentDog, breedsPrimary, genderFromPF) {
-  fetch('https://api.api-ninjas.com/v1/dogs?name=' + breedsPrimary, {
-    method: "GET",
-    headers: { "X-Api-Key": "7VT9G3psGTVpzFOhgUZsag==6qGoaeaUyBn1jA8n" },
-    contentType: "application/json"
-  })
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data);
-      getDogStats(data, genderFromPF,currentDog);
-    })
-}
-
-function getDogStats(data, genderFromPF,currentDog) {
+function getDogStats(data, genderFromPF, currentDog) {
+  console.log(data)
   var breed = data[0];
   var barking = breed.barking;
   var energy = breed.energy;
@@ -112,12 +99,14 @@ function getDogStats(data, genderFromPF,currentDog) {
   var playfulness = breed.playfulness;
   var protectiveness = breed.protectiveness;
   var trainability = breed.trainability;
-  currentDog.energy = energy
-  currentDog.playfulness = playfulness
-  currentDog.protectiveness= protectiveness
-  currentDog.trainability = trainability
-  currentDog.barking = barking
-  console.log(currentDog)
+  
+  currentDog.energy = energy;
+  currentDog.playfulness = playfulness;
+  currentDog.protectiveness = protectiveness;
+  currentDog.trainability = trainability;
+  currentDog.barking = barking;
+  
+  console.log(currentDog);
   var minHeightFemale = breed.min_height_female;
   var maxHeightFemale = breed.max_height_female;
   var minWeightFemale = breed.min_weight_female;
@@ -129,13 +118,28 @@ function getDogStats(data, genderFromPF,currentDog) {
   var femaleStatsArr = [barking, energy, goodWithChildren, playfulness, protectiveness, trainability, minHeightFemale, maxHeightFemale, minWeightFemale, maxWeightFemale];
   var maleStatsArr = [barking, energy, goodWithChildren, playfulness, protectiveness, trainability, minHeightMale, maxHeightMale, minWeightMale, maxWeightMale];
   if (genderFromPF == "Female") {
-    console.log(femaleStatsArr);
-    console.log("I am a girl");
+    // console.log(femaleStatsArr);
+    // console.log("I am a girl");
   } else {
-    console.log(maleStatsArr);
-    console.log("bro");
+    // console.log(maleStatsArr);
+    // console.log("bro");
   };
   collectCurrentDog(currentDog)
+  // collectCurrentDog(currentDog);
 }
 
 
+function collectCurrentDog(currentDog) {
+  console.log(currentDog);
+  var dogCollection = JSON.parse(localStorage.getItem("dogCollectionArr"));
+
+  if (dogCollection == null) {
+    dogCollection = [];
+  };
+  dogCollection.push(currentDog);
+  console.log(dogCollection);
+  localStorage.setItem('dogCollectionArr', JSON.stringify(dogCollection));
+}
+// *****************simple fetch for dog api, better to have variables for 
+// apiKey in the headers and greyhound(breed name) in url*****************
+dogFormEl.addEventListener('submit', function (event) { getPetsByZip(event) });
