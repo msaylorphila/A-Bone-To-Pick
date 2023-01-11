@@ -51,7 +51,6 @@ function dogApiByBreed(currentDog, breedsPrimary, genderFromPF) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
       getDogStats(data, genderFromPF, currentDog);
     })
 }
@@ -60,6 +59,8 @@ function getDogInfo(data) {
   for (var i = 0; i < 3; i++) {
     console.log(data);
     var dogSelect = data.animals[i];
+    var houseTrained = dogSelect.attributes.house_trained;
+    console.log(houseTrained)
     var dogID = dogSelect.id;
     var orgID = dogSelect.organization_id;
     var name = dogSelect.name;
@@ -71,15 +72,18 @@ function getDogInfo(data) {
     var status = dogSelect.status; //displays as "adoptable"
     var breedsMixed = dogSelect.breeds.mixed; //displays as true/false
     var breedsPrimary = dogSelect.breeds.primary;
+    var size =dogSelect.size;
     var currentDog = {
       ID: dogID,
       name: name,
       age: age,
       sex: genderFromPF,
       photo: photo,
-      breed: breedsPrimary
+      breed: breedsPrimary,
+      size: size,
+      trained: houseTrained,
     };
-    console.log(currentDog);
+    console.log(currentDog)
     var dogCardArr = [name, age, contact, descriptionFromPF, genderFromPF, photo, status, breedsMixed, breedsPrimary]
     // collectCurrentDog(currentDog)// console.log(dogCardArr)
     dogApiByBreed(currentDog, breedsPrimary, genderFromPF); //added genderFromPF to pass it to dogApi for height/weight
@@ -95,11 +99,13 @@ function getDogStats(data, genderFromPF, currentDog) {
   var playfulness = breed.playfulness;
   var protectiveness = breed.protectiveness;
   var trainability = breed.trainability;
+  
   currentDog.energy = energy;
   currentDog.playfulness = playfulness;
   currentDog.protectiveness = protectiveness;
   currentDog.trainability = trainability;
   currentDog.barking = barking;
+  
   console.log(currentDog);
   var minHeightFemale = breed.min_height_female;
   var maxHeightFemale = breed.max_height_female;
@@ -112,19 +118,17 @@ function getDogStats(data, genderFromPF, currentDog) {
   var femaleStatsArr = [barking, energy, goodWithChildren, playfulness, protectiveness, trainability, minHeightFemale, maxHeightFemale, minWeightFemale, maxWeightFemale];
   var maleStatsArr = [barking, energy, goodWithChildren, playfulness, protectiveness, trainability, minHeightMale, maxHeightMale, minWeightMale, maxWeightMale];
   if (genderFromPF == "Female") {
-    console.log(femaleStatsArr);
-    console.log("I am a girl");
+    // console.log(femaleStatsArr);
+    // console.log("I am a girl");
   } else {
-    console.log(maleStatsArr);
-    console.log("bro");
+    // console.log(maleStatsArr);
+    // console.log("bro");
   };
-  // collectCurrentDog(currentDog)
-  makeDogCard(currentDog);
+  collectCurrentDog(currentDog)
+  // collectCurrentDog(currentDog);
 }
 
-function makeDogCard(currentDog) {
 
-}
 function collectCurrentDog(currentDog) {
   console.log(currentDog);
   var dogCollection = JSON.parse(localStorage.getItem("dogCollectionArr"));
