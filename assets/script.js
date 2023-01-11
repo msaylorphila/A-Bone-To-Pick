@@ -3,6 +3,12 @@ var pfSecret = "pkUPWjL7ux0HicwKDrP0aKXCV9GZv1emPlCXhGmg";
 var dogApiKey = "7VT9G3psGTVpzFOhgUZsag==6qGoaeaUyBn1jA8n";
 var inputEl = document.getElementById('zipInput');
 var dogFormEl = document.getElementById('dogForm')
+// ***************
+// --------------
+// This section for below for dog card related queeryselectors
+// ---------------
+// **************
+
 
 
 function getPetsByZip(event) {
