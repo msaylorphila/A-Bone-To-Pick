@@ -1,3 +1,16 @@
+// GET https://api.petfinder.com/v2/animals/{id}
+var currentDog = {
+    name: "john"
+
+}
+
+console.log(currentDog)
+currentDog.sex = "female"
+
+console.log(currentDog)
+
+
+
 var pfApiKey = "uKG2SiK0W8aXLAwxchcJPB34yUOTNmhcTbFrnkScrYNAfgvmHU";
 var pfSecret = "pkUPWjL7ux0HicwKDrP0aKXCV9GZv1emPlCXhGmg";
 var dogApiKey = "7VT9G3psGTVpzFOhgUZsag==6qGoaeaUyBn1jA8n";
@@ -117,7 +130,6 @@ function getDogStats(data, genderFromPF,currentDog) {
   currentDog.protectiveness= protectiveness
   currentDog.trainability = trainability
   currentDog.barking = barking
-  console.log(currentDog)
   var minHeightFemale = breed.min_height_female;
   var maxHeightFemale = breed.max_height_female;
   var minWeightFemale = breed.min_weight_female;
@@ -137,5 +149,3 @@ function getDogStats(data, genderFromPF,currentDog) {
   };
   collectCurrentDog(currentDog)
 }
-
-
