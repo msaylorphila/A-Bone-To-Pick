@@ -15,38 +15,34 @@
           <a class="navbar-item" href="https://bulma.io">
             <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
           </a>
-      
+      <!-- doesn't show until mobile -->
           <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
           </a>
         </div>
-      
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
             <a class="navbar-item">
               Home
             </a>
-      
             <a class="navbar-item">
               Your Collection
             </a>
-      
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">
-                More
+                About Us
               </a>
-      
               <div class="navbar-dropdown">
                 <a class="navbar-item">
-                  About
+                  We
                 </a>
                 <a class="navbar-item">
-                  Jobs
+                  Love
                 </a>
                 <a class="navbar-item">
-                  Contact
+                  Dogs
                 </a>
                 <hr class="navbar-divider">
                 <a class="navbar-item">
@@ -57,11 +53,16 @@
           </div>
         </div>
       </nav>
-    <section class="section">
-        <form id="dogForm" class="control column is-3 is-3-mobile">
+    <!-- can be changed to hero class-->
+    <div class="container is-fluid">
+      <div class="notification is-link">
+        <div class="container columns is-vcentered is-justify-content-space-between">
+          <!-- beginning of form -->
+          <form id="dogForm" class="control column is-3 is-3-mobile">
+            <!-- zip code -->
             <input id="zipInput" class="input" type="text" placeholder="Zip Code">
-          </div>
-          <div class="control">
+          <div class="control py-4">
+            <!-- dog breed -->
             <div class="select">
               <select>
                 <!-- Do we have to put all 200 dog breeds in here? -->
@@ -75,11 +76,17 @@
           </div>
           <div class="control">
             <button class="button is-primary">Submit</button>
-          <div>
+          </div>
           </form>
-          
-
-    </section>
+          <!-- nice picture, most likely a dog -->
+          <div class="column is-3">
+            
+              <img src="./assets/images/dog-card-first-draft-josh.png">
+            
+          </div>
+        </div>
+      </div>
+    </div>
     <section>
         <button class="button is-danger">I am Empty</button>
     </section>
