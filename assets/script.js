@@ -37,7 +37,7 @@ function getPetsByZip(event){
 }
 
 function getDogInfo(data) {
-    for (var i = 0; i <6; i++) {
+    for (var i = 0; i <3; i++) {
         var dogSelect = data.animals[i];
         var name = dogSelect.name;
         var age = dogSelect.age;
