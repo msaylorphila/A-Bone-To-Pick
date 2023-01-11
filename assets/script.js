@@ -117,6 +117,7 @@ function getDogStats(data, genderFromPF,currentDog) {
   currentDog.protectiveness= protectiveness
   currentDog.trainability = trainability
   currentDog.barking = barking
+  console.log(currentDog)
   var minHeightFemale = breed.min_height_female;
   var maxHeightFemale = breed.max_height_female;
   var minWeightFemale = breed.min_weight_female;
