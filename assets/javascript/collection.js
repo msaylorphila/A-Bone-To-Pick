@@ -1,12 +1,13 @@
 // GET https://api.petfinder.com/v2/animals/{id}
 let doggyDash = document.querySelector('.doggy-dash');
 let dogCollection = JSON.parse(localStorage.getItem("dogCollectionArr"));
+console.log(dogCollection)
 for (i = 0; i < dogCollection.length; i++) {
-     let currentDog = dogCollection[i];
-     console.log(currentDog)
-     makeDogCard(currentDog);
+    let currentDog = dogCollection[i];
+    console.log(currentDog)
+    makeDogCard(currentDog);
 }
-    // makeDogCard(dogCollection[1])
+    //  makeDogCard(dogCollection[1])
     // makeDogCard(dogCollection[2])
     
 
@@ -55,11 +56,15 @@ function makeDogCard(currentDog) {
     age.textContent = currentDog.age;
     breed.textContent = currentDog.breed;
     size.textContent = currentDog.size
-    if (currentDog.houseTrained === true) {
-        houseTrained.textContent = currentDog.trained;
-    } else {
-        houseTrained.textContent = "peepee alert"
-    }
+if (currentDog.houseTrained === true) {
+    let toiletIcon = document.createElement('i')
+    toiletIcon.setAttribute('class','fa-solid fa-toilet');
+    houseTrained.appendChild(toiletIcon);
+} else {
+    let poopIcon= document.createElement('i')
+    poopIcon.setAttribute('class', ' fa-solid fa-poop')
+    houseTrained.appendChild(poopIcon)
+}
     dogCard.appendChild(dogCardBorder);
     dogCardBorder.appendChild(cardHeader);
     cardHeader.appendChild(name);
@@ -76,19 +81,22 @@ function makeDogCard(currentDog) {
     description.appendChild(playfulness);
     description.appendChild(protectiveness);
     dogStats.appendChild(powerLevel);
-    energyIcon(currentDog.energy);
-    trainIcon(currentDog.trainability);
-    playIcon(currentDog.playfulness);
-    protectIcon(currentDog.protectiveness);
+    console.log(currentDog.energy)
+    // energyIcon(currentDog.energy);
+    // trainIcon(currentDog.trainability);
+    // playIcon(currentDog.playfulness);
+    // protectIcon(currentDog.protectiveness);
 
     function energyIcon(num) {
+        console.log('energyIcon called')
         let createSpan = document.createElement('span');
         createSpan.setAttribute('class', 'item2');
         for (i = 0; i < num; i++) {
             let createIcon = document.createElement('i');
             createIcon.setAttribute('class', 'fa-solid fa-bolt-lightning');
-            powerLevel.appendChild(createSpan);
             createSpan.appendChild(createIcon);
+            powerLevel.appendChild(createSpan);
+
         }
     }
     function trainIcon(num) {
