@@ -88,13 +88,13 @@ function getDogInfo(data) {
     };
     // console.log(currentDog)
     var dogCardArr = [name, age, contact, descriptionFromPF, genderFromPF, photo, status, breedsMixed, breedsPrimary]
-    // collectCurrentDog(currentDog)// console.log(dogCardArr)
+    // collectCurrentDog(currentDog)
     dogApiByBreed(currentDog, breedsPrimary, genderFromPF); //added genderFromPF to pass it to dogApi for height/weight
 
   }
 }
 function getDogStats(data, genderFromPF, currentDog) {
-  // console.log(data)
+  console.log(data)
   var breed = data[0];
   var barking = breed.barking;
   var energy = breed.energy;
@@ -127,8 +127,7 @@ function getDogStats(data, genderFromPF, currentDog) {
     // console.log(maleStatsArr);
     // console.log("bro");
   };
-  // collectCurrentDog(currentDog)
-  // collectCurrentDog(currentDog);
+   collectCurrentDog(currentDog);
 }
 
 
