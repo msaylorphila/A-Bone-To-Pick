@@ -3,6 +3,7 @@ var pfSecret = "pkUPWjL7ux0HicwKDrP0aKXCV9GZv1emPlCXhGmg";
 var dogApiKey = "7VT9G3psGTVpzFOhgUZsag==6qGoaeaUyBn1jA8n";
 var inputEl = document.getElementById('zipInput');
 var dogFormEl = document.getElementById('dogForm');
+var breedInputEl = document.getElementById('breedSelect');
 
 // ***************
 // --------------
@@ -27,8 +28,9 @@ function getPetsByZip(event) {
     .then(function (credentials) {
       // console.log(credentials);
       // breedQuery(credentials);
+      var breedInputVal = breedInputEl.value;
       var zipcode = inputEl.value;
-      var pfApiUrl = "https://api.petfinder.com/v2/animals?type=dog&location=" + zipcode + "&sort=distance"
+      var pfApiUrl = "https://api.petfinder.com/v2/animals?breed=" + breedInputVal +  "&location=" + zipcode + "&sort=distance"
       fetch(pfApiUrl
         , {
           headers: {
@@ -37,8 +39,8 @@ function getPetsByZip(event) {
         }).then(function (response) {
           return response.json();
         }).then(function (data) {
-          // console.log(data);
-          getDogInfo(data);
+          console.log(data);
+          // getDogInfo(data);
         })
     })
   //api.petfinder.com/v2/{CATEGORY}/{ACTION}?{parameter_1}={value_1}&{parameter_2}={value_2}
