@@ -276,7 +276,7 @@ $(function () {
         "Yellow Labrador Retriever",
         "Yorkshire Terrier"
     ]
-    $('#breeds').autocomplete({
+    $('#breedSelect').autocomplete({
         source: dogBreeds,
     });
 });
