@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"/>
+    <link
+    rel="stylesheet"
+    href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+  />
     <link rel="stylesheet" href="./assets/style.css" />
     <title>A Bone to Pick</title>
 </head>
@@ -63,16 +67,12 @@
             <input id="zipInput" class="input" type="text" placeholder="Zip Code">
           <div class="control py-4">
             <!-- dog breed -->
-            <div class="select">
-              <select>
+            
+              <!-- <select id="selectBreedsEl"> -->
                 <!-- Do we have to put all 200 dog breeds in here? -->
                 <!-- Probably better as a input with autofill capabilities -->
-                <option>Golden Retriever</option>
-                <option>Bulldog</option>
-                <option>Husky</option>
-                <option>Lab</option>
-              </select>
-            </div>
+                <input id="breeds" name="name" placeholder="Select Breed">
+             
           </div>
           <div class="control">
             <button class="button is-primary">Submit</button>
@@ -95,5 +95,9 @@
     </section>
     We love dogs.
 </body>
-<script src = "./assets/script.js"></script>
+<!-- <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src = "./assets/javascript/script.js"></script>
+<script src="./assets/javascript/dogbreedfill.js"></script>
 </html>
