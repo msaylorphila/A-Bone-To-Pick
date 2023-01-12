@@ -94,12 +94,7 @@ function getDogInfo(data) {
   }
 }
 function getDogStats(data, genderFromPF, currentDog) {
-<<<<<<< HEAD:assets/script.js
-  console.log(data)
-  // check to see if you want to had any other properties to currentDog
-=======
   // console.log(data)
->>>>>>> a265bcdf482bd50d2df013574756ba2cc91bab0d:assets/javascript/script.js
   var breed = data[0];
   var barking = breed.barking;
   var energy = breed.energy;
