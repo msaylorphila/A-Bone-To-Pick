@@ -40,7 +40,10 @@ img{
   padding-top: .5rem;
 }
 .item2 i{
-  margin-right:.5rem
+  margin-right:.5rem;
+  width: 16px;
+  height: auto;
+
 }
 .columns{
   justify-content: space-around;
