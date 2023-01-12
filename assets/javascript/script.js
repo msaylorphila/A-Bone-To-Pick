@@ -56,7 +56,7 @@ function dogApiByBreed(currentDog, breedsPrimary, genderFromPF) {
       getDogStats(data, genderFromPF, currentDog);
     })
 }
-
+// if you want to add more data to the card,/ dog Object start here
 function getDogInfo(data) {
   for (var i = 0; i < 3; i++) {
     // console.log(data);
@@ -75,6 +75,7 @@ function getDogInfo(data) {
     var breedsMixed = dogSelect.breeds.mixed; //displays as true/false
     var breedsPrimary = dogSelect.breeds.primary;
     var size =dogSelect.size;
+    // HERE!
     var currentDog = {
       ID: dogID,
       name: name,
@@ -126,7 +127,7 @@ function getDogStats(data, genderFromPF, currentDog) {
     // console.log(maleStatsArr);
     // console.log("bro");
   };
-  collectCurrentDog(currentDog)
+  // collectCurrentDog(currentDog)
   // collectCurrentDog(currentDog);
 }
 
