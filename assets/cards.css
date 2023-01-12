@@ -28,6 +28,18 @@ img{
     background-color: hsl(178, 69%, 47%);
     border-radius: 5px;
 }
+.flex{
+  display: flex;
+  flex-wrap: wrap;
+}
+.columns{
+  justify-content: space-around;
+}
+nav{
+  padding:1rem;
+  margin:1rem;
+  border-radius: 5px;
+}
 .card-header{
     display: flex;
     justify-content: space-around;
