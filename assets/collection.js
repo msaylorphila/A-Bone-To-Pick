@@ -6,8 +6,8 @@ for (i = 0; i < dogCollection.length; i++) {
      console.log(currentDog)
      makeDogCard(currentDog);
 }
-    makeDogCard(dogCollection[1])
-    makeDogCard(dogCollection[2])
+    // makeDogCard(dogCollection[1])
+    // makeDogCard(dogCollection[2])
     
 
 
