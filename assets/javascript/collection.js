@@ -1,13 +1,14 @@
 // GET https://api.petfinder.com/v2/animals/{id}
+
 let doggyDash = document.querySelector('.doggy-dash');
 let dogCollection = JSON.parse(localStorage.getItem("dogCollectionArr"));
 console.log(dogCollection)
-for (i = 0; i < dogCollection.length; i++) {
+for (var i = 0; i < dogCollection.length; i++) {
     let currentDog = dogCollection[i];
     console.log(currentDog)
     makeDogCard(currentDog);
 }
-    //  makeDogCard(dogCollection[1])
+    // makeDogCard(dogCollection[1])
     // makeDogCard(dogCollection[2])
     
 
@@ -82,16 +83,16 @@ if (currentDog.houseTrained === true) {
     description.appendChild(protectiveness);
     dogStats.appendChild(powerLevel);
     console.log(currentDog.energy)
-    // energyIcon(currentDog.energy);
-    // trainIcon(currentDog.trainability);
-    // playIcon(currentDog.playfulness);
-    // protectIcon(currentDog.protectiveness);
+    energyIcon(currentDog.energy);
+    trainIcon(currentDog.trainability);
+    playIcon(currentDog.playfulness);
+    protectIcon(currentDog.protectiveness);
 
     function energyIcon(num) {
         console.log('energyIcon called')
         let createSpan = document.createElement('span');
         createSpan.setAttribute('class', 'item2');
-        for (i = 0; i < num; i++) {
+        for (var i = 0; i < num; i++) {
             let createIcon = document.createElement('i');
             createIcon.setAttribute('class', 'fa-solid fa-bolt-lightning');
             createSpan.appendChild(createIcon);
@@ -102,7 +103,7 @@ if (currentDog.houseTrained === true) {
     function trainIcon(num) {
         let createSpan = document.createElement('span');
         createSpan.setAttribute('class', 'item2');
-        for (i = 0; i < num; i++) {
+        for (var i = 0; i < num; i++) {
             let createIcon = document.createElement('i');
             createIcon.setAttribute('class', ' fa-solid fa-poop');
             powerLevel.appendChild(createSpan);
@@ -112,7 +113,7 @@ if (currentDog.houseTrained === true) {
     function playIcon(num) {
         let createSpan = document.createElement('span');
         createSpan.setAttribute('class', 'item2');
-        for (i = 0; i < num; i++) {
+        for (var i = 0; i < num; i++) {
             let createIcon = document.createElement('i');
             createIcon.setAttribute('class', ' fa-solid fa-face-grin-tears');
             powerLevel.appendChild(createSpan);
@@ -122,7 +123,7 @@ if (currentDog.houseTrained === true) {
     function protectIcon(num) {
         let createSpan = document.createElement('span');
         createSpan.setAttribute('class', 'item2');
-        for (i = 0; i < num; i++) {
+        for (var i = 0; i < num; i++) {
             let createIcon = document.createElement('i')
             createIcon.setAttribute('class', 'fa-solid fa-shield');
             powerLevel.appendChild(createSpan);
