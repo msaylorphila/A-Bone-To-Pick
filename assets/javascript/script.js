@@ -6,6 +6,7 @@ var dogFormEl = document.getElementById('dogForm');
 var breedInputEl = document.getElementById('breedSelect');
 var nextBtn = document.getElementById('next');
 var dogContainer = document.querySelector('.doggy-dash');
+var collectionButton = document.getElementById('collectionButton');
 var iterator = 0
 var iteratorMax = 5
 var allDogsGoToVar = [];
@@ -188,18 +189,10 @@ function collectCurrentDog(currentDog) {
 
 
 //add an if statement to dogs api by breed to check if the breed exists and if not dont display 
+collectionButton.addEventListener('click', function () {
+  document.location.replace('./your-collection.html');
 
-//  $(function autofillBreeds(e,ui) {
-//   var availableTags = ["pitbull", "dog", "cat"];
-//   var availableTagsCode = ["1", "2", "3"];
-//   $("#breeds").autocomplete({
-//     source: availableTags,
-//     select: function(e, ui) {
-//       $('#breeds').val(availableTagsCode[availableTags.indexOf(ui.item.value)]);
-//     }
-//   });
-// }); 
-
+})
 
 nextBtn.addEventListener('click', function(event){
   iterator +=6

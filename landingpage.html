@@ -1,84 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"/>
-    <link rel="stylesheet" href="./assets/css/landingpage.css" />
-    
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="./assets/css/cards.css">
+  <script src="https://kit.fontawesome.com/02fa5d545c.js" crossorigin="anonymous"></script>
+  <title>Document</title>
 </head>
+
 <body>
-      <!-- first navbar from bulma, took out the nav-end buttons -->
-      <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="https://bulma.io">
-            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-          </a>
-      <!-- doesn't show until mobile -->
-          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
+  <div class=" notification">
+    <nav class="hero is-link">
+      <div class="is-flex is-justify-content-space-between columns">
+        <div class="column is-3 has-text-centered">
+          <button id="next" class="button is-success">next</button>
         </div>
-        <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-start">
-            <a class="navbar-item">
-              Home
-            </a>
-            <a class="navbar-item">
-              Your Collection
-            </a>
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">
-                About Us
-              </a>
-              <div class="navbar-dropdown">
-                <a class="navbar-item">
-                  We
-                </a>
-                <a class="navbar-item">
-                  Love
-                </a>
-                <a class="navbar-item">
-                  Dogs
-                </a>
-                <hr class="navbar-divider">
-                <a class="navbar-item">
-                  Report an issue
-                </a>
-              </div>
-            </div>
+        <div class="column is-3 has-text-centered">
+          <button class="button is-success ">donate </button>
+        </div>
+        <div class="column is-3 has-text-centered">
+          <button class="button is-success" id="collectionButton">collection </button>
+        </div>
+      </div>
+    </nav>
+    <main class="is-flex">
+      <aside id="form-and-information" class="column-is-4">
+        <form id="dogForm" class="control column">
+          <input id="zipInput" class="input" type="text" placeholder="Zip Code">
+          <div class="control py-4">
+            <input id="breedSelect" name="name" placeholder="Select Breed">
           </div>
-        </div>
-      </nav>
-      <form id="dogForm" class="control column is-3 is-3-mobile">
-        <!-- zip code -->
-        <input id="zipInput" class="input" type="text" placeholder="Zip Code">
-      <div class="control py-4">
-        <!-- dog breed -->
-        <div class="select">
-          <select>
-            <!-- Do we have to put all 200 dog breeds in here? -->
-            <!-- Probably better as a input with autofill capabilities -->
-            <option>Golden Retriever</option>
-            <option>Bulldog</option>
-            <option>Husky</option>
-            <option>Lab</option>
-          </select>
-        </div>
-      </div>
-      <div class="control">
-        <button class="button is-primary">Submit</button>
-      </div>
-      </form>
-      <section id="cardsLandingDrop">
-        <p>Hello</p>
+          <div class="control">
+            <button class="button is-primary">Submit</button>
+          </div>
+        </form>
+      </aside>
+      <section class="doggy-dash flex card-container columns is-8">
       </section>
-      
-      <script src = "./assets/javascript/script.js"></script>
+    </main>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="./assets/javascript/collection.js"></script>
+    <script src="./assets/javascript/script.js"></script>
+    <script src="./assets/javascript/dogbreedfill.js"></script>
+
 </body>
 
 </html>

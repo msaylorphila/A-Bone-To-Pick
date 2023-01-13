@@ -20,6 +20,7 @@ function makeDogCard(currentDog) {
     let name = document.createElement('span');
     let age = document.createElement('span');
     let breed = document.createElement('span')
+    let gender = document.createElement('span')
     let photo = document.createElement('img');
     let dogAttr = document.createElement('div');
     let size = document.createElement('span');
@@ -39,6 +40,7 @@ function makeDogCard(currentDog) {
     dogCardBorder.setAttribute('class', 'card-border');
     cardHeader.setAttribute('class', 'card-header');
     name.setAttribute('class', 'name');
+    gender.setAttribute('class', 'gender')
     age.setAttribute('class', 'age');
     breed.setAttribute('class', 'breed');
     photo.setAttribute('src', currentDog.photo);
@@ -60,7 +62,8 @@ function makeDogCard(currentDog) {
     name.textContent = currentDog.name;
     age.textContent = currentDog.age;
     breed.textContent = currentDog.breed;
-    size.textContent = currentDog.size
+    size.textContent = currentDog.size;
+    gender.textContent = currentDog.sex;
 if (currentDog.houseTrained === true) {
     let toiletIcon = document.createElement('i')
     toiletIcon.setAttribute('class','fa-solid fa-toilet');
@@ -75,6 +78,7 @@ if (currentDog.houseTrained === true) {
     cardHeader.appendChild(name);
     cardHeader.appendChild(age);
     cardHeader.appendChild(breed);
+    cardHeader.appendChild(gender);
     dogCardBorder.appendChild(photo);
     dogCardBorder.appendChild(dogAttr);
     dogAttr.appendChild(size);
