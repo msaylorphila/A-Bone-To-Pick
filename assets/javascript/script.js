@@ -4,6 +4,8 @@ var dogApiKey = "7VT9G3psGTVpzFOhgUZsag==6qGoaeaUyBn1jA8n";
 var inputEl = document.getElementById('zipInput');
 var dogFormEl = document.getElementById('dogForm');
 var breedInputEl = document.getElementById('breedSelect');
+var nextBtn = document.getElementById('next');
+var dogContainer = document.querySelector('.doggy-dash');
 var iterator = 0
 var iteratorMax = 5
 var allDogsGoToVar = [];
@@ -67,7 +69,7 @@ function dogApiByBreed(currentDog, breedsPrimary, genderFromPF) {
 // if you want to add more data to the card,/ dog Object start here
 function getDogInfo() {
   for (var i = iterator; i <= iteratorMax && i < allDogsGoToVar.animals.length; i++) {
-    // console.log(data);
+    console.log(allDogsGoToVar` `);
     var dogSelect = allDogsGoToVar.animals[i];
     var houseTrained = dogSelect.attributes.house_trained;
     // console.log(houseTrained)
@@ -83,7 +85,21 @@ function getDogInfo() {
     var breedsMixed = dogSelect.breeds.mixed; //displays as true/false
     var breedsPrimary = dogSelect.breeds.primary;
     var size = dogSelect.size;
+    console.log(photo)
     // HERE!
+    if (photo ===null){
+      var currentDog = {
+        ID: dogID,
+        name: name,
+        age: age,
+        sex: genderFromPF,
+        photo: "https://api-ninjas.com/images/dogs/greyhound.jpg",
+        breed: breedsPrimary,
+        size: size,
+        trained: houseTrained,
+      };
+
+    }
     var currentDog = {
       ID: dogID,
       name: name,
@@ -186,5 +202,10 @@ function collectCurrentDog(currentDog) {
 // }); 
 
 
-
+nextBtn.addEventListener('click', function(event){
+  iterator +=6
+  iteratorMax += 6
+  dogContainer.replaceChildren()
+  getDogInfo()
+})
 dogFormEl.addEventListener('submit', function (event) { getPetsByZip(event) });
