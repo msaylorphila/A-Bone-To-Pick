@@ -42,6 +42,9 @@ function makeDogCard(currentDog) {
     age.setAttribute('class', 'age');
     breed.setAttribute('class', 'breed');
     photo.setAttribute('src', currentDog.photo);
+    photo.onerror= function(){
+        console.log("hello")
+    }
     photo.setAttribute('alt', "photo of Doggo")
     dogAttr.setAttribute('class', 'dog-attributes');
     size.setAttribute('class', 'size');
