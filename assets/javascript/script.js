@@ -33,15 +33,8 @@ function getPetsByZip(event) {
       // breedQuery(credentials);
       var breedInputVal = breedInputEl.value;
       var zipcode = inputEl.value;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
       var pfApiUrl = "https://api.petfinder.com/v2/animals?breed=" + breedInputVal + "&location=" + zipcode + "&sort=distance"
-=======
-=======
->>>>>>> Stashed changes
       console.log(breedInputVal)
-      var pfApiUrl = "https://api.petfinder.com/v2/animals?breed=" + breedInputVal +  "&location=" + zipcode + "&sort=distance"
->>>>>>> Stashed changes
       fetch(pfApiUrl
         , {
           headers: {
