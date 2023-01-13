@@ -34,6 +34,7 @@ function getPetsByZip(event) {
       var breedInputVal = breedInputEl.value;
       var zipcode = inputEl.value;
       var pfApiUrl = "https://api.petfinder.com/v2/animals?breed=" + breedInputVal + "&location=" + zipcode + "&sort=distance"
+      console.log(breedInputVal)
       fetch(pfApiUrl
         , {
           headers: {
