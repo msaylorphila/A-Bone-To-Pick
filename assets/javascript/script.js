@@ -69,7 +69,7 @@ function dogApiByBreed(currentDog, breedsPrimary, genderFromPF) {
 // if you want to add more data to the card,/ dog Object start here
 function getDogInfo() {
   for (var i = iterator; i <= iteratorMax && i < allDogsGoToVar.animals.length; i++) {
-    console.log(allDogsGoToVar` `);
+    console.log(allDogsGoToVar);
     var dogSelect = allDogsGoToVar.animals[i];
     var houseTrained = dogSelect.attributes.house_trained;
     // console.log(houseTrained)
