@@ -4,6 +4,9 @@ var dogApiKey = "7VT9G3psGTVpzFOhgUZsag==6qGoaeaUyBn1jA8n";
 var inputEl = document.getElementById('zipInput');
 var dogFormEl = document.getElementById('dogForm');
 var breedInputEl = document.getElementById('breedSelect');
+var iterator = 0
+var iteratorMax = 5
+var allDogsGoToVar = [];
 
 // ***************
 // --------------
@@ -30,7 +33,7 @@ function getPetsByZip(event) {
       // breedQuery(credentials);
       var breedInputVal = breedInputEl.value;
       var zipcode = inputEl.value;
-      var pfApiUrl = "https://api.petfinder.com/v2/animals?breed=" + breedInputVal +  "&location=" + zipcode + "&sort=distance"
+      var pfApiUrl = "https://api.petfinder.com/v2/animals?breed=" + breedInputVal + "&location=" + zipcode + "&sort=distance"
       fetch(pfApiUrl
         , {
           headers: {
@@ -40,7 +43,8 @@ function getPetsByZip(event) {
           return response.json();
         }).then(function (data) {
           console.log(data);
-          // getDogInfo(data);
+          allDogsGoToVar = data;
+          getDogInfo();
         })
     })
   //api.petfinder.com/v2/{CATEGORY}/{ACTION}?{parameter_1}={value_1}&{parameter_2}={value_2}
@@ -59,10 +63,10 @@ function dogApiByBreed(currentDog, breedsPrimary, genderFromPF) {
     })
 }
 // if you want to add more data to the card,/ dog Object start here
-function getDogInfo(data) {
-  for (var i = 0; i < 3; i++) {
+function getDogInfo() {
+  for (var i = iterator; i <= iteratorMax && i < allDogsGoToVar.animals.length; i++) {
     // console.log(data);
-    var dogSelect = data.animals[i];
+    var dogSelect = allDogsGoToVar.animals[i];
     var houseTrained = dogSelect.attributes.house_trained;
     // console.log(houseTrained)
     var dogID = dogSelect.id;
@@ -76,7 +80,7 @@ function getDogInfo(data) {
     var status = dogSelect.status; //displays as "adoptable"
     var breedsMixed = dogSelect.breeds.mixed; //displays as true/false
     var breedsPrimary = dogSelect.breeds.primary;
-    var size =dogSelect.size;
+    var size = dogSelect.size;
     // HERE!
     var currentDog = {
       ID: dogID,
@@ -104,13 +108,13 @@ function getDogStats(data, genderFromPF, currentDog) {
   var playfulness = breed.playfulness;
   var protectiveness = breed.protectiveness;
   var trainability = breed.trainability;
-  
+
   currentDog.energy = energy;
   currentDog.playfulness = playfulness;
   currentDog.protectiveness = protectiveness;
   currentDog.trainability = trainability;
   currentDog.barking = barking;
-  
+
   // console.log(currentDog);
   var minHeightFemale = breed.min_height_female;
   var maxHeightFemale = breed.max_height_female;
@@ -129,7 +133,7 @@ function getDogStats(data, genderFromPF, currentDog) {
     // console.log(maleStatsArr);
     // console.log("bro");
   };
-   collectCurrentDog(currentDog);
+  collectCurrentDog(currentDog);
 }
 
 
@@ -164,9 +168,9 @@ function collectCurrentDog(currentDog) {
 //     console.log(dogBreedsArr);
 //   })
 
-  
- //add an if statement to dogs api by breed to check if the breed exists and if not dont display 
-  
+
+//add an if statement to dogs api by breed to check if the breed exists and if not dont display 
+
 //  $(function autofillBreeds(e,ui) {
 //   var availableTags = ["pitbull", "dog", "cat"];
 //   var availableTagsCode = ["1", "2", "3"];
