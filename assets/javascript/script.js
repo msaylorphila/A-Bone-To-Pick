@@ -7,7 +7,7 @@ var breedInputEl = document.getElementById('breedSelect');
 var iterator = 0
 var iteratorMax = 5
 var allDogsGoToVar = [];
-
+makeDogCard(allDogsGoToVar);
 // ***************
 // --------------
 // This section for below for dog card related queeryselectors
