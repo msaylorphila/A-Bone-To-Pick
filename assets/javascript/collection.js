@@ -1,6 +1,7 @@
 // GET https://api.petfinder.com/v2/animals/{id}
 
 let doggyDash = document.querySelector('.doggy-dash');
+function grabCardsFromStorage(){
 let dogCollection = JSON.parse(localStorage.getItem("dogCollectionArr"));
 console.log(dogCollection)
 for (var i = 0; i < dogCollection.length; i++) {
@@ -11,7 +12,7 @@ for (var i = 0; i < dogCollection.length; i++) {
     // makeDogCard(dogCollection[1])
     // makeDogCard(dogCollection[2])
     
-
+}
 
 function makeDogCard(currentDog) {
     let dogCardBorder = document.createElement('div');
