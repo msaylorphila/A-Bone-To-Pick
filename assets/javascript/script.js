@@ -9,7 +9,6 @@ var dogContainer = document.querySelector('.doggy-dash');
 var iterator = 0
 var iteratorMax = 5
 var allDogsGoToVar = [];
-// makeDogCard(allDogsGoToVar);
 
 // ***************
 // --------------
