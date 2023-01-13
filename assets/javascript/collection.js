@@ -31,6 +31,8 @@ function makeDogCard(currentDog) {
     let trainability = document.createElement('span');
     let energy = document.createElement('span')
     let powerLevel = document.createElement('div')
+    let bark = document.createElement('span')
+    bark.setAttribute('class', "item evil")
     powerLevel.setAttribute('class', 'power-level')
     dogCard.setAttribute('class', "card");
     dogCardBorder.setAttribute('class', 'card-border');
@@ -53,6 +55,7 @@ function makeDogCard(currentDog) {
     protectiveness.textContent = "Protectiveness:";
     playfulness.textContent = "Playfulness:";
     trainability.textContent = "Trainability:";
+    bark.textContent= "barking"
     name.textContent = currentDog.name;
     age.textContent = currentDog.age;
     breed.textContent = currentDog.breed;
@@ -81,12 +84,14 @@ if (currentDog.houseTrained === true) {
     description.appendChild(trainability);
     description.appendChild(playfulness);
     description.appendChild(protectiveness);
+    description.appendChild(bark)
     dogStats.appendChild(powerLevel);
     console.log(currentDog.energy)
     energyIcon(currentDog.energy);
     trainIcon(currentDog.trainability);
     playIcon(currentDog.playfulness);
     protectIcon(currentDog.protectiveness);
+    barkIcon(currentDog.barking);
 
     function energyIcon(num) {
         console.log('energyIcon called')
@@ -126,6 +131,16 @@ if (currentDog.houseTrained === true) {
         for (var i = 0; i < num; i++) {
             let createIcon = document.createElement('i')
             createIcon.setAttribute('class', 'fa-solid fa-shield');
+            powerLevel.appendChild(createSpan);
+            createSpan.appendChild(createIcon);
+        }
+    }
+    function barkIcon(num) {
+        let createSpan = document.createElement('span');
+        createSpan.setAttribute('class', 'item2');
+        for (var i = 0; i < num; i++) {
+            let createIcon = document.createElement('i');
+            createIcon.setAttribute('class', ' fa-solid fa-poop');
             powerLevel.appendChild(createSpan);
             createSpan.appendChild(createIcon);
         }

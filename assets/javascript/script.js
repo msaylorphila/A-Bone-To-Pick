@@ -7,7 +7,7 @@ var breedInputEl = document.getElementById('breedSelect');
 var iterator = 0
 var iteratorMax = 5
 var allDogsGoToVar = [];
-makeDogCard(allDogsGoToVar);
+
 // ***************
 // --------------
 // This section for below for dog card related queeryselectors
@@ -133,6 +133,7 @@ function getDogStats(data, genderFromPF, currentDog) {
     // console.log(maleStatsArr);
     // console.log("bro");
   };
+  makeDogCard(currentDog);
   collectCurrentDog(currentDog);
 }
 

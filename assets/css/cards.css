@@ -68,6 +68,9 @@ nav{
     flex-direction: column;
     margin-right:2rem
   }
+  .evil {
+    color:red
+  }
   .power-level{
     display: flex;
     flex-direction: column;

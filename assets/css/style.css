@@ -1,0 +1,12 @@
+:root {
+   --clr-lavender: #9F86C0;
+   --clr-ash-greg: #B8B8AA;
+   --clr-ebony: #59594A;
+   --clr-orange: #CF5C36; 
+   --clr-blue: #1F2041;
+}
+.aside{
+    background-color: rgb(255, 248, 220,.7);
+    
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
