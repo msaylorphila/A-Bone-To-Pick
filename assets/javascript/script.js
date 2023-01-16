@@ -167,6 +167,33 @@ function collectCurrentDog(currentDog) {
   dogCollection.push(currentDog);
   // console.log(dogCollection);
   localStorage.setItem('dogCollectionArr', JSON.stringify(dogCollection));
+    makeShareButton(dogCollection);
+}
+
+// **********tried to make a for loop to have each dog have his own button but doesn't work as intended for many reasons
+// currently settling for the whole collection as a button instead*******************
+// function makeShareButton(dogCollection) {
+//   for (var i =0; i < dogCollection.length; i++) {
+//     var dogButton = document.createElement("button");
+//     dogButton.textContent = "Create Link";
+//     doggyDash.appendChild(dogButton);
+//     dogButton.addEventListener("click", function() {
+//       var urlData = btoa(dogCollection[i]);
+//       console.log(dogCollection[i]);
+//       console.log(urlData);
+
+//     })
+//   }
+// }
+
+function makeShareButton() {
+  var dogButton = document.createElement("button");
+  dogButton.textContent = "Share my Collection"
+  doggyDash.appendChild(dogButton);
+  dogButton.addEventListener("click", function() {
+    var urlData = btoa(localStorage.getItem("dogCollectionArr"));
+    console.log(urlData);
+  });
 }
 // this function got our array and is now complete and null
 // function breedQuery(credentials) {
