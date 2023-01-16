@@ -7,6 +7,7 @@ var breedInputEl = document.getElementById('breedSelect');
 var nextBtn = document.getElementById('next');
 var dogContainer = document.querySelector('.doggy-dash');
 var collectionButton = document.getElementById('collectionButton');
+var showInfo = document.querySelector('.card');
 var iterator = 0
 var iteratorMax = 5
 var allDogsGoToVar = [];
@@ -167,7 +168,7 @@ function collectCurrentDog(currentDog) {
   dogCollection.push(currentDog);
   // console.log(dogCollection);
   localStorage.setItem('dogCollectionArr', JSON.stringify(dogCollection));
-    makeShareButton(dogCollection);
+    // makeShareButton(dogCollection);
 }
 
 // **********tried to make a for loop to have each dog have his own button but doesn't work as intended for many reasons
@@ -221,6 +222,7 @@ function makeShareButton() {
 //   document.location.replace('./your-collection.html');
 
 // })
+// doggyDash.addEventListener('click', dogInfoDisplay);
 
 nextBtn.addEventListener('click', function(event){
   iterator +=6
