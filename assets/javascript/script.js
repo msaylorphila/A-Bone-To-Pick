@@ -48,6 +48,7 @@ function getPetsByZip(event) {
         }).then(function (data) {
           console.log(data);
           allDogsGoToVar = data;
+          
           getDogInfo();
         })
     })
@@ -216,10 +217,10 @@ function makeShareButton() {
 
 
 //add an if statement to dogs api by breed to check if the breed exists and if not dont display 
-collectionButton.addEventListener('click', function () {
-  document.location.replace('./your-collection.html');
+// collectionButton.addEventListener('click', function () {
+//   document.location.replace('./your-collection.html');
 
-})
+// })
 
 nextBtn.addEventListener('click', function(event){
   iterator +=6
