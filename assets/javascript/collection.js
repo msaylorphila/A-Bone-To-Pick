@@ -8,34 +8,37 @@ for (var i = 0; i < dogCollection.length; i++) {
     let currentDog = dogCollection[i];
     console.log(currentDog)
     makeDogCard(currentDog);
+}  
 }
-    // makeDogCard(dogCollection[1])
-    // makeDogCard(dogCollection[2])
-    
+function dogInfoDisplay(event){
+    console.log("you clicked me")
+    clickedDog= event.target
+    console.log(clickedDog)
 }
-
 function makeDogCard(currentDog) {
+    console.log(currentDog)
     let dogCardBorder = document.createElement('div');
     let cardHeader = document.createElement('div');
     let name = document.createElement('span');
     let age = document.createElement('span');
-    let breed = document.createElement('span')
+    let breed = document.createElement('span');
     let photo = document.createElement('img');
     let dogAttr = document.createElement('div');
     let size = document.createElement('span');
     let houseTrained = document.createElement('span');
-    let dogStats = document.createElement('div')
+    let dogStats = document.createElement('div');
     let dogCard = document.createElement('div');
     let description = document.createElement('div');
     let protectiveness = document.createElement('span');
     let playfulness = document.createElement('span');
     let trainability = document.createElement('span');
-    let energy = document.createElement('span')
-    let powerLevel = document.createElement('div')
-    let bark = document.createElement('span')
-    let gender = document.createElement('span')
-    bark.setAttribute('class', "item evil")
-    powerLevel.setAttribute('class', 'power-level')
+    let energy = document.createElement('span');
+    let powerLevel = document.createElement('div');
+    let bark = document.createElement('span');
+    let gender = document.createElement('span');
+    dogCard.setAttribute('data-id', currentDog.ID);
+    bark.setAttribute('class', "item evil");
+    powerLevel.setAttribute('class', 'power-level');
     dogCard.setAttribute('class', "card");
     dogCardBorder.setAttribute('class', 'card-border');
     cardHeader.setAttribute('class', 'card-header');
@@ -61,20 +64,20 @@ function makeDogCard(currentDog) {
     protectiveness.textContent = "Protectiveness:";
     playfulness.textContent = "Playfulness:";
     trainability.textContent = "Trainability:";
-    bark.textContent= "barking"
+    bark.textContent= "barking";
     name.textContent = currentDog.name;
     age.textContent = currentDog.age;
     breed.textContent = currentDog.breed;
     size.textContent = currentDog.size;
     gender.textContent = currentDog.sex;
 if (currentDog.houseTrained === true) {
-    let toiletIcon = document.createElement('i')
+    let toiletIcon = document.createElement('i');
     toiletIcon.setAttribute('class','fa-solid fa-toilet');
     houseTrained.appendChild(toiletIcon);
 } else {
-    let poopIcon= document.createElement('i')
-    poopIcon.setAttribute('class', ' fa-solid fa-poop')
-    houseTrained.appendChild(poopIcon)
+    let poopIcon= document.createElement('i');
+    poopIcon.setAttribute('class', ' fa-solid fa-poop');
+    houseTrained.appendChild(poopIcon);
 }
     dogCard.appendChild(dogCardBorder);
     dogCardBorder.appendChild(cardHeader);
@@ -92,7 +95,7 @@ if (currentDog.houseTrained === true) {
     description.appendChild(trainability);
     description.appendChild(playfulness);
     description.appendChild(protectiveness);
-    description.appendChild(bark)
+    description.appendChild(bark);
     dogStats.appendChild(powerLevel);
     console.log(currentDog.energy)
     energyIcon(currentDog.energy);
@@ -153,5 +156,10 @@ if (currentDog.houseTrained === true) {
             createSpan.appendChild(createIcon);
         }
     }
+    
     doggyDash.appendChild(dogCard);
+    dogCard.addEventListener('click', function(){
+        console.log(dogCard);
+        console.log(allDogsGoToVar)
+    })
 }
