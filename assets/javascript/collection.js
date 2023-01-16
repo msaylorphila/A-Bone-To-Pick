@@ -20,7 +20,6 @@ function makeDogCard(currentDog) {
     let name = document.createElement('span');
     let age = document.createElement('span');
     let breed = document.createElement('span')
-    let gender = document.createElement('span')
     let photo = document.createElement('img');
     let dogAttr = document.createElement('div');
     let size = document.createElement('span');
@@ -34,6 +33,7 @@ function makeDogCard(currentDog) {
     let energy = document.createElement('span')
     let powerLevel = document.createElement('div')
     let bark = document.createElement('span')
+    let gender = document.createElement('span')
     bark.setAttribute('class', "item evil")
     powerLevel.setAttribute('class', 'power-level')
     dogCard.setAttribute('class', "card");
@@ -44,6 +44,9 @@ function makeDogCard(currentDog) {
     age.setAttribute('class', 'age');
     breed.setAttribute('class', 'breed');
     photo.setAttribute('src', currentDog.photo);
+    photo.onerror= function(){
+        // console.log("hello")  default dog photo here photo.src=defaultdog
+    }
     photo.setAttribute('alt', "photo of Doggo")
     dogAttr.setAttribute('class', 'dog-attributes');
     size.setAttribute('class', 'size');
