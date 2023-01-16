@@ -45,7 +45,7 @@ function makeDogCard(currentDog) {
     breed.setAttribute('class', 'breed');
     photo.setAttribute('src', currentDog.photo);
     photo.onerror= function(){
-        // console.log("hello")  default dog photo here photo.src=defaultdog
+    photo.setAttribute('src' ,"./assets.images/default-dog.png")
     }
     photo.setAttribute('alt', "photo of Doggo")
     dogAttr.setAttribute('class', 'dog-attributes');
