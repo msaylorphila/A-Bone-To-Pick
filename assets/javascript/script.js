@@ -10,6 +10,8 @@ var collectionButton = document.getElementById('collectionButton');
 var showInfo = document.querySelector('.card');
 var homeButton = document.getElementById('homeButton');
 var donationButton = document.getElementById('donationEl')
+
+
 var iterator = 0
 var iteratorMax = 5
 var allDogsGoToVar;
@@ -55,8 +57,43 @@ function getPetsByZip(event) {
         }).then(function (data) {
           console.log(data);
           allDogsGoToVar = data;
-          
-          getDogInfo();
+
+          getDogInfo(allDogsGoToVar);
+        })
+    })
+}
+function getPetsByID(dogID) {
+  // doggyDash.replaceChildren()
+  console.log(dogID)
+  // dogID = dogCard.getAttribute('data-id')
+  iterator = 0
+  iteratorMax = 5
+
+  fetch("https://api.petfinder.com/v2/oauth2/token", {
+    body: "grant_type=client_credentials&client_id=" + pfApiKey + "&client_secret=" + pfSecret,
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    method: "POST"
+  }).then(function (response) {
+    return response.json();
+  })
+    .then(function (credentials) {
+      var pfApiUrl = "https://api.petfinder.com/v2/animals/" + dogID
+      //  var pfApiUrl = "https://api.petfinder.com/v2/animals/59269022";
+
+      fetch(pfApiUrl
+        , {
+          headers: {
+            Authorization: "Bearer " + credentials.access_token
+          }
+        }).then(function (response) {
+          return response.json();
+        }).then(function (data) {
+          console.log(data);
+          allDogsGoToVar = data;
+
+          getDogInfo(allDogsGoToVar);
         })
     })
   //api.petfinder.com/v2/{CATEGORY}/{ACTION}?{parameter_1}={value_1}&{parameter_2}={value_2}
@@ -71,31 +108,72 @@ function dogApiByBreed(currentDog, breedsPrimary, genderFromPF) {
       return response.json();
     })
     .then(function (data) {
-      getDogStats(data, genderFromPF, currentDog);
+      getDogStats(data, currentDog);
     })
 }
 // if you want to add more data to the card,/ dog Object start here
-function getDogInfo() {
-  for (var i = iterator; i <= iteratorMax && i < allDogsGoToVar.animals.length; i++) {
-    console.log(allDogsGoToVar);
-    var dogSelect = allDogsGoToVar.animals[i];
+function getDogInfo(allDogsGoToVar) {
+  console.log(allDogsGoToVar);
+  if (allDogsGoToVar.hasOwnProperty('animals')) {
+    for (var i = iterator; i <= iteratorMax && i < allDogsGoToVar.animals.length; i++) {
+
+      var dogSelect = allDogsGoToVar.animals[i];
+      var houseTrained = dogSelect.attributes.house_trained;
+
+      var dogID = dogSelect.id;
+      var name = dogSelect.name;
+      var age = dogSelect.age;
+      var genderFromPF = dogSelect.gender;
+      var photo = dogSelect.primary_photo_cropped.full;
+      var breedsPrimary = dogSelect.breeds.primary;
+      var size = dogSelect.size;
+      var contact = dogSelect.contact
+
+      if (photo === null) {
+        var currentDog = {
+          ID: dogID,
+          name: name,
+          age: age,
+          sex: genderFromPF,
+          photo: "https://api-ninjas.com/images/dogs/greyhound.jpg",
+          breed: breedsPrimary,
+          size: size,
+          trained: houseTrained,
+          contact: contact,
+        };
+
+      }
+      currentDog = {
+        ID: dogID,
+        name: name,
+        age: age,
+        sex: genderFromPF,
+        photo: photo,
+        breed: breedsPrimary,
+        size: size,
+        trained: houseTrained,
+        contact: contact,
+      }
+      console.log(currentDog)
+      // collectCurrentDog(currentDog)
+      dogApiByBreed(currentDog, breedsPrimary, genderFromPF);
+
+    }
+  } else if (allDogsGoToVar.hasOwnProperty('animal')) {
+    console.log(allDogsGoToVar)
+    var dogSelect = allDogsGoToVar.animal
     var houseTrained = dogSelect.attributes.house_trained;
-    // console.log(houseTrained)
+
     var dogID = dogSelect.id;
-    var orgID = dogSelect.organization_id;
     var name = dogSelect.name;
     var age = dogSelect.age;
-    var contact = dogSelect.contact.email;
-    var descriptionFromPF = dogSelect.description;
     var genderFromPF = dogSelect.gender;
-    var photo = dogSelect.primary_photo_cropped.full;// we'll have to convert this to a png
-    var status = dogSelect.status; //displays as "adoptable"
-    var breedsMixed = dogSelect.breeds.mixed; //displays as true/false
+    var photo = dogSelect.primary_photo_cropped.full;
     var breedsPrimary = dogSelect.breeds.primary;
     var size = dogSelect.size;
-    console.log(photo)
-    // HERE!
-    if (photo ===null){
+    var contact = dogSelect.contact
+
+    if (photo === null) {
       var currentDog = {
         ID: dogID,
         name: name,
@@ -105,10 +183,11 @@ function getDogInfo() {
         breed: breedsPrimary,
         size: size,
         trained: houseTrained,
+        contact: contact,
       };
 
     }
-      currentDog = {
+    currentDog = {
       ID: dogID,
       name: name,
       age: age,
@@ -117,15 +196,14 @@ function getDogInfo() {
       breed: breedsPrimary,
       size: size,
       trained: houseTrained,
-    };
-    // console.log(currentDog)
-    var dogCardArr = [name, age, contact, descriptionFromPF, genderFromPF, photo, status, breedsMixed, breedsPrimary]
+      contact: contact,
+    }
+    console.log(currentDog)
     // collectCurrentDog(currentDog)
-    dogApiByBreed(currentDog, breedsPrimary, genderFromPF); //added genderFromPF to pass it to dogApi for height/weight
-
+    dogApiByBreed(currentDog, breedsPrimary, genderFromPF);
   }
 }
-function getDogStats(data, genderFromPF, currentDog) {
+function getDogStats(data, currentDog) {
   console.log(data)
   var breed = data[0];
   var barking = breed.barking;
@@ -140,8 +218,6 @@ function getDogStats(data, genderFromPF, currentDog) {
   currentDog.protectiveness = protectiveness;
   currentDog.trainability = trainability;
   currentDog.barking = barking;
-
-  
   currentDog.minHeightFemale = breed.min_height_female;
   currentDog.maxHeightFemale = breed.max_height_female;
   currentDog.minWeightFemale = breed.min_weight_female;
@@ -150,26 +226,36 @@ function getDogStats(data, genderFromPF, currentDog) {
   currentDog.maxHeightMale = breed.max_height_male;
   currentDog.minWeightMale = breed.min_weight_male;
   currentDog.maxWeightMale = breed.max_weight_male;
-  console.log(breed.min_weight_female)
-  // currentDog.femaleStatsArr = [barking, energy, goodWithChildren, playfulness, protectiveness, trainability, minHeightFemale, maxHeightFemale, minWeightFemale, maxWeightFemale];
-  // currentDog.maleStatsArr = [barking, energy, goodWithChildren, playfulness, protectiveness, trainability, minHeightMale, maxHeightMale, minWeightMale, maxWeightMale];
-
   makeDogCard(currentDog);
   // collectCurrentDog(currentDog);
 }
 
-
+// small bug in this function
 function collectCurrentDog(currentDog) {
-  // console.log(currentDog);
+  console.log("collect dog called");
   var dogCollection = JSON.parse(localStorage.getItem("dogCollectionArr"));
-
+  console.log(currentDog)
+  if (currentDog.hasOwnProperty('animal')){
+    currentDog= currentDog.animal
+  }
+  console.log(dogCollection)
   if (dogCollection == null) {
     dogCollection = [];
-  };
-  dogCollection.push(currentDog);
+  } else 
+  for (var i = 0; i < dogCollection.length; i++) {
+    if (dogCollection[i] === currentDog) {
+      console.log('true')
+      localStorage.setItem('dogCollectionArr', JSON.stringify(dogCollection));
+      return false
+    }
+  }
+  console.log ('you are here')
+  dogCollection.push(currentDog)
+
+  ;
   // console.log(dogCollection);
   localStorage.setItem('dogCollectionArr', JSON.stringify(dogCollection));
-    // makeShareButton(dogCollection);
+  // makeShareButton(dogCollection);
 }
 
 // **********tried to make a for loop to have each dog have his own button but doesn't work as intended for many reasons
@@ -192,7 +278,7 @@ function makeShareButton() {
   var dogButton = document.createElement("button");
   dogButton.textContent = "Share my Collection"
   doggyDash.appendChild(dogButton);
-  dogButton.addEventListener("click", function() {
+  dogButton.addEventListener("click", function () {
     var urlData = btoa(localStorage.getItem("dogCollectionArr"));
     console.log(urlData);
   });
@@ -225,20 +311,20 @@ function makeShareButton() {
 // })
 // doggyDash.addEventListener('click', dogInfoDisplay);
 // 
-// 
-// 
 
 
-donationButton.addEventListener('click', function(){
-  document.location.replace('https://www.aspca.org/ways-to-give')})
-
-nextBtn.addEventListener('click', function(event){
-  iterator +=6;
-  iteratorMax += 6;
-  dogContainer.replaceChildren()
-  getDogInfo()
+donationButton.addEventListener('click', function () {
+  document.location.replace('https://www.aspca.org/ways-to-give')
 })
 
-dogFormEl.addEventListener('submit', function (event) { getPetsByZip(event) 
-$("#next").show()
-  });
+nextBtn.addEventListener('click', function (event) {
+  iterator += 6;
+  iteratorMax += 6;
+  dogContainer.replaceChildren()
+  getDogInfo(allDogsGoToVar)
+})
+
+dogFormEl.addEventListener('submit', function (event) {
+  getPetsByZip(event)
+  $("#next").show()
+});

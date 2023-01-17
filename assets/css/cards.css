@@ -12,8 +12,8 @@ section{
     max-width: 350px;
     border-radius: 5px;
     background-color: hsl(76, 100%, 50%);
-    padding:.5rem;
-    margin: 2rem;
+    padding-top:.5rem;
+    margin-top: 2rem;
     /* set media queery to only have vertical margin and padding on screens less than tablet */
 }
 .card-border >img{
@@ -79,3 +79,9 @@ nav{
     flex-direction: column;
     /* width:50px; */
   }
+@media screen and (min-width:767px) {
+  .card{
+    padding:.5rem;
+    margin: 2rem;
+  }
+}
