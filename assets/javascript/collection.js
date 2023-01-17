@@ -10,11 +10,7 @@ for (var i = 0; i < dogCollection.length; i++) {
     makeDogCard(currentDog);
 }  
 }
-function dogInfoDisplay(event){
-    console.log("you clicked me")
-    clickedDog= event.target
-    console.log(clickedDog)
-}
+
 function makeDogCard(currentDog) {
     console.log(currentDog)
     let dogCardBorder = document.createElement('div');
@@ -105,6 +101,14 @@ if (currentDog.houseTrained === true) {
     barkIcon(currentDog.barking);
 
     function energyIcon(num) {
+        if (num == 0){
+            let createSpan = document.createElement('span');
+            createSpan.setAttribute('class', 'item2');
+            let createIcon = document.createElement('i');
+            createIcon.setAttribute('class', 'fa-solid fa-bolt-lightning');
+            createSpan.appendChild(createIcon);
+            powerLevel.appendChild(createSpan);
+        }
         console.log('energyIcon called')
         let createSpan = document.createElement('span');
         createSpan.setAttribute('class', 'item2');
@@ -117,6 +121,15 @@ if (currentDog.houseTrained === true) {
         }
     }
     function trainIcon(num) {
+        if (num == 0){
+            let createSpan = document.createElement('span');
+        createSpan.setAttribute('class', 'item2');
+        let createIcon = document.createElement('i');
+        createIcon.setAttribute('class', ' fa-solid fa-poop');
+        powerLevel.appendChild(createSpan);
+        createSpan.appendChild(createIcon);
+        }
+
         let createSpan = document.createElement('span');
         createSpan.setAttribute('class', 'item2');
         for (var i = 0; i < num; i++) {
@@ -127,6 +140,14 @@ if (currentDog.houseTrained === true) {
         }
     }
     function playIcon(num) {
+        if (num == 0){
+            let createSpan = document.createElement('span');
+        createSpan.setAttribute('class', 'item2');
+        let createIcon = document.createElement('i');
+        createIcon.setAttribute('class', ' fa-solid fa-face-grin-tears');
+        powerLevel.appendChild(createSpan);
+        createSpan.appendChild(createIcon);
+        }
         let createSpan = document.createElement('span');
         createSpan.setAttribute('class', 'item2');
         for (var i = 0; i < num; i++) {
@@ -137,6 +158,15 @@ if (currentDog.houseTrained === true) {
         }
     }
     function protectIcon(num) {
+        if (num == 0){
+            let createSpan = document.createElement('span');
+        createSpan.setAttribute('class', 'item2');
+        let createIcon = document.createElement('i')
+        createIcon.setAttribute('class', 'fa-solid fa-shield');
+        powerLevel.appendChild(createSpan);
+        createSpan.appendChild(createIcon);
+        }
+
         let createSpan = document.createElement('span');
         createSpan.setAttribute('class', 'item2');
         for (var i = 0; i < num; i++) {
@@ -147,6 +177,16 @@ if (currentDog.houseTrained === true) {
         }
     }
     function barkIcon(num) {
+        if (num == 0){
+            let createSpan = document.createElement('span');
+        createSpan.setAttribute('class', 'item2');
+        
+        createIcon.setAttribute('class', ' fa-solid fa-poop');
+        let createIcon = document.createElement('i');
+        createSpan.appendChild(createIcon);
+        powerLevel.appendChild(createSpan);
+        }
+        
         let createSpan = document.createElement('span');
         createSpan.setAttribute('class', 'item2');
         for (var i = 0; i < num; i++) {
@@ -156,10 +196,10 @@ if (currentDog.houseTrained === true) {
             createSpan.appendChild(createIcon);
         }
     }
-    
+    function dogInfoDisplay(event){
+        console.log(dogCard)
+        dogID=  dogCard.getAttribute('data-id')
+    }
     doggyDash.appendChild(dogCard);
-    dogCard.addEventListener('click', function(){
-        console.log(dogCard);
-        console.log(allDogsGoToVar)
-    })
+    dogCard.addEventListener('click', dogInfoDisplay)
 }

@@ -22,6 +22,9 @@ var allDogsGoToVar = [];
 
 function getPetsByZip(event) {
   event.preventDefault();
+  iterator = 0
+  iteratorMax = 5
+  dogContainer.replaceChildren()
 
   fetch("https://api.petfinder.com/v2/oauth2/token", {
     body: "grant_type=client_credentials&client_id=" + pfApiKey + "&client_secret=" + pfSecret,
