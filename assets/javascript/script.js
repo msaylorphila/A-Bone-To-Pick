@@ -12,7 +12,7 @@ var homeButton = document.getElementById('homeButton');
 var donationButton = document.getElementById('donationEl')
 var iterator = 0
 var iteratorMax = 5
-var allDogsGoToVar = [];
+var allDogsGoToVar;
 var currentDog;
 
 // ***************
@@ -150,17 +150,12 @@ function getDogStats(data, genderFromPF, currentDog) {
   currentDog.maxHeightMale = breed.max_height_male;
   currentDog.minWeightMale = breed.min_weight_male;
   currentDog.maxWeightMale = breed.max_weight_male;
+  console.log(breed.min_weight_female)
   // currentDog.femaleStatsArr = [barking, energy, goodWithChildren, playfulness, protectiveness, trainability, minHeightFemale, maxHeightFemale, minWeightFemale, maxWeightFemale];
   // currentDog.maleStatsArr = [barking, energy, goodWithChildren, playfulness, protectiveness, trainability, minHeightMale, maxHeightMale, minWeightMale, maxWeightMale];
-  if (genderFromPF == "Female") {
-    // console.log(femaleStatsArr);
-    // console.log("I am a girl");
-  } else {
-    // console.log(maleStatsArr);
-    // console.log("bro");
-  };
+
   makeDogCard(currentDog);
-  collectCurrentDog(currentDog);
+  // collectCurrentDog(currentDog);
 }
 
 
@@ -229,6 +224,10 @@ function makeShareButton() {
 
 // })
 // doggyDash.addEventListener('click', dogInfoDisplay);
+// 
+// 
+// 
+
 
 donationButton.addEventListener('click', function(){
   document.location.replace('https://www.aspca.org/ways-to-give')})
