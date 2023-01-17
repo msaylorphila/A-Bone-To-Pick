@@ -9,102 +9,39 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
   <link rel="stylesheet" href="./assets/css/style.css" />
-  <link rel="stylesheet" href="./assets/css/cards.css">
   <script src="https://kit.fontawesome.com/02fa5d545c.js" crossorigin="anonymous"></script>
+  <link rel="icon" type="image/x-icon" href="./assets/images/dogiconedit.png">
   <title>Document</title>
 
 
 </head>
 
 <body>
-  <!-- first navbar from bulma, took out the nav-end buttons -->
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="https://bulma.io">
-        <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-      </a>
-      <!-- doesn't show until mobile -->
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item">
-          Home
-        </a>
-        <a class="navbar-item">
-          Your Collection
-        </a>
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            About Us
-          </a>
-          <div class="navbar-dropdown">
-            <a class="navbar-item">
-              We
-            </a>
-            <a class="navbar-item">
-              Love
-            </a>
-            <a class="navbar-item">
-              Dogs
-            </a>
-            <hr class="navbar-divider">
-            <a class="navbar-item">
-              Report an issue
-            </a>
-          </div>
-        </div>
+ <div class="is-flex is-justify-content-center">
+  <img id="dogpic" src="./assets/images/My project-2 (1).png">
+</div>
+<footer class="is-align-content-center">
+  <!-- <h2>-Click below to see each contributor's github-</h2> -->
+  <nav>
+    <div class="is-flex is-justify-content-space-between columns">
+      <div class="column is-3">
+        <button class="button is-rounded is-primary is-light is-outlined"><img class="dogicon" src="./assets/images/dogiconedit.png">Margaret's Github</button>
+      </div>
+      <div class="column is-3">
+        <button class="button is-rounded is-primary is-light is-outlined"><img class="dogicon" src="./assets/images/dogiconedit.png">Fred's Github</button>
+      </div>
+      <div class="column is-3">
+        <button class="button is-rounded is-primary is-light is-outlined"><img class="dogicon" src="./assets/images/dogiconedit.png">Josh's Github</button>
       </div>
     </div>
   </nav>
-  <!-- can be changed to hero class-->
-  <div class="container is-fluid">
-    <div class="notification is-link">
-      <div class="container columns is-vcentered is-justify-content-space-between">
-        <!-- beginning of form -->
-        <form id="dogForm" class="control column is-3 is-3-mobile">
-          <!-- zip code -->
-          <input id="zipInput" class="input" type="text" placeholder="Zip Code">
-          <div class="control py-4">
-            <!-- dog breed -->
-
-            <!-- <select id="selectBreedsEl"> -->
-            <!-- Do we have to put all 200 dog breeds in here? -->
-            <!-- Probably better as a input with autofill capabilities -->
-            <input id="breedSelect" name="name" placeholder="Select Breed">
-
-          </div>
-          <div class="control">
-            <button class="button is-primary">Submit</button>
-          </div>
-        </form>
-        <!-- nice picture, most likely a dog -->
-        <div class="column is-3">
-
-          <img src="./assets/images/dog-card-first-draft-josh.png">
-
-        </div>
-      </div>
-    </div>
-  </div>
-  <section>
-    <button id= "next" class="button is-danger">I am Empty</button>
-  </section>
-  <section class = "doggy-dash flex">
-    
-  </section>
-  We love dogs.
-  <!-- <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
+</footer>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="./assets/javascript/collection.js"></script>
-<script src="./assets/javascript/script.js"></script>
-<script src="./assets/javascript/dogbreedfill.js"></script>
-
+<!-- <script src="./assets/javascript/collection.js"></script> -->
+<!-- <script src="./assets/javascript/script.js"></script> -->
+<!-- <script src="./assets/javascript/dogbreedfill.js"></script> -->
+<script src="./assets/javascript/index.js"></script>
 </body>
 
 </html>

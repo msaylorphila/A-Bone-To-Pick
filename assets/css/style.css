@@ -11,3 +11,17 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
+footer {
+    position: absolute;
+    bottom: 0;
+    justify-content: center;
+}
+
+#dogpic {
+    max-width: 40%;
+    margin-top: 10%;
+}
+
+.dogicon{
+    max-width: 30%;
+}
