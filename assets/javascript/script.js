@@ -11,6 +11,7 @@ var showInfo = document.querySelector('.card');
 var iterator = 0
 var iteratorMax = 5
 var allDogsGoToVar = [];
+var currentDog;
 
 // ***************
 // --------------
@@ -106,7 +107,7 @@ function getDogInfo() {
       };
 
     }
-    var currentDog = {
+      currentDog = {
       ID: dogID,
       name: name,
       age: age,
@@ -139,17 +140,17 @@ function getDogStats(data, genderFromPF, currentDog) {
   currentDog.trainability = trainability;
   currentDog.barking = barking;
 
-  // console.log(currentDog);
-  var minHeightFemale = breed.min_height_female;
-  var maxHeightFemale = breed.max_height_female;
-  var minWeightFemale = breed.min_weight_female;
-  var maxWeightFemale = breed.max_weight_female;
-  var minHeightMale = breed.min_height_male;
-  var maxHeightMale = breed.max_height_male;
-  var minWeightMale = breed.min_weight_male;
-  var maxWeightMale = breed.max_weight_male;
-  var femaleStatsArr = [barking, energy, goodWithChildren, playfulness, protectiveness, trainability, minHeightFemale, maxHeightFemale, minWeightFemale, maxWeightFemale];
-  var maleStatsArr = [barking, energy, goodWithChildren, playfulness, protectiveness, trainability, minHeightMale, maxHeightMale, minWeightMale, maxWeightMale];
+  
+  currentDog.minHeightFemale = breed.min_height_female;
+  currentDog.maxHeightFemale = breed.max_height_female;
+  currentDog.minWeightFemale = breed.min_weight_female;
+  currentDog.maxWeightFemale = breed.max_weight_female;
+  currentDog.minHeightMale = breed.min_height_male;
+  currentDog.maxHeightMale = breed.max_height_male;
+  currentDog.minWeightMale = breed.min_weight_male;
+  currentDog.maxWeightMale = breed.max_weight_male;
+  // currentDog.femaleStatsArr = [barking, energy, goodWithChildren, playfulness, protectiveness, trainability, minHeightFemale, maxHeightFemale, minWeightFemale, maxWeightFemale];
+  // currentDog.maleStatsArr = [barking, energy, goodWithChildren, playfulness, protectiveness, trainability, minHeightMale, maxHeightMale, minWeightMale, maxWeightMale];
   if (genderFromPF == "Female") {
     // console.log(femaleStatsArr);
     // console.log("I am a girl");

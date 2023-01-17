@@ -186,7 +186,7 @@ if (currentDog.houseTrained === true) {
         createSpan.appendChild(createIcon);
         powerLevel.appendChild(createSpan);
         }
-        
+
         let createSpan = document.createElement('span');
         createSpan.setAttribute('class', 'item2');
         for (var i = 0; i < num; i++) {
@@ -197,8 +197,17 @@ if (currentDog.houseTrained === true) {
         }
     }
     function dogInfoDisplay(event){
-        console.log(dogCard)
+        
         dogID=  dogCard.getAttribute('data-id')
+        console.log(currentDog)
+        for (var i = 0; i< allDogsGoToVar.animals.length; i++){
+            
+            if (dogID == allDogsGoToVar.animals[i].id){
+                let ourDog=allDogsGoToVar.animals[i];
+                console.log(ourDog)
+
+            }
+        }
     }
     doggyDash.appendChild(dogCard);
     dogCard.addEventListener('click', dogInfoDisplay)
