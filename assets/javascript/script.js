@@ -9,6 +9,7 @@ var dogContainer = document.querySelector('.doggy-dash');
 var collectionButton = document.getElementById('collectionButton');
 var showInfo = document.querySelector('.card');
 var homeButton = document.getElementById('homeButton');
+var donationButton = document.getElementById('donationEl')
 var iterator = 0
 var iteratorMax = 5
 var allDogsGoToVar = [];
@@ -228,6 +229,9 @@ function makeShareButton() {
 
 // })
 // doggyDash.addEventListener('click', dogInfoDisplay);
+
+donationButton.addEventListener('click', function(){
+  document.location.replace('https://www.aspca.org/ways-to-give')})
 
 nextBtn.addEventListener('click', function(event){
   iterator +=6;
