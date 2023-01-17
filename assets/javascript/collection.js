@@ -205,7 +205,7 @@ if (currentDog.houseTrained === true) {
             if (dogID == allDogsGoToVar.animals[i].id){
                 let ourDog=allDogsGoToVar.animals[i];
                 console.log(ourDog)
-
+                console.log(currentDog.photo)
             }
         }
     }
