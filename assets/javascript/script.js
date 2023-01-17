@@ -40,7 +40,8 @@ function getPetsByZip(event) {
       // breedQuery(credentials);
       var breedInputVal = breedInputEl.value;
       var zipcode = inputEl.value;
-      var pfApiUrl = "https://api.petfinder.com/v2/animals?breed=" + breedInputVal + "&location=" + zipcode + "&sort=distance"
+      // var pfApiUrl = "https://api.petfinder.com/v2/animals?breed=" + breedInputVal + "&location=" + zipcode + "&sort=distance"
+      var pfApiUrl = "https://api.petfinder.com/v2/animals/59269022";
       console.log(breedInputVal)
       fetch(pfApiUrl
         , {
