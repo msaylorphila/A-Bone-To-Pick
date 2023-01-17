@@ -8,6 +8,7 @@ var nextBtn = document.getElementById('next');
 var dogContainer = document.querySelector('.doggy-dash');
 var collectionButton = document.getElementById('collectionButton');
 var showInfo = document.querySelector('.card');
+var homeButton = document.getElementById('homeButton');
 var iterator = 0
 var iteratorMax = 5
 var allDogsGoToVar = [];
@@ -19,8 +20,7 @@ var currentDog;
 // ---------------
 // **************
 
-
-
+$("#next").hide()
 function getPetsByZip(event) {
   event.preventDefault();
   iterator = 0
@@ -230,9 +230,12 @@ function makeShareButton() {
 // doggyDash.addEventListener('click', dogInfoDisplay);
 
 nextBtn.addEventListener('click', function(event){
-  iterator +=6
-  iteratorMax += 6
+  iterator +=6;
+  iteratorMax += 6;
   dogContainer.replaceChildren()
   getDogInfo()
 })
-dogFormEl.addEventListener('submit', function (event) { getPetsByZip(event) });
+
+dogFormEl.addEventListener('submit', function (event) { getPetsByZip(event) 
+$("#next").show()
+  });
