@@ -112,30 +112,6 @@ function dogApiByBreed(currentDog, breedsPrimary, genderFromPF) {
 }
 // if you want to add more data to the card,/ dog Object start here
 function getDogInfo(allDogsGoToVar) {
-  console.log(allDogsGoToVar)
-  // if (allDogsGoToVar.animals.length == undefined) {
-  //   var dogSelect = allDogsGoToVar.animals[i];
-  //   var houseTrained = dogSelect.attributes.house_trained;
-
-  //   var dogID = dogSelect.id;
-  //   var name = dogSelect.name;
-  //   var age = dogSelect.age;
-  //   var genderFromPF = dogSelect.gender;
-  //   var photo = dogSelect.primary_photo_cropped.full;
-  //   var breedsPrimary = dogSelect.breeds.primary;
-  //   var size = dogSelect.size;
-  //   if (photo === null) {
-  //     var currentDog = {
-  //       ID: dogID,
-  //       name: name,
-  //       age: age,
-  //       sex: genderFromPF,
-  //       photo: "https://api-ninjas.com/images/dogs/greyhound.jpg",
-  //       breed: breedsPrimary,
-  //       size: size,
-  //       trained: houseTrained,
-  //     };
-  //   }
   console.log(allDogsGoToVar);
   if (allDogsGoToVar.hasOwnProperty('animals')) {
     for (var i = iterator; i <= iteratorMax && i < allDogsGoToVar.animals.length; i++) {
@@ -174,8 +150,6 @@ function getDogInfo(allDogsGoToVar) {
         size: size,
         trained: houseTrained,
       }
-
-      // };
       console.log(currentDog)
       // collectCurrentDog(currentDog)
       dogApiByBreed(currentDog, breedsPrimary, genderFromPF);
@@ -251,9 +225,6 @@ function getDogStats(data, currentDog) {
   currentDog.minWeightMale = breed.min_weight_male;
   currentDog.maxWeightMale = breed.max_weight_male;
   console.log(breed.min_weight_female)
-  // currentDog.femaleStatsArr = [barking, energy, goodWithChildren, playfulness, protectiveness, trainability, minHeightFemale, maxHeightFemale, minWeightFemale, maxWeightFemale];
-  // currentDog.maleStatsArr = [barking, energy, goodWithChildren, playfulness, protectiveness, trainability, minHeightMale, maxHeightMale, minWeightMale, maxWeightMale];
-
   makeDogCard(currentDog);
   // collectCurrentDog(currentDog);
 }
@@ -324,8 +295,6 @@ function makeShareButton() {
 
 // })
 // doggyDash.addEventListener('click', dogInfoDisplay);
-// 
-// 
 // 
 
 

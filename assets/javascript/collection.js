@@ -95,7 +95,6 @@ function makeDogCard(currentDog) {
     description.appendChild(protectiveness);
     description.appendChild(bark);
     dogStats.appendChild(powerLevel);
-    console.log(currentDog.energy)
     energyIcon(currentDog.energy);
     trainIcon(currentDog.trainability);
     playIcon(currentDog.playfulness);
@@ -206,9 +205,9 @@ function makeDogCard(currentDog) {
         console.log(typeof allDogsGoToVar)
         if (typeof allDogsGoToVar !== "undefined") {
             console.log("true")
-            for (var i = 0; i < dogCollection.animals.length; i++) {
-                if (dogID == dogCollection.animals[i].id) {
-                    let ourDog = dogCollection.animals[i];
+            for (var i = 0; i < allDogsGoToVar.animals.length; i++) {
+                if (dogID == allDogsGoToVar.animals[i].id) {
+                    let ourDog = allDogsGoToVar.animals[i];
                     console.log(ourDog)
                     console.log(currentDog)
                     let name = document.createElement('span');
