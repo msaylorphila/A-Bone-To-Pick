@@ -1,10 +1,10 @@
 // GET https://api.petfinder.com/v2/animals/{id}
-
-let doggyDash = document.querySelector('.doggy-dash');
+let dogCollection = JSON.parse(localStorage.getItem("dogCollectionArr"));
+var doggyDash = document.querySelector('.doggy-dash');
 let dogInfo = document.querySelector('.dog-info')
 function grabCardsFromStorage() {
     doggyDash.replaceChildren()
-    let dogCollection = JSON.parse(localStorage.getItem("dogCollectionArr"));
+    dogCollection = JSON.parse(localStorage.getItem("dogCollectionArr"));
     console.log(dogCollection)
     for (var i = 0; i < dogCollection.length; i++) {
         let currentDog = dogCollection[i];
@@ -12,7 +12,7 @@ function grabCardsFromStorage() {
         makeDogCard(currentDog);
     }
 }
-let dogCollection = JSON.parse(localStorage.getItem("dogCollectionArr"));
+
 function makeDogCard(currentDog) {
     console.log(currentDog)
     let dogCardBorder = document.createElement('div');
@@ -95,7 +95,6 @@ function makeDogCard(currentDog) {
     description.appendChild(protectiveness);
     description.appendChild(bark);
     dogStats.appendChild(powerLevel);
-    console.log(currentDog.energy)
     energyIcon(currentDog.energy);
     trainIcon(currentDog.trainability);
     playIcon(currentDog.playfulness);
@@ -198,14 +197,76 @@ function makeDogCard(currentDog) {
             createSpan.appendChild(createIcon);
         }
     }
-     function dogInfoDisplay(event) {
+    function dogInfoDisplay() {
         dogInfo.replaceChildren()
-
-        dogID = dogCard.getAttribute('data-id')
         console.log(allDogsGoToVar)
-        for (var i = 0; i < allDogsGoToVar.animals.length; i++) {
-            if (dogID == allDogsGoToVar.animals[i].id) {
-                let ourDog = allDogsGoToVar.animals[i];
+        dogID = dogCard.getAttribute('data-id')
+        console.log(dogID)
+        console.log(allDogsGoToVar)
+        console.log(currentDog)
+         
+        if (typeof allDogsGoToVar !== "undefined" && allDogsGoToVar.hasOwnProperty('animals')) {
+            console.log("true")
+            for (var i = 0; i < allDogsGoToVar.animals.length; i++) {
+                let idCheck = allDogsGoToVar.animals[i].id
+                console.log(dogID)
+                console.log(idCheck)
+                if (dogID == idCheck) {
+                    let ourDog = allDogsGoToVar.animals[i];
+                    console.log(ourDog)
+                    collectCurrentDog(currentDog)
+                    let name = document.createElement('span');
+                    let photo = document.createElement('img');
+                    let sex = document.createElement('span');
+                    let primaryBreed = document.createElement('span')
+                    let heightRange = document.createElement('span')
+                    let weightRange = document.createElement('span')
+                    let description = document.createElement('span')
+                    let status = document.createElement('span')
+                    let contactEmail = document.createElement('a')
+                    let phoneNumber = document.createElement('a')
+                    let emailIcon = document.createElement('img')
+                    let phoneIcon = document.createElement('img')
+                    let saveBtn = document.createElement('button')
+                    saveBtn.setAttribute('id', 'collect')
+                    phoneNumber.setAttribute('href', 'tel: +1' + ourDog.contact.phone)
+                    contactEmail.setAttribute('href', 'mailto:' + ourDog.contact.email)
+                    phoneIcon.setAttribute('src', './assets/images/Phone-Icon-PNG.png')
+                    emailIcon.setAttribute('src', './assets/images/mail.png')
+                    saveBtn.textContent = "add Dog to the pack"
+                    status.textContent = ourDog.status
+                    description.textContent = ourDog.description
+                    primaryBreed.textContent = ourDog.breeds.primary
+                    heightRange.textContent = currentDog.minHeightFemale + "lbs - " + currentDog.maxHeightMale + "lbs"
+                    weightRange.textContent = currentDog.minWeightFemale + "lbs - " + currentDog.maxWeightMale + "lbs"
+
+                    sex.textContent = ourDog.gender
+                    photo.setAttribute('src', currentDog.photo);
+
+                    name.textContent = ourDog.name
+                    dogInfo.appendChild(name)
+                    dogInfo.appendChild(photo)
+                    dogInfo.appendChild(sex)
+                    dogInfo.appendChild(primaryBreed)
+                    dogInfo.appendChild(heightRange)
+                    dogInfo.appendChild(weightRange)
+                    dogInfo.appendChild(description)
+                    dogInfo.appendChild(status)
+                    dogInfo.appendChild(contactEmail)
+                    contactEmail.appendChild(emailIcon)
+                    dogInfo.appendChild(phoneNumber)
+                    phoneNumber.appendChild(phoneIcon)
+                    dogInfo.appendChild(saveBtn)
+                    return
+                    // let pressedBtn = document.getElementById('collect')
+                    // pressedBtn.addEventListener('click', collectCurrentDog(currentDog))
+                } 
+            }
+        } else for (var i = 0; i < dogCollection.length ; i++) {
+            console.log(dogCollection[i].ID)
+            
+            if (dogID == dogCollection[i].ID) {
+                let ourDog = dogCollection[i];
                 console.log(ourDog)
                 console.log(currentDog)
                 let name = document.createElement('span');
@@ -231,7 +292,7 @@ function makeDogCard(currentDog) {
                 saveBtn.textContent = "add Dog to the pack"
                 status.textContent = ourDog.status
                 description.textContent = ourDog.description
-                primaryBreed.textContent = ourDog.breeds.primary
+                primaryBreed.textContent = ourDog.breed
                 heightRange.textContent = currentDog.minHeightFemale + "lbs - " + currentDog.maxHeightMale + "lbs"
                 weightRange.textContent = currentDog.minWeightFemale + "lbs - " + currentDog.maxWeightMale + "lbs"
 
@@ -252,69 +313,20 @@ function makeDogCard(currentDog) {
                 dogInfo.appendChild(phoneNumber)
                 phoneNumber.appendChild(phoneIcon)
                 dogInfo.appendChild(saveBtn)
-                let pressedBtn = document.getElementById('collect')
-                pressedBtn.addEventListener('click', collectCurrentDog(currentDog))
-
+                return
+                // let pressedBtn = document.getElementById('collect')
+                // pressedBtn.addEventListener('click', collectCurrentDog(currentDog))
 
             }
         }
     }
-    // function dogInfoDisplay(event) {
-    //     dogInfo.replaceChildren()
-
-    //     dogID = dogCard.getAttribute('data-id')
-    //     console.log(allDogsGoToVar)
-    //     for (var i = 0; i < dogCollection.length; i++) {
-    //         if (dogID == dogCollection[i].id) {
-    //             let ourDog = dogCollection[i];
-    //             console.log(ourDog)
-    //             console.log(currentDog)
-    //             let name = document.createElement('span');
-    //             let photo = document.createElement('img');
-    //             let sex = document.createElement('span');
-    //             let primaryBreed = document.createElement('span')
-    //             let heightRange = document.createElement('span')
-    //             let weightRange = document.createElement('span')
-    //             let description = document.createElement('span')
-    //             let status = document.createElement('span')
-    //             let contactEmail = document.createElement('a')
-    //             let phoneNumber = document.createElement('a')
-    //             let emailIcon = document.createElement('img')
-    //             let phoneIcon = document.createElement('img')
-    //             let saveBtn = document.createElement('button')
-    //             saveBtn.setAttribute('id', 'collect')
-    //             phoneNumber.setAttribute('href', 'tel: +1' + ourDog.contact.phone)
-    //             contactEmail.setAttribute('href', 'mailto:' + ourDog.contact.email)
-    //             phoneIcon.setAttribute('src', './assets/images/Phone-Icon-PNG.png')
-    //             emailIcon.setAttribute('src', './assets/images/mail.png')
-    //             saveBtn.textContent = "add Dog to the pack"
-    //             status.textContent = ourDog.status
-    //             description.textContent = ourDog.description
-    //             primaryBreed.textContent = ourDog.breeds.primary
-    //             heightRange.textContent = currentDog.minHeightFemale + "lbs - " + currentDog.maxHeightMale + "lbs"
-    //             weightRange.textContent = currentDog.minWeightFemale + "lbs - " + currentDog.maxWeightMale + "lbs"
-
-    //             sex.textContent = ourDog.gender
-    //             photo.setAttribute('src', currentDog.photo);
-
-    //             name.textContent = ourDog.name
-    //             dogInfo.appendChild(name)
-    //             dogInfo.appendChild(photo)
-    //             dogInfo.appendChild(sex)
-    //             dogInfo.appendChild(primaryBreed)
-    //             dogInfo.appendChild(heightRange)
-    //             dogInfo.appendChild(weightRange)
-    //             dogInfo.appendChild(description)
-    //             dogInfo.appendChild(status)
-    //             dogInfo.appendChild(contactEmail)
-    //             contactEmail.appendChild(emailIcon)
-    //             dogInfo.appendChild(phoneNumber)
-    //             phoneNumber.appendChild(phoneIcon)
-    //         }
-    //     }
-    // }
     doggyDash.appendChild(dogCard);
 
-    dogCard.addEventListener('click', dogInfoDisplay)
+    dogCard.addEventListener('click', function (event) {
+        let dogID = dogCard.getAttribute('data-id')
+        console.log(allDogsGoToVar)
+        // getPetsByID(dogID);
+        dogInfoDisplay()
+    })
 }
 collectionButton.addEventListener('click', grabCardsFromStorage)

@@ -1,10 +1,20 @@
 .dog-info {
     text-align: left;
-    font-weight: 500;
+    font-weight: 500;   
     outline: solid salmon;
     display:flex;
     
+
 }
 .dog-info-description {
     font-weight: 500;
+}
+a > img {
+    width:40px
+}
+@media screen and (max-width:768px) {
+    main{
+        flex-direction: column;
+    }
+    
 }
