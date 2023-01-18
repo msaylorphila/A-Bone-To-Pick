@@ -20,6 +20,9 @@ var iterator = 0
 var iteratorMax = 5
 var allDogsGoToVar;
 var currentDog;
+<<<<<<< HEAD
+$("#next").hide();
+=======
 
 // ***************
 // --------------
@@ -29,11 +32,12 @@ var currentDog;
 
 $("#next").hide()
 $("#share").hide()
+>>>>>>> dce87e34a93f204256a93e0750fec6f01026b73f
 function getPetsByZip(event) {
   event.preventDefault();
-  iterator = 0
-  iteratorMax = 5
-  dogContainer.replaceChildren()
+  iterator = 0;
+  iteratorMax = 5;
+  dogContainer.replaceChildren();
 
   fetch("https://api.petfinder.com/v2/oauth2/token", {
     body: "grant_type=client_credentials&client_id=" + pfApiKey + "&client_secret=" + pfSecret,
@@ -45,12 +49,9 @@ function getPetsByZip(event) {
     return response.json();
   })
     .then(function (credentials) {
-      // console.log(credentials);
-      // breedQuery(credentials);
       var breedInputVal = breedInputEl.value;
       var zipcode = inputEl.value;
-      var pfApiUrl = "https://api.petfinder.com/v2/animals?breed=" + breedInputVal + "&location=" + zipcode + "&sort=distance"
-      // var pfApiUrl = "https://api.petfinder.com/v2/animals/59269022";
+      var pfApiUrl = "https://api.petfinder.com/v2/animals?breed=" + breedInputVal + "&location=" + zipcode + "&sort=distance";
       console.log(breedInputVal)
       fetch(pfApiUrl
         , {
@@ -60,19 +61,15 @@ function getPetsByZip(event) {
         }).then(function (response) {
           return response.json();
         }).then(function (data) {
-          console.log(data);
           allDogsGoToVar = data;
-
           getDogInfo(allDogsGoToVar);
         })
     })
 }
 function getPetsByID(dogID) {
-  // doggyDash.replaceChildren()
-  console.log(dogID)
-  // dogID = dogCard.getAttribute('data-id')
-  iterator = 0
-  iteratorMax = 5
+  console.log(dogID);
+  iterator = 0;
+  iteratorMax = 5;
 
   fetch("https://api.petfinder.com/v2/oauth2/token", {
     body: "grant_type=client_credentials&client_id=" + pfApiKey + "&client_secret=" + pfSecret,
@@ -95,15 +92,12 @@ function getPetsByID(dogID) {
         }).then(function (response) {
           return response.json();
         }).then(function (data) {
-          console.log(data);
           allDogsGoToVar = data;
-
           getDogInfo(allDogsGoToVar);
         })
     })
-  //api.petfinder.com/v2/{CATEGORY}/{ACTION}?{parameter_1}={value_1}&{parameter_2}={value_2}
 }
-function dogApiByBreed(currentDog, breedsPrimary, genderFromPF) {
+function dogApiByBreed(currentDog, breedsPrimary) {
   fetch('https://api.api-ninjas.com/v1/dogs?name=' + breedsPrimary, {
     method: "GET",
     headers: { "X-Api-Key": "7VT9G3psGTVpzFOhgUZsag==6qGoaeaUyBn1jA8n" },
@@ -121,10 +115,8 @@ function getDogInfo(allDogsGoToVar) {
   console.log(allDogsGoToVar);
   if (allDogsGoToVar.hasOwnProperty('animals')) {
     for (var i = iterator; i <= iteratorMax && i < allDogsGoToVar.animals.length; i++) {
-
       var dogSelect = allDogsGoToVar.animals[i];
       var houseTrained = dogSelect.attributes.house_trained;
-
       var dogID = dogSelect.id;
       var name = dogSelect.name;
       var age = dogSelect.age;
@@ -132,7 +124,7 @@ function getDogInfo(allDogsGoToVar) {
       var photo = dogSelect.primary_photo_cropped.full;
       var breedsPrimary = dogSelect.breeds.primary;
       var size = dogSelect.size;
-      var contact = dogSelect.contact
+      var contact = dogSelect.contact;
 
       if (photo === null) {
         var currentDog = {
@@ -159,16 +151,12 @@ function getDogInfo(allDogsGoToVar) {
         trained: houseTrained,
         contact: contact,
       }
-      console.log(currentDog)
-      // collectCurrentDog(currentDog)
       dogApiByBreed(currentDog, breedsPrimary, genderFromPF);
 
     }
   } else if (allDogsGoToVar.hasOwnProperty('animal')) {
-    console.log(allDogsGoToVar)
-    var dogSelect = allDogsGoToVar.animal
+    var dogSelect = allDogsGoToVar.animal;
     var houseTrained = dogSelect.attributes.house_trained;
-
     var dogID = dogSelect.id;
     var name = dogSelect.name;
     var age = dogSelect.age;
@@ -176,7 +164,7 @@ function getDogInfo(allDogsGoToVar) {
     var photo = dogSelect.primary_photo_cropped.full;
     var breedsPrimary = dogSelect.breeds.primary;
     var size = dogSelect.size;
-    var contact = dogSelect.contact
+    var contact = dogSelect.contact;
 
     if (photo === null) {
       var currentDog = {
@@ -203,8 +191,6 @@ function getDogInfo(allDogsGoToVar) {
       trained: houseTrained,
       contact: contact,
     }
-    console.log(currentDog)
-    // collectCurrentDog(currentDog)
     dogApiByBreed(currentDog, breedsPrimary, genderFromPF);
   }
 }
@@ -232,7 +218,6 @@ function getDogStats(data, currentDog) {
   currentDog.minWeightMale = breed.min_weight_male;
   currentDog.maxWeightMale = breed.max_weight_male;
   makeDogCard(currentDog);
-  // collectCurrentDog(currentDog);
 }
 
 // small bug in this function
@@ -251,16 +236,13 @@ function collectCurrentDog(currentDog) {
     if (dogCollection[i] === currentDog) {
       console.log('true')
       localStorage.setItem('dogCollectionArr', JSON.stringify(dogCollection));
-      return false
+      return false;
     }
   }
-  console.log ('you are here')
-  dogCollection.push(currentDog)
+  dogCollection.push(currentDog);
 
-  ;
-  // console.log(dogCollection);
   localStorage.setItem('dogCollectionArr', JSON.stringify(dogCollection));
-  // makeShareButton(dogCollection);
+  
 }
 
 // **********tried to make a for loop to have each dog have his own button but doesn't work as intended for many reasons
@@ -279,6 +261,14 @@ function collectCurrentDog(currentDog) {
 //   }
 // }
 
+<<<<<<< HEAD
+function makeShareButton() {
+  var dogButton = document.createElement("button");
+  dogButton.textContent = "Share my Collection";
+  doggyDash.appendChild(dogButton);
+  dogButton.addEventListener("click", function () {
+    var urlData = btoa(localStorage.getItem("dogCollectionArr"));
+=======
 // function makeShareButton() {
 //   var dogButton = document.createElement("button");
 //   dogButton.textContent = "Share my Collection"
@@ -294,6 +284,7 @@ function activateShareBtn (currentDog) {
   shareBtn.addEventListener("click", function(event) {
     // preventDefault(event);
     let urlData = btoa(currentDog);
+>>>>>>> dce87e34a93f204256a93e0750fec6f01026b73f
     console.log(urlData);
     modal.classList.add('is-active');
     modalUrl.textContent = urlData;
@@ -343,12 +334,17 @@ donationButton.addEventListener('click', function(){
 nextBtn.addEventListener('click', function (event) {
   iterator += 6;
   iteratorMax += 6;
-  dogContainer.replaceChildren()
-  getDogInfo(allDogsGoToVar)
+  dogContainer.replaceChildren();
+  getDogInfo(allDogsGoToVar);
 })
 
 dogFormEl.addEventListener('submit', function (event) {
+<<<<<<< HEAD
+  getPetsByZip(event);
+  $("#next").show();
+=======
   getPetsByZip(event)
   $("#next").show()
   $("#share").show()
+>>>>>>> dce87e34a93f204256a93e0750fec6f01026b73f
 });
