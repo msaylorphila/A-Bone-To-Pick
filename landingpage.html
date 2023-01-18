@@ -47,6 +47,9 @@
             <button class="button is-primary is-rounded is-light is-outlined">Submit</button>
           </div>
         </form>
+        <header>
+          <button class = "button is-primary is-rounded is-light is-outlined" id="share">Share Me!</button>
+        </header>
         <!--temporary divs  -->
         <section class = "dog-info is-flex is-flex-direction-column">
 
@@ -62,11 +65,20 @@
           <div class = "contact"> PHONE NUMBER EMAIL</div>
           <div class = "distance">3 miles</div> -->
         </section>
+        
         <!-- temporary divs -->
       </aside>
       <section class="doggy-dash flex card-container columns is-8-tablet is-12-mobile">
       </section>
     </main>
+    <!-- modal -->
+    <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content has-background-white py-5 px-5">
+          <h3 class="title mb-6">Send this url to your friends and share your new pack member</h3>
+          <p id="modal-url"></p>
+        </div>
+    </div>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="./assets/javascript/collection.js"></script>
