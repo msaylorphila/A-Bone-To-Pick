@@ -15,24 +15,13 @@ var showInfo = document.querySelector('.card');
 var homeButton = document.getElementById('homeButton');
 var donationButton = document.getElementById('donationEl')
 
-
 var iterator = 0
 var iteratorMax = 5
 var allDogsGoToVar;
 var currentDog;
-<<<<<<< HEAD
+
 $("#next").hide();
-=======
-
-// ***************
-// --------------
-// This section for below for dog card related queeryselectors
-// ---------------
-// **************
-
-$("#next").hide()
-$("#share").hide()
->>>>>>> dce87e34a93f204256a93e0750fec6f01026b73f
+$("#share").hide();
 function getPetsByZip(event) {
   event.preventDefault();
   iterator = 0;
@@ -81,8 +70,7 @@ function getPetsByID(dogID) {
     return response.json();
   })
     .then(function (credentials) {
-      var pfApiUrl = "https://api.petfinder.com/v2/animals/" + dogID
-      //  var pfApiUrl = "https://api.petfinder.com/v2/animals/59269022";
+      var pfApiUrl = "https://api.petfinder.com/v2/animals/" + dogID;
 
       fetch(pfApiUrl
         , {
@@ -245,46 +233,11 @@ function collectCurrentDog(currentDog) {
   
 }
 
-// **********tried to make a for loop to have each dog have his own button but doesn't work as intended for many reasons
-// currently settling for the whole collection as a button instead*******************
-// function makeShareButton(dogCollection) {
-//   for (var i =0; i < dogCollection.length; i++) {
-//     var dogButton = document.createElement("button");
-//     dogButton.textContent = "Create Link";
-//     doggyDash.appendChild(dogButton);
-//     dogButton.addEventListener("click", function() {
-//       var urlData = btoa(dogCollection[i]);
-//       console.log(dogCollection[i]);
-//       console.log(urlData);
-
-//     })
-//   }
-// }
-
-<<<<<<< HEAD
-function makeShareButton() {
-  var dogButton = document.createElement("button");
-  dogButton.textContent = "Share my Collection";
-  doggyDash.appendChild(dogButton);
-  dogButton.addEventListener("click", function () {
-    var urlData = btoa(localStorage.getItem("dogCollectionArr"));
-=======
-// function makeShareButton() {
-//   var dogButton = document.createElement("button");
-//   dogButton.textContent = "Share my Collection"
-//   doggyDash.appendChild(dogButton);
-//   dogButton.addEventListener("click", function () {
-//     var urlData = btoa(localStorage.getItem(currentDog));
-//     console.log(urlData);
-//   });
-// }
-
 // *************SHARE BUTTON STUFF*******************
 function activateShareBtn (currentDog) {
   shareBtn.addEventListener("click", function(event) {
     // preventDefault(event);
     let urlData = btoa(currentDog);
->>>>>>> dce87e34a93f204256a93e0750fec6f01026b73f
     console.log(urlData);
     modal.classList.add('is-active');
     modalUrl.textContent = urlData;
@@ -315,19 +268,8 @@ modalBg.addEventListener("click", function(){
 //     console.log(dogBreedsArr);
 //   })
 
-
-//add an if statement to dogs api by breed to check if the breed exists and if not dont display 
-// collectionButton.addEventListener('click', function () {
-//   document.location.replace('./your-collection.html');
-
-// })
-// doggyDash.addEventListener('click', dogInfoDisplay);
-// 
-
-
-
 donationButton.addEventListener('click', function(){
-  window.location.href = 'https://www.aspca.org/ways-to-give' })
+  window.location.href = 'https://www.aspca.org/ways-to-give' });
 
 
 
@@ -339,12 +281,7 @@ nextBtn.addEventListener('click', function (event) {
 })
 
 dogFormEl.addEventListener('submit', function (event) {
-<<<<<<< HEAD
   getPetsByZip(event);
   $("#next").show();
-=======
-  getPetsByZip(event)
-  $("#next").show()
-  $("#share").show()
->>>>>>> dce87e34a93f204256a93e0750fec6f01026b73f
+  $("#share").show();
 });
