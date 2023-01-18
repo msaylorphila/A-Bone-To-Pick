@@ -125,7 +125,7 @@ function getDogInfo(allDogsGoToVar) {
           name: name,
           age: age,
           sex: genderFromPF,
-          photo: "https://api-ninjas.com/images/dogs/greyhound.jpg",
+          photo: "assets/images/default-dog.png",
           breed: breedsPrimary,
           size: size,
           trained: houseTrained,
