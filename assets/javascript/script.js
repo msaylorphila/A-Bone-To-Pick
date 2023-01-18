@@ -11,16 +11,16 @@ var receiveFormEl = document.getElementById('receive-form');
 var receiveInput = document.getElementById('receive-input');
 var modalBg = document.querySelector('.modal-background');
 var sendModal = document.getElementById('send-modal');
-var receiveModal = document.getElementById('receive-modal')
+var receiveModal = document.getElementById('receive-modal');
 var modalUrl = document.getElementById('modal-url');
 var dogContainer = document.querySelector('.doggy-dash');
 var collectionButton = document.getElementById('collectionButton');
 var showInfo = document.querySelector('.card');
 var homeButton = document.getElementById('homeButton');
-var donationButton = document.getElementById('donationEl')
+var donationButton = document.getElementById('donationEl');
 
-var iterator = 0
-var iteratorMax = 5
+var iterator = 0;
+var iteratorMax = 5;
 var allDogsGoToVar;
 var currentDog;
 
@@ -239,10 +239,10 @@ function collectCurrentDog(currentDog) {
 
 // *************SHARE BUTTON STUFF*******************
 function activateShareBtn (currentDog) {
-  shareBtn.addEventListener("click", function(event) {
-    // preventDefault(event);
+  shareBtn.addEventListener("click", function() {
     let urlData = btoa(JSON.stringify(currentDog));
     console.log(urlData);
+    console.log(typeof urlData);
     sendModal.classList.add('is-active');
     modalUrl.textContent = urlData;
   });
@@ -255,7 +255,8 @@ receiveBtn.addEventListener('click', function(){
   receiveModal.classList.add("is-active");
 });
 
-receiveFormEl.addEventListener('submit', function(event){
+receiveFormEl.addEventListener('click', function(){
+
   makeDogCard(JSON.parse(atob(receiveInput.value)))
 });
 

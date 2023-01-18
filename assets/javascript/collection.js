@@ -1,4 +1,4 @@
-// GET https://api.petfinder.com/v2/animals/{id}
+
 let dogCollection = JSON.parse(localStorage.getItem("dogCollectionArr"));
 var doggyDash = document.querySelector('.doggy-dash');
 let dogInfo = document.querySelector('.dog-info');
@@ -8,6 +8,7 @@ function grabCardsFromStorage() {
     console.log(dogCollection);
     for (var i = 0; i < dogCollection.length; i++) {
         let currentDog = dogCollection[i];
+        activateShareBtn(currentDog)
         makeDogCard(currentDog);
     }
 }
@@ -313,4 +314,6 @@ function makeDogCard(currentDog) {
         dogInfoDisplay();
     })
 }
-collectionButton.addEventListener('click', grabCardsFromStorage);
+collectionButton.addEventListener('click',function(){ 
+    $("#share-button").show()
+    grabCardsFromStorage()});
