@@ -5,9 +5,13 @@ var inputEl = document.getElementById('zipInput');
 var dogFormEl = document.getElementById('dogForm');
 var breedInputEl = document.getElementById('breedSelect');
 var nextBtn = document.getElementById('next');
-var shareBtn = document.getElementById('share');
+var shareBtn = document.getElementById('share-button');
+var receiveBtn = document.getElementById('receive-button');
+var receiveFormEl = document.getElementById('receive-form');
+var receiveInput = document.getElementById('receive-input');
 var modalBg = document.querySelector('.modal-background');
-var modal = document.querySelector('.modal');
+var sendModal = document.getElementById('send-modal');
+var receiveModal = document.getElementById('receive-modal')
 var modalUrl = document.getElementById('modal-url');
 var dogContainer = document.querySelector('.doggy-dash');
 var collectionButton = document.getElementById('collectionButton');
@@ -21,7 +25,7 @@ var allDogsGoToVar;
 var currentDog;
 
 $("#next").hide();
-$("#share").hide();
+$("#share-button").hide();
 function getPetsByZip(event) {
   event.preventDefault();
   iterator = 0;
@@ -239,14 +243,21 @@ function activateShareBtn (currentDog) {
     // preventDefault(event);
     let urlData = btoa(JSON.stringify(currentDog));
     console.log(urlData);
-    modal.classList.add('is-active');
+    sendModal.classList.add('is-active');
     modalUrl.textContent = urlData;
   });
 };
 modalBg.addEventListener("click", function(){
-    modal.classList.remove('is-active');
+    sendModal.classList.remove('is-active');
 });
 
+receiveBtn.addEventListener('click', function(){
+  receiveModal.classList.add("is-active");
+});
+
+receiveFormEl.addEventListener('submit', function(event){
+  makeDogCard(JSON.parse(atob(receiveInput.value)))
+});
 
 // this function got our array and is now complete and null
 // function breedQuery(credentials) {
@@ -283,5 +294,5 @@ nextBtn.addEventListener('click', function (event) {
 dogFormEl.addEventListener('submit', function (event) {
   getPetsByZip(event);
   $("#next").show();
-  $("#share").show();
+  $("#share-button").show();
 });
