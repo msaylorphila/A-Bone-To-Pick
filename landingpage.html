@@ -47,8 +47,10 @@
             <button class="button is-primary is-rounded is-light is-outlined">Submit</button>
           </div>
         </form>
+        <!-- Share me and receive me buttons -->
         <header>
-          <button class = "button is-primary is-rounded is-light is-outlined" id="share">Share Me!</button>
+          <button class="button is-primary is-rounded is-light is-outlined" id="share-button">Share Me!</button>
+          <button class="button is-primary is-rounded is-light is-outlined" id="receive">Receive from Human Friend</button>
         </header>
         <!--temporary divs  -->
         <section class = "dog-info is-flex is-flex-direction-column">
@@ -72,12 +74,21 @@
       </section>
     </main>
     <!-- modal -->
-    <div class="modal">
-        <div class="modal-background"></div>
-        <div class="modal-content has-background-white py-5 px-5">
-          <h3 class="title mb-6">Send this url to your friends and share your new pack member</h3>
-          <p id="modal-url"></p>
-        </div>
+    <div class="modal" id="send-modal">
+      <div class="modal-background"></div>
+      <div class="modal-content has-background-white py-5 px-5">
+        <h3 class="title mb-6">Send this url to your friends and share your new pack member</h3>
+        <p id="modal-url"></p>
+      </div>
+    </div>
+    <div class="modal" id="receive-modal">
+      <div class="modal-background"></div>
+      <div class="modal-content has-background-white py-5 px-5">
+        <h3>Place human friend's data here</h3>
+        <form>
+          <input id="receive-input" class="input is-primary is-light" type="text" placeholder="It's gonna be long"></input>
+        </form>
+      </div>
     </div>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

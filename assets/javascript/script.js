@@ -5,9 +5,12 @@ var inputEl = document.getElementById('zipInput');
 var dogFormEl = document.getElementById('dogForm');
 var breedInputEl = document.getElementById('breedSelect');
 var nextBtn = document.getElementById('next');
-var shareBtn = document.getElementById('share');
+var shareBtn = document.getElementById('share-button');
+var receiveBtn = document.getElementById('receive-button');
+var receiveInput = document.getElementById('receive-input');
 var modalBg = document.querySelector('.modal-background');
-var modal = document.querySelector('.modal');
+var sendModal = document.getElementById('send-modal');
+var receiveModal = document.getElementById()
 var modalUrl = document.getElementById('modal-url');
 var dogContainer = document.querySelector('.doggy-dash');
 var collectionButton = document.getElementById('collectionButton');
@@ -237,16 +240,19 @@ function collectCurrentDog(currentDog) {
 function activateShareBtn (currentDog) {
   shareBtn.addEventListener("click", function(event) {
     // preventDefault(event);
-    let urlData = btoa(currentDog);
+    let urlData = btoa(JSON.stringify(currentDog));
     console.log(urlData);
-    modal.classList.add('is-active');
+    sendModal.classList.add('is-active');
     modalUrl.textContent = urlData;
   });
 };
 modalBg.addEventListener("click", function(){
-    modal.classList.remove('is-active');
+  sendModal.classList.remove('is-active');
 });
 
+receiveBtn.addEventListener('click', function(){
+  recei
+})
 
 // this function got our array and is now complete and null
 // function breedQuery(credentials) {
