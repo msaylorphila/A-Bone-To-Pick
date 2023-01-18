@@ -237,7 +237,7 @@ function collectCurrentDog(currentDog) {
 function activateShareBtn (currentDog) {
   shareBtn.addEventListener("click", function(event) {
     // preventDefault(event);
-    let urlData = btoa(currentDog);
+    let urlData = btoa(JSON.stringify(currentDog));
     console.log(urlData);
     modal.classList.add('is-active');
     modalUrl.textContent = urlData;
