@@ -1,20 +1,19 @@
 // GET https://api.petfinder.com/v2/animals/{id}
 let dogCollection = JSON.parse(localStorage.getItem("dogCollectionArr"));
 var doggyDash = document.querySelector('.doggy-dash');
-let dogInfo = document.querySelector('.dog-info')
+let dogInfo = document.querySelector('.dog-info');
 function grabCardsFromStorage() {
-    doggyDash.replaceChildren()
+    doggyDash.replaceChildren();
     dogCollection = JSON.parse(localStorage.getItem("dogCollectionArr"));
-    console.log(dogCollection)
+    console.log(dogCollection);
     for (var i = 0; i < dogCollection.length; i++) {
         let currentDog = dogCollection[i];
-        console.log(currentDog)
         makeDogCard(currentDog);
     }
 }
 
 function makeDogCard(currentDog) {
-    console.log(currentDog)
+    console.log(currentDog);
     let dogCardBorder = document.createElement('div');
     let cardHeader = document.createElement('div');
     let name = document.createElement('span');
@@ -41,14 +40,14 @@ function makeDogCard(currentDog) {
     dogCardBorder.setAttribute('class', 'card-border');
     cardHeader.setAttribute('class', 'card-header');
     name.setAttribute('class', 'name');
-    gender.setAttribute('class', 'gender')
+    gender.setAttribute('class', 'gender');
     age.setAttribute('class', 'age');
     breed.setAttribute('class', 'breed');
     photo.setAttribute('src', currentDog.photo);
     photo.onerror = function () {
-        photo.setAttribute('src', "./assets.images/default-dog.png")
+        photo.setAttribute('src', "./assets.images/default-dog.png");
     }
-    photo.setAttribute('alt', "photo of Doggo")
+    photo.setAttribute('alt', "photo of Doggo");
     dogAttr.setAttribute('class', 'dog-attributes');
     size.setAttribute('class', 'size');
     dogStats.setAttribute('class', 'dog-stats');
@@ -57,7 +56,7 @@ function makeDogCard(currentDog) {
     protectiveness.setAttribute('class', 'item');
     playfulness.setAttribute('class', 'item');
     trainability.setAttribute('class', 'item');
-    energy.setAttribute('class', 'item')
+    energy.setAttribute('class', 'item');
     energy.textContent = "Energy:";
     protectiveness.textContent = "Protectiveness:";
     playfulness.textContent = "Playfulness:";
@@ -110,7 +109,6 @@ function makeDogCard(currentDog) {
             createSpan.appendChild(createIcon);
             powerLevel.appendChild(createSpan);
         }
-        console.log('energyIcon called')
         let createSpan = document.createElement('span');
         createSpan.setAttribute('class', 'item2');
         for (var i = 0; i < num; i++) {
@@ -118,7 +116,6 @@ function makeDogCard(currentDog) {
             createIcon.setAttribute('class', 'fa-solid fa-bolt-lightning');
             createSpan.appendChild(createIcon);
             powerLevel.appendChild(createSpan);
-
         }
     }
     function trainIcon(num) {
@@ -130,7 +127,6 @@ function makeDogCard(currentDog) {
             powerLevel.appendChild(createSpan);
             createSpan.appendChild(createIcon);
         }
-
         let createSpan = document.createElement('span');
         createSpan.setAttribute('class', 'item2');
         for (var i = 0; i < num; i++) {
@@ -167,7 +163,6 @@ function makeDogCard(currentDog) {
             powerLevel.appendChild(createSpan);
             createSpan.appendChild(createIcon);
         }
-
         let createSpan = document.createElement('span');
         createSpan.setAttribute('class', 'item2');
         for (var i = 0; i < num; i++) {
@@ -181,13 +176,11 @@ function makeDogCard(currentDog) {
         if (num == 0) {
             let createSpan = document.createElement('span');
             createSpan.setAttribute('class', 'item2');
-
             createIcon.setAttribute('class', ' fa-solid fa-poop');
             let createIcon = document.createElement('i');
             createSpan.appendChild(createIcon);
             powerLevel.appendChild(createSpan);
         }
-
         let createSpan = document.createElement('span');
         createSpan.setAttribute('class', 'item2');
         for (var i = 0; i < num; i++) {
@@ -198,133 +191,124 @@ function makeDogCard(currentDog) {
         }
     }
     function dogInfoDisplay() {
-        dogInfo.replaceChildren()
+        dogInfo.replaceChildren();
         console.log(allDogsGoToVar)
-        dogID = dogCard.getAttribute('data-id')
-        console.log(dogID)
-        console.log(allDogsGoToVar)
-        console.log(currentDog)
+        dogID = dogCard.getAttribute('data-id');
+        console.log(dogID);
+        console.log(allDogsGoToVar);
+        console.log(currentDog);
          
         if (typeof allDogsGoToVar !== "undefined" && allDogsGoToVar.hasOwnProperty('animals')) {
             console.log("true")
             for (var i = 0; i < allDogsGoToVar.animals.length; i++) {
-                let idCheck = allDogsGoToVar.animals[i].id
-                console.log(dogID)
-                console.log(idCheck)
+                let idCheck = allDogsGoToVar.animals[i].id;
+                console.log(dogID);
+                console.log(idCheck);
                 if (dogID == idCheck) {
                     let ourDog = allDogsGoToVar.animals[i];
                     console.log(ourDog)
-                    collectCurrentDog(currentDog)
+                    collectCurrentDog(currentDog);
                     let name = document.createElement('span');
                     let photo = document.createElement('img');
                     let sex = document.createElement('span');
-                    let primaryBreed = document.createElement('span')
-                    let heightRange = document.createElement('span')
-                    let weightRange = document.createElement('span')
-                    let description = document.createElement('span')
-                    let status = document.createElement('span')
-                    let contactEmail = document.createElement('a')
-                    let phoneNumber = document.createElement('a')
-                    let emailIcon = document.createElement('img')
-                    let phoneIcon = document.createElement('img')
-                    let saveBtn = document.createElement('button')
-                    saveBtn.setAttribute('id', 'collect')
-                    phoneNumber.setAttribute('href', 'tel: +1' + ourDog.contact.phone)
-                    contactEmail.setAttribute('href', 'mailto:' + ourDog.contact.email)
-                    phoneIcon.setAttribute('src', './assets/images/Phone-Icon-PNG.png')
-                    emailIcon.setAttribute('src', './assets/images/mail.png')
-                    saveBtn.textContent = "add Dog to the pack"
-                    status.textContent = ourDog.status
-                    description.textContent = ourDog.description
-                    primaryBreed.textContent = ourDog.breeds.primary
-                    heightRange.textContent = currentDog.minHeightFemale + "lbs - " + currentDog.maxHeightMale + "lbs"
-                    weightRange.textContent = currentDog.minWeightFemale + "lbs - " + currentDog.maxWeightMale + "lbs"
-
-                    sex.textContent = ourDog.gender
+                    let primaryBreed = document.createElement('span');
+                    let heightRange = document.createElement('span');
+                    let weightRange = document.createElement('span');
+                    let description = document.createElement('span');
+                    let status = document.createElement('span');
+                    let contactEmail = document.createElement('a');
+                    let phoneNumber = document.createElement('a');
+                    let emailIcon = document.createElement('img');
+                    let phoneIcon = document.createElement('img');
+                    let saveBtn = document.createElement('button');
+                    saveBtn.setAttribute('id', 'collect');
+                    phoneNumber.setAttribute('href', 'tel: +1' + ourDog.contact.phone);
+                    contactEmail.setAttribute('href', 'mailto:' + ourDog.contact.email);
+                    phoneIcon.setAttribute('src', './assets/images/Phone-Icon-PNG.png');
+                    emailIcon.setAttribute('src', './assets/images/mail.png');
+                    saveBtn.textContent = "add Dog to the pack";
+                    status.textContent = ourDog.status;
+                    description.textContent = ourDog.description;
+                    primaryBreed.textContent = ourDog.breeds.primary;
+                    heightRange.textContent = currentDog.minHeightFemale + "lbs - " + currentDog.maxHeightMale + "lbs";
+                    weightRange.textContent = currentDog.minWeightFemale + "lbs - " + currentDog.maxWeightMale + "lbs";
+                    sex.textContent = ourDog.gender;
                     photo.setAttribute('src', currentDog.photo);
-
-                    name.textContent = ourDog.name
-                    dogInfo.appendChild(name)
-                    dogInfo.appendChild(photo)
-                    dogInfo.appendChild(sex)
-                    dogInfo.appendChild(primaryBreed)
-                    dogInfo.appendChild(heightRange)
-                    dogInfo.appendChild(weightRange)
-                    dogInfo.appendChild(description)
-                    dogInfo.appendChild(status)
-                    dogInfo.appendChild(contactEmail)
-                    contactEmail.appendChild(emailIcon)
-                    dogInfo.appendChild(phoneNumber)
-                    phoneNumber.appendChild(phoneIcon)
-                    dogInfo.appendChild(saveBtn)
-                    return
-                    // let pressedBtn = document.getElementById('collect')
-                    // pressedBtn.addEventListener('click', collectCurrentDog(currentDog))
+                    name.textContent = ourDog.name;
+                    dogInfo.appendChild(name);
+                    dogInfo.appendChild(photo);
+                    dogInfo.appendChild(sex);
+                    dogInfo.appendChild(primaryBreed);
+                    dogInfo.appendChild(heightRange);
+                    dogInfo.appendChild(weightRange);
+                    dogInfo.appendChild(description);
+                    dogInfo.appendChild(status);
+                    dogInfo.appendChild(contactEmail);
+                    contactEmail.appendChild(emailIcon);
+                    dogInfo.appendChild(phoneNumber);
+                    phoneNumber.appendChild(phoneIcon);
+                    dogInfo.appendChild(saveBtn);
+                    return;
                 } 
             }
         } else for (var i = 0; i < dogCollection.length ; i++) {
-            console.log(dogCollection[i].ID)
+            console.log(dogCollection[i].ID);
             
             if (dogID == dogCollection[i].ID) {
                 let ourDog = dogCollection[i];
-                console.log(ourDog)
-                console.log(currentDog)
+                console.log(ourDog);
+                console.log(currentDog);
                 let name = document.createElement('span');
                 let photo = document.createElement('img');
                 let sex = document.createElement('span');
-                let primaryBreed = document.createElement('span')
-                let heightRange = document.createElement('span')
-                let weightRange = document.createElement('span')
-                let description = document.createElement('span')
-                let status = document.createElement('span')
-                let contactEmail = document.createElement('a')
-                let phoneNumber = document.createElement('a')
-                let emailIcon = document.createElement('img')
-                let phoneIcon = document.createElement('img')
-                let saveBtn = document.createElement('button')
-                saveBtn.setAttribute('id', 'collect')
-                phoneNumber.setAttribute('href', 'tel: +1' + ourDog.contact.phone)
-                contactEmail.setAttribute('href', 'mailto:' + ourDog.contact.email)
-                phoneIcon.setAttribute('src', './assets/images/Phone-Icon-PNG.png')
-                emailIcon.setAttribute('src', './assets/images/mail.png')
-                saveBtn.textContent = "add Dog to the pack"
-                status.textContent = ourDog.status
-                description.textContent = ourDog.description
-                primaryBreed.textContent = ourDog.breed
-                heightRange.textContent = currentDog.minHeightFemale + "lbs - " + currentDog.maxHeightMale + "lbs"
-                weightRange.textContent = currentDog.minWeightFemale + "lbs - " + currentDog.maxWeightMale + "lbs"
-
-                sex.textContent = ourDog.gender
+                let primaryBreed = document.createElement('span');
+                let heightRange = document.createElement('span');
+                let weightRange = document.createElement('span');
+                let description = document.createElement('span');
+                let status = document.createElement('span');
+                let contactEmail = document.createElement('a');
+                let phoneNumber = document.createElement('a');
+                let emailIcon = document.createElement('img');
+                let phoneIcon = document.createElement('img');
+                let saveBtn = document.createElement('button');
+                saveBtn.setAttribute('id', 'collect');
+                phoneNumber.setAttribute('href', 'tel: +1' + ourDog.contact.phone);
+                contactEmail.setAttribute('href', 'mailto:' + ourDog.contact.email);
+                phoneIcon.setAttribute('src', './assets/images/Phone-Icon-PNG.png');
+                emailIcon.setAttribute('src', './assets/images/mail.png');
+                saveBtn.textContent = "add Dog to the pack";
+                status.textContent = ourDog.status;
+                description.textContent = ourDog.description;
+                primaryBreed.textContent = ourDog.breed;
+                heightRange.textContent = currentDog.minHeightFemale + "lbs - " + currentDog.maxHeightMale + "lbs";
+                weightRange.textContent = currentDog.minWeightFemale + "lbs - " + currentDog.maxWeightMale + "lbs";
+                sex.textContent = ourDog.gender;
                 photo.setAttribute('src', currentDog.photo);
-
-                name.textContent = ourDog.name
-                dogInfo.appendChild(name)
-                dogInfo.appendChild(photo)
-                dogInfo.appendChild(sex)
-                dogInfo.appendChild(primaryBreed)
-                dogInfo.appendChild(heightRange)
-                dogInfo.appendChild(weightRange)
-                dogInfo.appendChild(description)
-                dogInfo.appendChild(status)
-                dogInfo.appendChild(contactEmail)
-                contactEmail.appendChild(emailIcon)
-                dogInfo.appendChild(phoneNumber)
-                phoneNumber.appendChild(phoneIcon)
-                dogInfo.appendChild(saveBtn)
-                return
-                // let pressedBtn = document.getElementById('collect')
-                // pressedBtn.addEventListener('click', collectCurrentDog(currentDog))
-
+                name.textContent = ourDog.name;
+                dogInfo.appendChild(name);
+                dogInfo.appendChild(photo);
+                dogInfo.appendChild(sex);
+                dogInfo.appendChild(primaryBreed);
+                dogInfo.appendChild(heightRange);
+                dogInfo.appendChild(weightRange);
+                dogInfo.appendChild(description);
+                dogInfo.appendChild(status);
+                dogInfo.appendChild(contactEmail);
+                contactEmail.appendChild(emailIcon);
+                dogInfo.appendChild(phoneNumber);
+                phoneNumber.appendChild(phoneIcon);
+                dogInfo.appendChild(saveBtn);
+                return;
             }
         }
     }
     doggyDash.appendChild(dogCard);
 
     dogCard.addEventListener('click', function (event) {
-        let dogID = dogCard.getAttribute('data-id')
-        console.log(allDogsGoToVar)
+        let dogID = dogCard.getAttribute('data-id');
+        console.log(allDogsGoToVar);
         // getPetsByID(dogID);
-        dogInfoDisplay()
+        dogInfoDisplay();
     })
 }
-collectionButton.addEventListener('click', grabCardsFromStorage)
+collectionButton.addEventListener('click', grabCardsFromStorage);
