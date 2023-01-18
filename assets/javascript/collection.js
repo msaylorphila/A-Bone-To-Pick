@@ -16,6 +16,7 @@ function makeDogCard(currentDog) {
     console.log(currentDog);
     let dogCardBorder = document.createElement('div');
     let cardHeader = document.createElement('div');
+    let cardHeader2 = document.createElement('div')
     let name = document.createElement('span');
     let age = document.createElement('span');
     let breed = document.createElement('span');
@@ -39,13 +40,14 @@ function makeDogCard(currentDog) {
     dogCard.setAttribute('class', "card");
     dogCardBorder.setAttribute('class', 'card-border');
     cardHeader.setAttribute('class', 'card-header');
+    cardHeader2.setAttribute('class', 'card-header2');
     name.setAttribute('class', 'name');
     gender.setAttribute('class', 'gender');
     age.setAttribute('class', 'age');
     breed.setAttribute('class', 'breed');
     photo.setAttribute('src', currentDog.photo);
     photo.onerror = function () {
-        photo.setAttribute('src', "./assets.images/default-dog.png");
+        photo.setAttribute('src', "./assets/images/default-dog.png");
     }
     photo.setAttribute('alt', "photo of Doggo");
     dogAttr.setAttribute('class', 'dog-attributes');
@@ -65,7 +67,7 @@ function makeDogCard(currentDog) {
     name.textContent = currentDog.name;
     age.textContent = currentDog.age;
     breed.textContent = currentDog.breed;
-    size.textContent = currentDog.size;
+    size.textContent = "size: " + currentDog.size;
     gender.textContent = currentDog.sex;
     if (currentDog.houseTrained === true) {
         let toiletIcon = document.createElement('i');
@@ -78,10 +80,11 @@ function makeDogCard(currentDog) {
     }
     dogCard.appendChild(dogCardBorder);
     dogCardBorder.appendChild(cardHeader);
+    dogCardBorder.appendChild(cardHeader2)
     cardHeader.appendChild(name);
-    cardHeader.appendChild(age);
+    cardHeader2.appendChild(age);
     cardHeader.appendChild(breed);
-    cardHeader.appendChild(gender);
+    cardHeader2.appendChild(gender);
     dogCardBorder.appendChild(photo);
     dogCardBorder.appendChild(dogAttr);
     dogAttr.appendChild(size);
@@ -123,7 +126,7 @@ function makeDogCard(currentDog) {
             let createSpan = document.createElement('span');
             createSpan.setAttribute('class', 'item2');
             let createIcon = document.createElement('i');
-            createIcon.setAttribute('class', ' fa-solid fa-poop');
+            createIcon.setAttribute('class', ' fa-solid fa-scale-balanced');
             powerLevel.appendChild(createSpan);
             createSpan.appendChild(createIcon);
         }
@@ -131,7 +134,7 @@ function makeDogCard(currentDog) {
         createSpan.setAttribute('class', 'item2');
         for (var i = 0; i < num; i++) {
             let createIcon = document.createElement('i');
-            createIcon.setAttribute('class', ' fa-solid fa-poop');
+            createIcon.setAttribute('class', ' fa-solid fa-scale-balanced');
             powerLevel.appendChild(createSpan);
             createSpan.appendChild(createIcon);
         }
@@ -175,9 +178,9 @@ function makeDogCard(currentDog) {
     function barkIcon(num) {
         if (num == 0) {
             let createSpan = document.createElement('span');
-            createSpan.setAttribute('class', 'item2');
-            createIcon.setAttribute('class', ' fa-solid fa-poop');
             let createIcon = document.createElement('i');
+            createSpan.setAttribute('class', 'item2');
+            createIcon.setAttribute('class', 'fa- solid fa-volume-high');
             createSpan.appendChild(createIcon);
             powerLevel.appendChild(createSpan);
         }
@@ -185,7 +188,7 @@ function makeDogCard(currentDog) {
         createSpan.setAttribute('class', 'item2');
         for (var i = 0; i < num; i++) {
             let createIcon = document.createElement('i');
-            createIcon.setAttribute('class', ' fa-solid fa-poop');
+            createIcon.setAttribute('class', 'fa-solid fa-volume-high');
             powerLevel.appendChild(createSpan);
             createSpan.appendChild(createIcon);
         }
@@ -270,16 +273,13 @@ function makeDogCard(currentDog) {
                 let contactEmail = document.createElement('a');
                 let phoneNumber = document.createElement('a');
                 let emailIcon = document.createElement('img');
-                let phoneIcon = document.createElement('img');
-                let saveBtn = document.createElement('button');
-                saveBtn.setAttribute('id', 'collect');
+                let phoneIcon = document.createElement('img'); 
                 phoneNumber.setAttribute('href', 'tel: +1' + ourDog.contact.phone);
                 contactEmail.setAttribute('href', 'mailto:' + ourDog.contact.email);
                 phoneIcon.setAttribute('src', './assets/images/Phone-Icon-PNG.png');
                 phoneIcon.setAttribute('class', 'phoneIcon');
                 emailIcon.setAttribute('src', './assets/images/mail.png');
                 emailIcon.setAttribute('class', 'emailIcon');
-                saveBtn.textContent = "add Dog to the pack";
                 status.textContent = ourDog.status;
                 description.textContent = ourDog.description;
                 primaryBreed.textContent = ourDog.breed;
@@ -300,7 +300,6 @@ function makeDogCard(currentDog) {
                 contactEmail.appendChild(emailIcon);
                 dogInfo.appendChild(phoneNumber);
                 phoneNumber.appendChild(phoneIcon);
-                dogInfo.appendChild(saveBtn);
                 return;
             }
         }

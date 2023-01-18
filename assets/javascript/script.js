@@ -160,7 +160,7 @@ function getDogInfo(allDogsGoToVar) {
         name: name,
         age: age,
         sex: genderFromPF,
-        photo: "https://api-ninjas.com/images/dogs/greyhound.jpg",
+        photo: "assets/images/default-dog.png",
         breed: breedsPrimary,
         size: size,
         trained: houseTrained,
@@ -237,7 +237,7 @@ function collectCurrentDog(currentDog) {
 function activateShareBtn (currentDog) {
   shareBtn.addEventListener("click", function(event) {
     // preventDefault(event);
-    let urlData = btoa(currentDog);
+    let urlData = btoa(JSON.stringify(currentDog));
     console.log(urlData);
     modal.classList.add('is-active');
     modalUrl.textContent = urlData;
