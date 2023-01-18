@@ -12,9 +12,14 @@
 a > img {
     width:40px
 }
+
+#button-header {
+    margin-bottom: 5px;
+}
 @media screen and (max-width:768px) {
     main{
         flex-direction: column;
     }
     
 }
+
