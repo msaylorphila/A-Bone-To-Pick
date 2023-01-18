@@ -5,6 +5,10 @@ var inputEl = document.getElementById('zipInput');
 var dogFormEl = document.getElementById('dogForm');
 var breedInputEl = document.getElementById('breedSelect');
 var nextBtn = document.getElementById('next');
+var shareBtn = document.getElementById('share');
+var modalBg = document.querySelector('.modal-background');
+var modal = document.querySelector('.modal');
+var modalUrl = document.getElementById('modal-url');
 var dogContainer = document.querySelector('.doggy-dash');
 var collectionButton = document.getElementById('collectionButton');
 var showInfo = document.querySelector('.card');
@@ -24,6 +28,7 @@ var currentDog;
 // **************
 
 $("#next").hide()
+$("#share").hide()
 function getPetsByZip(event) {
   event.preventDefault();
   iterator = 0
@@ -274,15 +279,31 @@ function collectCurrentDog(currentDog) {
 //   }
 // }
 
-function makeShareButton() {
-  var dogButton = document.createElement("button");
-  dogButton.textContent = "Share my Collection"
-  doggyDash.appendChild(dogButton);
-  dogButton.addEventListener("click", function () {
-    var urlData = btoa(localStorage.getItem("dogCollectionArr"));
+// function makeShareButton() {
+//   var dogButton = document.createElement("button");
+//   dogButton.textContent = "Share my Collection"
+//   doggyDash.appendChild(dogButton);
+//   dogButton.addEventListener("click", function () {
+//     var urlData = btoa(localStorage.getItem(currentDog));
+//     console.log(urlData);
+//   });
+// }
+
+// *************SHARE BUTTON STUFF*******************
+function activateShareBtn (currentDog) {
+  shareBtn.addEventListener("click", function(event) {
+    // preventDefault(event);
+    let urlData = btoa(currentDog);
     console.log(urlData);
+    modal.classList.add('is-active');
+    modalUrl.textContent = urlData;
   });
-}
+};
+modalBg.addEventListener("click", function(){
+    modal.classList.remove('is-active');
+});
+
+
 // this function got our array and is now complete and null
 // function breedQuery(credentials) {
 //   fetch('https://api.petfinder.com/v2/types/dog/breeds',
@@ -329,4 +350,5 @@ nextBtn.addEventListener('click', function (event) {
 dogFormEl.addEventListener('submit', function (event) {
   getPetsByZip(event)
   $("#next").show()
+  $("#share").show()
 });
