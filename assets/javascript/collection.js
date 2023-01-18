@@ -208,6 +208,7 @@ function makeDogCard(currentDog) {
                     let ourDog = allDogsGoToVar.animals[i];
                     console.log(ourDog)
                     collectCurrentDog(currentDog);
+                    activateShareBtn(currentDog);
                     let name = document.createElement('span');
                     let photo = document.createElement('img');
                     let sex = document.createElement('span');
@@ -230,7 +231,7 @@ function makeDogCard(currentDog) {
                     status.textContent = ourDog.status;
                     description.textContent = ourDog.description;
                     primaryBreed.textContent = ourDog.breeds.primary;
-                    heightRange.textContent = currentDog.minHeightFemale + "lbs - " + currentDog.maxHeightMale + "lbs";
+                    heightRange.textContent = currentDog.minHeightFemale + "inches - " + currentDog.maxHeightMale + "inches";
                     weightRange.textContent = currentDog.minWeightFemale + "lbs - " + currentDog.maxWeightMale + "lbs";
                     sex.textContent = ourDog.gender;
                     photo.setAttribute('src', currentDog.photo);
