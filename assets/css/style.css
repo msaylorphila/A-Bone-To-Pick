@@ -5,9 +5,42 @@
    --clr-orange: #CF5C36; 
    --clr-blue: #1F2041;
 }
+
 .aside{
     background-color: rgb(255, 248, 220,.7);
     
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
+footer {
+    position: absolute;
+    bottom: 0;
+    justify-content: center;
+}
+
+#dogpic {
+    max-width: 40%;
+    margin-top: 7%;
+}
+
+.dogicon{
+    max-width: 30%;
+}
+
+.hero {
+    background-color: #F89346;
+}
+
+.notification {
+    background-color: #fcb681;
+}
+
+.phoneIcon{
+    max-width: 40%;
+    
+}
+
+.emailIcon {
+    max-width: 40%;
+  
+}

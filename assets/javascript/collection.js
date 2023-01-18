@@ -286,7 +286,9 @@ function makeDogCard(currentDog) {
                 phoneNumber.setAttribute('href', 'tel: +1' + ourDog.contact.phone)
                 contactEmail.setAttribute('href', 'mailto:' + ourDog.contact.email)
                 phoneIcon.setAttribute('src', './assets/images/Phone-Icon-PNG.png')
+                phoneIcon.setAttribute('class', 'phoneIcon')
                 emailIcon.setAttribute('src', './assets/images/mail.png')
+                emailIcon.setAttribute('class', 'emailIcon')
                 saveBtn.textContent = "add Dog to the pack"
                 status.textContent = ourDog.status
                 description.textContent = ourDog.description
