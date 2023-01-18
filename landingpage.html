@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background-color:#fcb681">
 
 <head>
   <meta charset="UTF-8">
@@ -11,41 +11,42 @@
   <link rel="stylesheet" href="./assets/css/cards.css">
   <link rel="stylesheet" href="./assets/css/landingpage.css">
   <link rel="icon" type="image/x-icon" href="./assets/images/dogiconedit.png">
+
   <script src="https://kit.fontawesome.com/02fa5d545c.js" crossorigin="anonymous"></script>
   <title>Landing Page</title>
 </head>
 
 <body>
-  <div class=" notification">
-    <nav class="hero is-link">
+  <div class="notification">
+    <nav class="hero is-rounded">
       <div class="is-flex is-justify-content-space-between columns">
         <div class="column is-3 has-text-centered">
-          <button id="next" class="button is-success">next</button>
+          <button id="next" class="button is-rounded is-primary is-light is-outlined"><img class="dogicon" src="./assets/images/dogiconedit.png">next</button>
         </div>
         <div class="column is-3 has-text-centered">
-          <button id="donationEl" class="button is-success">donate </button>
+          <button id="donationEl" class="button is-rounded is-primary is-light is-outlined"><img class="dogicon" src="./assets/images/dogiconedit.png">donate </button>
         </div>
         <div class="column is-3 has-text-centered">
-          <button class="button is-success" id="collectionButton">collection </button>
+          <button class="button is-primary is-rounded is-light is-outlined" id="collectionButton"><img class="dogicon" src="./assets/images/dogiconedit.png">collection </button>
         </div>
       </div>
     </nav>
     <main class="is-flex" >
       <aside id="form-and-information" class="column is-4">
         <form id="dogForm" class="control column">
-          <input id="zipInput" class="input" type="text" placeholder="Zip Code">
+          <input id="zipInput" class="input is-primary is-light" type="text" placeholder="Zip Code">
           <div class="control py-4">
             <input id="breedSelect" name="name" placeholder="Select Breed">
           </div>
           <div class="control">
-            <button class="button is-primary">Submit</button>
+            <button class="button is-primary is-rounded is-light is-outlined">Submit</button>
           </div>
         </form>
         <!--temporary divs  -->
         <section class = "dog-info is-flex is-flex-direction-column">
-          <div class = "name"> John</div>
+          <!-- <div class = "name"> John</div> -->
           <!-- <img src="./assets/images/default-dog.png" alt="dog"> -->
-          <div class = "breeds"> Husky</div>
+          <!-- <div class = "breeds"> Husky</div>
           <div class = "gender"></div>
           <div class = "weight-range"></div>
           <div class = "height-range"></div>
@@ -53,7 +54,7 @@
           <div class = "colors"> orange and pink</div>
           <div class = "status"> adoptable</div>
           <div class = "contact"> PHONE NUMBER EMAIL</div>
-          <div class = "distance">3 miles</div>
+          <div class = "distance">3 miles</div> -->
 
         </section>
         <!-- temporary divs -->

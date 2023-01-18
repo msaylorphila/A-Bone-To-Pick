@@ -2,6 +2,7 @@
     text-align: left;
     font-weight: 500;
     outline: solid salmon;
+    display:flex;
     
 }
 .dog-info-description {
