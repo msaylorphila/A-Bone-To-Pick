@@ -1,8 +1,9 @@
-.dog-info {
+aside{
     text-align: left;
     font-weight: 500;   
     outline: solid #CF5C36;
     display:flex;
+    border-radius: 10px;;
     
 
 }
