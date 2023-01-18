@@ -8,7 +8,7 @@ function grabCardsFromStorage() {
     console.log(dogCollection);
     for (var i = 0; i < dogCollection.length; i++) {
         let currentDog = dogCollection[i];
-        activateShareBtn(currentDog)
+        activateShareBtn(currentDog);
         makeDogCard(currentDog);
     }
 }
@@ -225,13 +225,13 @@ function makeDogCard(currentDog) {
                     let phoneNumber = document.createElement('a');
                     let emailIcon = document.createElement('img');
                     let phoneIcon = document.createElement('img');
-                    let saveBtn = document.createElement('button');
-                    saveBtn.setAttribute('id', 'collect');
+                    
+                   
                     phoneNumber.setAttribute('href', 'tel: +1' + ourDog.contact.phone);
                     contactEmail.setAttribute('href', 'mailto:' + ourDog.contact.email);
                     phoneIcon.setAttribute('src', './assets/images/Phone-Icon-PNG.png');
                     emailIcon.setAttribute('src', './assets/images/mail.png');
-                    saveBtn.textContent = "add Dog to the pack";
+                    
                     status.textContent = ourDog.status;
                     description.textContent = ourDog.description;
                     primaryBreed.textContent = ourDog.breeds.primary;
@@ -252,7 +252,6 @@ function makeDogCard(currentDog) {
                     contactEmail.appendChild(emailIcon);
                     dogInfo.appendChild(phoneNumber);
                     phoneNumber.appendChild(phoneIcon);
-                    dogInfo.appendChild(saveBtn);
                     return;
                 } 
             }
