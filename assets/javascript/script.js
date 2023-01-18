@@ -284,9 +284,11 @@ function makeShareButton() {
 // 
 
 
-donationButton.addEventListener('click', function () {
-  document.location.replace('https://www.aspca.org/ways-to-give')
-})
+
+donationButton.addEventListener('click', function(){
+  window.location.href = 'https://www.aspca.org/ways-to-give' })
+
+
 
 nextBtn.addEventListener('click', function (event) {
   iterator += 6;

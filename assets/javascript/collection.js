@@ -275,7 +275,9 @@ function makeDogCard(currentDog) {
                 phoneNumber.setAttribute('href', 'tel: +1' + ourDog.contact.phone);
                 contactEmail.setAttribute('href', 'mailto:' + ourDog.contact.email);
                 phoneIcon.setAttribute('src', './assets/images/Phone-Icon-PNG.png');
+                phoneIcon.setAttribute('class', 'phoneIcon');
                 emailIcon.setAttribute('src', './assets/images/mail.png');
+                emailIcon.setAttribute('class', 'emailIcon');
                 saveBtn.textContent = "add Dog to the pack";
                 status.textContent = ourDog.status;
                 description.textContent = ourDog.description;
@@ -283,6 +285,32 @@ function makeDogCard(currentDog) {
                 heightRange.textContent = currentDog.minHeightFemale + "lbs - " + currentDog.maxHeightMale + "lbs";
                 weightRange.textContent = currentDog.minWeightFemale + "lbs - " + currentDog.maxWeightMale + "lbs";
                 sex.textContent = ourDog.gender;
+=======
+                let primaryBreed = document.createElement('span');
+                let heightRange = document.createElement('span');
+                let weightRange = document.createElement('span');
+                let description = document.createElement('span');
+                let status = document.createElement('span');
+                let contactEmail = document.createElement('a');
+                let phoneNumber = document.createElement('a');
+                let emailIcon = document.createElement('img');
+                let phoneIcon = document.createElement('img');
+                let saveBtn = document.createElement('button');
+                saveBtn.setAttribute('id', 'collect');
+                phoneNumber.setAttribute('href', 'tel: +1' + ourDog.contact.phone);
+                contactEmail.setAttribute('href', 'mailto:' + ourDog.contact.email);
+                phoneIcon.setAttribute('src', './assets/images/Phone-Icon-PNG.png');
+                phoneIcon.setAttribute('class', 'phoneIcon');
+                emailIcon.setAttribute('src', './assets/images/mail.png');
+                emailIcon.setAttribute('class', 'emailIcon');
+                saveBtn.textContent = "add Dog to the pack";
+                status.textContent = ourDog.status;
+                description.textContent = ourDog.description;
+                primaryBreed.textContent = ourDog.breed;
+                heightRange.textContent = currentDog.minHeightFemale + "lbs - " + currentDog.maxHeightMale + "lbs";
+                weightRange.textContent = currentDog.minWeightFemale + "lbs - " + currentDog.maxWeightMale + "lbs";
+                sex.textContent = ourDog.gender;
+>>>>>>> af46e442b6796724378e0942e779281cde9c99f2
                 photo.setAttribute('src', currentDog.photo);
                 name.textContent = ourDog.name;
                 dogInfo.appendChild(name);

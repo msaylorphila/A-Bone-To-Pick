@@ -1,6 +1,5 @@
 $(function () {
     var dogBreeds = [
-        "American Bulldog",
         "Australian Shepherd",
         "Beagle",
         "Bernese Mountain Dog",
@@ -23,6 +22,7 @@ $(function () {
         "Irish Wolfhound",
         "Italian Greyhound",
         "Jack Russell Terrier",
+        "Labrador Retriever",
         "Pomeranian",
         "Pomsky",
         "Pug",
