@@ -117,7 +117,8 @@ function getDogInfo(allDogsGoToVar) {
       var breedsPrimary = dogSelect.breeds.primary;
       var size = dogSelect.size;
       var contact = dogSelect.contact;
-
+      var description = dogSelect.description;
+      var status = dogSelect.status;
       if (photo === null) {
         var currentDog = {
           ID: dogID,
@@ -129,6 +130,8 @@ function getDogInfo(allDogsGoToVar) {
           size: size,
           trained: houseTrained,
           contact: contact,
+          description:description,
+          status: status,
         };
 
       }
@@ -142,6 +145,8 @@ function getDogInfo(allDogsGoToVar) {
         size: size,
         trained: houseTrained,
         contact: contact,
+        description:description,
+        status: status,
       }
       dogApiByBreed(currentDog, breedsPrimary, genderFromPF);
 
@@ -157,6 +162,8 @@ function getDogInfo(allDogsGoToVar) {
     var breedsPrimary = dogSelect.breeds.primary;
     var size = dogSelect.size;
     var contact = dogSelect.contact;
+    var description = dogSelect.description;
+    var status = dogSelect.status;
 
     if (photo === null) {
       var currentDog = {
@@ -169,6 +176,8 @@ function getDogInfo(allDogsGoToVar) {
         size: size,
         trained: houseTrained,
         contact: contact,
+        description:description,
+        status: status,
       };
 
     }
@@ -182,6 +191,8 @@ function getDogInfo(allDogsGoToVar) {
       size: size,
       trained: houseTrained,
       contact: contact,
+      description:description,
+      status: status,
     }
     dogApiByBreed(currentDog, breedsPrimary, genderFromPF);
   }
