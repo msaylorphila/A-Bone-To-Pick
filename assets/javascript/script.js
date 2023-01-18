@@ -255,7 +255,9 @@ receiveBtn.addEventListener('click', function(){
   receiveModal.classList.add("is-active");
 });
 
-receiveFormEl.addEventListener('click', function(){
+receiveFormEl.addEventListener('submit', function(event){
+  event.preventDefault();
+  $('#receive-modal').hide();
 
   makeDogCard(JSON.parse(atob(receiveInput.value)))
 });
