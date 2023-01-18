@@ -19,3 +19,8 @@ a > img {
     }
     
 }
+@media screen and (max-width:450px) {
+    #nav-buttons{
+        flex-direction: column;
+    }
+}

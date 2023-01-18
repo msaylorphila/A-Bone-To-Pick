@@ -242,11 +242,27 @@ function collectCurrentDog(currentDog) {
       return false;
     }
   }
-  dogCollection.push(currentDog);
+  // arr and puppy are just any named parameters
+  // function(dog){dog.ID === puppy.ID} || DogCollection[0] = dog 
+  function dogSearch(arr, puppy){
+    if (arr.find( dog => dog.ID === puppy.ID)){
+      return true;
+    } else {
+      return false;
+    }
+  }
 
+  // let dogSearch = (arr,puppy) => { }
+  // let dogSearch = arr => console.log(arr)
+
+  if (!dogSearch(dogCollection, currentDog)) {
+  dogCollection.push(currentDog);
+  console.log("i'm here");
+  };
   localStorage.setItem('dogCollectionArr', JSON.stringify(dogCollection));
   
 }
+
 
 // *************SHARE BUTTON STUFF*******************
 function activateShareBtn (currentDog) {
