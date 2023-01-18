@@ -14,13 +14,14 @@
 
 footer {
     position: absolute;
-    bottom: 0;
+    bottom: 5%;
+    padding-left: 1%;
     justify-content: center;
 }
 
 #dogpic {
     max-width: 40%;
-    margin-top: 7%;
+    margin-top: 2%;
 }
 
 .dogicon{
@@ -35,12 +36,19 @@ footer {
     background-color: #fcb681;
 }
 
-.phoneIcon{
-    max-width: 40%;
-    
-}
 
-.emailIcon {
-    max-width: 40%;
+@media (max-width: 640px) {
+   .dogicon {
+    max-width: 15%;
+   }
+   #dogpic {
+    max-width: 100%;
+   }
+  }
+ 
   
-}
+  
+  
+  
+  
+  
