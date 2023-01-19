@@ -12,22 +12,17 @@
   <link rel="stylesheet" href="./assets/css/landingpage.css">
   <link rel="icon" type="image/x-icon" href="./assets/images/dogiconedit.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
-
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+  
   <script src="https://kit.fontawesome.com/02fa5d545c.js" crossorigin="anonymous"></script>
   <title>Landing Page</title>
 </head>
 
 <body>
-  <!-- <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-    <span aria-hidden="true"></span>
-    <span aria-hidden="true"></span>
-    <span aria-hidden="true"></span>
-  </a> -->
   <div class="notification">
-    <nav class="hero is-rounded">
-      <div class="is-flex is-justify-content-space-between columns">
+    <nav class="hero is-rounded" >
+      <div class="is-flex is-justify-content-space-between columns"id = "nav-buttons">
         <div class="column is-3 has-text-centered">
           <button id="next" class="button is-rounded is-primary is-light is-outlined"><img class="dogicon" src="./assets/images/dogiconedit.png">next</button>
         </div>
@@ -53,15 +48,15 @@
         <!-- Share me and receive me buttons -->
         <header id="button-header">
           <button class="button is-primary is-rounded is-light is-outlined" id="share-button">Share Me!</button>
+          <button class ="button is-primary is-rounded is-light is-outlined" id="share-collection">Share your pack</button>
           <button class="button is-primary is-rounded is-light is-outlined" id="receive-button">Receive from Human Friend</button>
         </header>
-        <!--temporary divs  -->
         <section class = "dog-info is-flex is-flex-direction-column">
-        </section>
-        
-        <!-- temporary divs -->
+          <!-- dog info goes here -->
+        </section>  
       </aside>
       <section class="doggy-dash flex card-container columns is-8-tablet is-12-mobile">
+        <!-- dog cards go here -->
       </section>
     </main>
     <!-- modal -->

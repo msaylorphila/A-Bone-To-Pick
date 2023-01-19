@@ -18,7 +18,7 @@ var collectionButton = document.getElementById('collectionButton');
 var showInfo = document.querySelector('.card');
 var homeButton = document.getElementById('homeButton');
 var donationButton = document.getElementById('donationEl');
-
+var shareCollection = document.getElementById('share-collection');
 var iterator = 0;
 var iteratorMax = 5;
 var allDogsGoToVar;
@@ -274,6 +274,7 @@ function activateShareBtn (currentDog) {
     modalUrl.textContent = urlData;
   });
 };
+
 modalBg.addEventListener("click", function(){
     sendModal.classList.remove('is-active');
 });
@@ -313,13 +314,19 @@ donationButton.addEventListener('click', function(){
   window.location.href = 'https://www.aspca.org/ways-to-give' });
 
 
-
+shareCollection.addEventListener('click', function(){
+  let urlData = btoa(dogCollection);
+    console.log(urlData);
+    console.log(typeof urlData);
+    sendModal.classList.add('is-active');
+    modalUrl.textContent = urlData;
+});
 nextBtn.addEventListener('click', function (event) {
   iterator += 6;
   iteratorMax += 6;
   dogContainer.replaceChildren();
   getDogInfo(allDogsGoToVar);
-})
+});
 
 dogFormEl.addEventListener('submit', function (event) {
   getPetsByZip(event);
