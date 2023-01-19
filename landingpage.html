@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" style="background-color:#fcb681">
-
+<!-- inline style here because css file wasn't cooperating, likely a bulma issue -->
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,29 +12,34 @@
   <link rel="stylesheet" href="./assets/css/landingpage.css">
   <link rel="icon" type="image/x-icon" href="./assets/images/dogiconedit.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Gloria+Hallelujah&display=swap" rel="stylesheet">
-  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Gloria+Hallelujah&display=swap"
+    rel="stylesheet">
+
   <script src="https://kit.fontawesome.com/02fa5d545c.js" crossorigin="anonymous"></script>
   <title>Landing Page</title>
 </head>
 
 <body>
   <div class="notification">
-    <nav class="hero is-rounded" >
-      <div class="is-flex is-justify-content-space-between columns"id = "nav-buttons">
+    <nav class="hero is-rounded">
+      <div class="is-flex is-justify-content-space-between columns" id="nav-buttons">
         <div class="column is-3 has-text-centered">
-          <button id="next" class="button is-rounded is-primary is-light is-outlined"><img class="dogicon" src="./assets/images/dogiconedit.png">next</button>
+          <button id="next" class="button is-rounded is-primary is-light is-outlined"><img class="dogicon"
+              src="./assets/images/dogiconedit.png">next</button>
         </div>
         <div class="column is-3 has-text-centered">
-          <button id="donationEl" class="button is-rounded is-primary is-light is-outlined"><img class="dogicon" src="./assets/images/dogiconedit.png">donate </button>
+          <button id="donationEl" class="button is-rounded is-primary is-light is-outlined"><img class="dogicon"
+              src="./assets/images/dogiconedit.png">donate </button>
         </div>
         <div class="column is-3 has-text-centered">
-          <button class="button is-primary is-rounded is-light is-outlined" id="collectionButton"><img class="dogicon" src="./assets/images/dogiconedit.png">collection </button>
+          <button class="button is-primary is-rounded is-light is-outlined" id="collectionButton"><img class="dogicon"
+              src="./assets/images/dogiconedit.png">collection </button>
         </div>
       </div>
     </nav>
-    <main class="is-flex" >
+    <main class="is-flex">
       <aside id="form-and-information" class="column is-4">
         <form id="dogForm" class="control column">
           <input id="zipInput" class="input is-primary is-light" type="text" placeholder="Zip Code">
@@ -48,13 +53,16 @@
         <!-- Share me and receive me buttons -->
         <header id="button-header">
           <button class="button is-primary is-rounded is-light is-outlined" id="share-button">Share Me!</button>
-          <button class ="button is-primary is-rounded is-light is-outlined" id="share-collection">Share Your Pack</button>
-          <button class="button is-primary is-rounded is-light is-outlined" id="receive-button">Receive from Human Friend</button>
-          <button class="button is-primary is-rounded is-light is-outlined" id="receive-pack-button">Received A Whole Pack?</button>
+          <button class="button is-primary is-rounded is-light is-outlined" id="share-collection">Share Your
+            Pack</button>
+          <button class="button is-primary is-rounded is-light is-outlined" id="receive-button">Receive from Human
+            Friend</button>
+          <button class="button is-primary is-rounded is-light is-outlined" id="receive-pack-button">Received A Whole
+            Pack?</button>
         </header>
-        <section class = "dog-info is-flex is-flex-direction-column">
+        <section class="dog-info is-flex is-flex-direction-column">
           <!-- dog info goes here -->
-        </section>  
+        </section>
       </aside>
       <section class="doggy-dash flex card-container columns is-8-tablet is-12-mobile">
         <!-- dog cards go here -->
@@ -70,9 +78,9 @@
     </div>
 
     <div class="modal" id="send-pack">
-      <div class="modal-background" id = "mbgtwo"></div>
+      <div class="modal-background" id="mbgtwo"></div>
       <div class="modal-content has-background-white py-5 px-5">
-        <h3 class="title mb-6">Copy this code and share your pack  with your human friends</h3>
+        <h3 class="title mb-6">Copy this code and share your pack with your human friends</h3>
         <p id="pack-url"></p>
       </div>
     </div>
@@ -82,7 +90,8 @@
       <div class="modal-content has-background-white py-5 px-5">
         <h3>Place human friend's data here</h3>
         <form id="receive-form">
-          <input id="receive-input" class="input is-primary is-light" type="text" placeholder="It's gonna be long"></input>
+          <input id="receive-input" class="input is-primary is-light" type="text"
+            placeholder="It's gonna be long"></input>
           <div class="control">
             <button class="button is-primary is-rounded is-light is-outlined">Submit</button>
           </div>
@@ -94,7 +103,8 @@
       <div class="modal-content has-background-white py-5 px-5">
         <h3>Place human friend's data here</h3>
         <form id="receive-form-pack">
-          <input id="receive-input-pack" class="input is-primary is-light" type="text" placeholder="It's gonna be long"></input>
+          <input id="receive-input-pack" class="input is-primary is-light" type="text"
+            placeholder="It's gonna be long"></input>
           <div class="control">
             <button class="button is-primary is-rounded is-light is-outlined">Submit</button>
           </div>
@@ -105,7 +115,6 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="./assets/javascript/script.js"></script>
     <script src="./assets/javascript/dogbreedfill.js"></script>
-
 </body>
 
 </html>
