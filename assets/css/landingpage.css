@@ -1,17 +1,27 @@
 aside{
     text-align: left;
-    font-weight: 500;   
+    font-weight:700;   
     outline: solid #CF5C36;
     display:flex;
     border-radius: 10px;;
-    
-
+    background-color: hsl(26, 78%, 82%);
+    font-family: 'Barlow Condensed', sans-serif;
 }
+section >img {
+    border-radius: 10px;
+}
+section >
 .dog-info-description {
     font-weight: 500;
 }
 a > img {
     width:40px
+}
+#form-and-information > img{
+    border-radius: 10px;
+}
+#modal-url:active {
+    user-select:all;
 }
 @media screen and (max-width:768px) {
     main{

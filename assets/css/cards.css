@@ -50,7 +50,6 @@ section{
     background-color: hsl(178, 69%, 47%);
     border-radius: 5px;
     font-family: 'Gloria Hallelujah', cursive;
-
 }
 .flex{
   display: flex;
@@ -66,7 +65,6 @@ section{
   margin-right:.5rem;
   width: 16px;
   height: auto;
-
 }
 .columns{
   justify-content: space-around;
