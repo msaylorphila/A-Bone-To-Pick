@@ -9,7 +9,8 @@ var shareBtn = document.getElementById('share-button');
 var receiveBtn = document.getElementById('receive-button');
 var receiveFormEl = document.getElementById('receive-form');
 var receiveInput = document.getElementById('receive-input');
-var modalBg = document.querySelector('.modal-background');
+var modalBg = document.querySelector('.modal-background')
+var modalBgtwo = document.getElementById('mbgtwo');
 var sendModal = document.getElementById('send-modal');
 var sendPack  = document.getElementById('send-pack');
 var receiveModal = document.getElementById('receive-modal');
@@ -463,6 +464,9 @@ function makeDogCard(currentDog) {
                     sex.textContent = ourDog.gender;
                     
                     photo.setAttribute('src', currentDog.photo);
+                    photo.onerror = function () {
+                      photo.setAttribute('src', "./assets/images/default-dog.png");
+                  }
                     name.textContent = ourDog.name;
                     dogInfo.appendChild(name);
                     dogInfo.appendChild(photo);
@@ -593,18 +597,24 @@ receiveFormEl.addEventListener('submit', function(event){
   event.preventDefault();
   $('#receive-modal').hide();
 
-  makeDogCard(JSON.parse(atob(receiveInput.value)))
+  // makeDogCard(JSON.parse(atob(receiveInput.value)))
+  grabCardsFromStorage(JSON.parse(atob(receiveInput.value)))
 });
 donationButton.addEventListener('click', function(){
   window.location.href = 'https://www.aspca.org/ways-to-give' 
 });
 shareCollection.addEventListener('click', function(){
-  
-  let urlData = btoa(localStorage.getItem('dogCollectionArr'));
+  let test = localStorage.getItem('dogCollectionArr');
+  console.log(test)
+  let urlData = btoa(test);
     console.log(urlData);
     console.log(typeof urlData);
     sendPack.classList.add('is-active');
     packUrl.textContent = urlData;
+});
+console.log(modalBgtwo)
+modalBgtwo.addEventListener("click", function(){
+  sendPack.classList.remove('is-active');
 });
 nextBtn.addEventListener('click', function (event) {
   iterator += 6;

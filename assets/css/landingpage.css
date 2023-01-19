@@ -23,6 +23,9 @@ a > img {
 #modal-url:active {
     user-select:all;
 }
+#pack-url:active {
+    user-select: all;
+}
 @media screen and (max-width:768px) {
     main{
         flex-direction: column;
