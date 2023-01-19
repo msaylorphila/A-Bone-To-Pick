@@ -318,7 +318,7 @@ function makeDogCard(currentDog) {
     protectiveness.textContent = "Protectiveness:";
     playfulness.textContent = "Playfulness:";
     trainability.textContent = "Trainability:";
-    bark.textContent = "barking";
+    bark.textContent = "Barking";
     name.textContent = currentDog.name;
     age.textContent = currentDog.age;
     breed.textContent = currentDog.breed;
