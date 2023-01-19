@@ -1,28 +1,3 @@
-# awesome-scorpions-proj01
-
- ## As a dog lover
- ## Given a website created to adopt dogs
- ## When I search for a dog by breed 
- ## Then I am taken to a results page which contains cards with Dogs images, their name, age, and a photo, as well as specifics about the dogs breed
- ## When I click on the dogs image
- ## Then I am taken to another page with more detailed information about that specific dog, its current location, and any relevant information regarding adoption
- ## When I am on the results page or the Detailed dog info page And click "share me"
- ## Then That dogs card and energy levels are added to local storage so that when I want to view all the dogs I have shared I see all the dogs I have shared
- 
-
-![application-image](./assets/images/dog-card-example.png)
-
-tools used -- 
-jquery
-bulma
-adobe express
-petfinder api
-dog api from apininja
-coolers
-javascript
-css
-html
-
 # A Bone To Pick
 
 ## Description
@@ -37,6 +12,33 @@ In the future we would like to add to this site by possibly setting up battles w
 ## Installation
 
 N/A
+
+## User Story
+
+```
+As a dog lover
+I WANT to collect dog adoption playing cards
+SO THAT dogs in need of homes gain attention and get adopted
+
+```
+
+## Acceptance Criteria
+
+```
+
+GIVEN a website created to adopt dogs
+WHEN I search for a dog by breed 
+THEN I am taken to a results page which contains cards with Dogs images, their name, age, and a photo, as well as specifics about the dogs breed
+WHEN I click on the dogs image
+THEN more info appears to the side with contact info for the dog shelter and I save the dog to my collection (via local storage)
+WHEN I am on the results page or the Detailed dog info page And click "share me"
+THEN That I get a "secret code" to send to a friend
+WHEN my friend inputs their secret code
+THEN that brings up the specific dog
+WHEN I click on share my pack
+THEN through the same technology I can share my whole collection
+
+```
 
 ## Usage
 
