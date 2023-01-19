@@ -630,7 +630,9 @@ receivePackEl.addEventListener('submit', function(event){
   }
 
 });
-
+receivePackEl.addEventListener('submit',function(){
+  $('#receive-modal-pack').hide();
+})
 modalBgtwo.addEventListener("click", function(){
   sendPack.classList.remove('is-active');
 });
