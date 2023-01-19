@@ -624,7 +624,6 @@ receiveBtn.addEventListener('click', function(){
 receiveFormEl.addEventListener('submit', function(event){
   event.preventDefault();
   $('#receive-modal').hide();
-  // localStorage.setItem('dogCollectionArr', JSON.strinify(atob(receiveInput.value)));
   makeDogCard(JSON.parse(atob(receiveInput.value)));
 });
 donationButton.addEventListener('click', function(){
@@ -648,8 +647,7 @@ receivePackEl.addEventListener('submit', function(event){
   $('#receive-modal').hide();
   let friendsPack = JSON.parse(atob(receivePack.value));
   console.log(friendsPack);
-  for (var i=0; i<friendsPack.length; i++){
-    // localStorage.setItem('dogCollectionArr', JSON.stringify(friendsPack[i]));
+  for (var i=0; i<friendsPack.length; i++){ 
     makeDogCard(friendsPack[i]);
   }
 
