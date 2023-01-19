@@ -1,3 +1,26 @@
+var pottyDog ={ID: 59269022,
+  age:"Baby",
+  barking:5,
+  breed:"Husky",
+  description:"Blue is a smart and lovable pup who loves to play with my resident cat and just about anyone he...",
+  energy:5,
+  maxHeightFemale:23.5,
+  maxHeightMale:23.5,
+  maxWeightFemale:50,
+  maxWeightMale:60,
+  minHeightFemale:21,
+  minHeightMale:21,
+  minWeightFemale:35,
+  minWeightMale:45,
+  name:"Blue",
+  photo:"https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/59269022/1/?bust=1673471060",
+  playfulness:5,
+  protectiveness:1,
+  sex:"Male",
+  size:"Small",
+  status:"adoptable",
+  trainability:3,
+  houseTrained:true};
 var pfApiKey = "uKG2SiK0W8aXLAwxchcJPB34yUOTNmhcTbFrnkScrYNAfgvmHU";
 var pfSecret = "pkUPWjL7ux0HicwKDrP0aKXCV9GZv1emPlCXhGmg";
 var dogApiKey = "7VT9G3psGTVpzFOhgUZsag==6qGoaeaUyBn1jA8n";
@@ -601,7 +624,7 @@ receiveBtn.addEventListener('click', function(){
 receiveFormEl.addEventListener('submit', function(event){
   event.preventDefault();
   $('#receive-modal').hide();
-
+  // localStorage.setItem('dogCollectionArr', JSON.strinify(atob(receiveInput.value)));
   makeDogCard(JSON.parse(atob(receiveInput.value)));
 });
 donationButton.addEventListener('click', function(){
@@ -623,10 +646,11 @@ receivePackBtn.addEventListener('click', function(){
 receivePackEl.addEventListener('submit', function(event){
   event.preventDefault();
   $('#receive-modal').hide();
-  let friendsPack = JSON.parse(atob(receivePack.value))
-  console.log(friendsPack)
+  let friendsPack = JSON.parse(atob(receivePack.value));
+  console.log(friendsPack);
   for (var i=0; i<friendsPack.length; i++){
-    makeDogCard(friendsPack[i])
+    // localStorage.setItem('dogCollectionArr', JSON.stringify(friendsPack[i]));
+    makeDogCard(friendsPack[i]);
   }
 
 });
