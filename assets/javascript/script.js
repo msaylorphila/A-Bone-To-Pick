@@ -463,6 +463,9 @@ function makeDogCard(currentDog) {
                     sex.textContent = ourDog.gender;
                     
                     photo.setAttribute('src', currentDog.photo);
+                    photo.onerror = function () {
+                      photo.setAttribute('src', "./assets/images/default-dog.png");
+                  }
                     name.textContent = ourDog.name;
                     dogInfo.appendChild(name);
                     dogInfo.appendChild(photo);
@@ -599,8 +602,9 @@ donationButton.addEventListener('click', function(){
   window.location.href = 'https://www.aspca.org/ways-to-give' 
 });
 shareCollection.addEventListener('click', function(){
-  
-  let urlData = btoa(localStorage.getItem('dogCollectionArr'));
+  let test = localStorage.getItem('dogCollectionArr');
+  console.log(test)
+  let urlData = btoa(test);
     console.log(urlData);
     console.log(typeof urlData);
     sendPack.classList.add('is-active');
