@@ -11,8 +11,10 @@ var receiveFormEl = document.getElementById('receive-form');
 var receiveInput = document.getElementById('receive-input');
 var modalBg = document.querySelector('.modal-background');
 var sendModal = document.getElementById('send-modal');
+var sendPack  = document.getElementById('send-pack');
 var receiveModal = document.getElementById('receive-modal');
 var modalUrl = document.getElementById('modal-url');
+var packUrl = document.getElementById('pack-url');
 var dogContainer = document.querySelector('.doggy-dash');
 var collectionButton = document.getElementById('collectionButton');
 var showInfo = document.querySelector('.card');
@@ -459,6 +461,7 @@ function makeDogCard(currentDog) {
                     heightRange.textContent = currentDog.minHeightFemale + "inches - " + currentDog.maxHeightMale + "inches";
                     weightRange.textContent = currentDog.minWeightFemale + "lbs - " + currentDog.maxWeightMale + "lbs";
                     sex.textContent = ourDog.gender;
+                    
                     photo.setAttribute('src', currentDog.photo);
                     name.textContent = ourDog.name;
                     dogInfo.appendChild(name);
@@ -508,6 +511,9 @@ function makeDogCard(currentDog) {
                 weightRange.textContent = currentDog.minWeightFemale + "lbs - " + currentDog.maxWeightMale + "lbs";
                 sex.textContent = ourDog.gender;
                 photo.setAttribute('src', currentDog.photo);
+                photo.onerror = function () {
+                  photo.setAttribute('src', "./assets/images/default-dog.png");
+              }
                 name.textContent = ourDog.name;
                 dogInfo.appendChild(name);
                 dogInfo.appendChild(photo);
@@ -569,6 +575,7 @@ collectionButton.addEventListener('click',function(){
 // *************SHARE BUTTON STUFF*******************
 function activateShareBtn (currentDog) {
   shareBtn.addEventListener("click", function() {
+    console.log(JSON.stringify(currentDog))
     let urlData = btoa(JSON.stringify(currentDog));
     console.log(urlData);
     console.log(typeof urlData);
@@ -592,11 +599,12 @@ donationButton.addEventListener('click', function(){
   window.location.href = 'https://www.aspca.org/ways-to-give' 
 });
 shareCollection.addEventListener('click', function(){
-  let urlData = btoa(dogCollection);
+  
+  let urlData = btoa(localStorage.getItem('dogCollectionArr'));
     console.log(urlData);
     console.log(typeof urlData);
-    sendModal.classList.add('is-active');
-    modalUrl.textContent = urlData;
+    sendPack.classList.add('is-active');
+    packUrl.textContent = urlData;
 });
 nextBtn.addEventListener('click', function (event) {
   iterator += 6;
