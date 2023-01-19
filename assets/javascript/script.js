@@ -459,6 +459,7 @@ function makeDogCard(currentDog) {
                     heightRange.textContent = currentDog.minHeightFemale + "inches - " + currentDog.maxHeightMale + "inches";
                     weightRange.textContent = currentDog.minWeightFemale + "lbs - " + currentDog.maxWeightMale + "lbs";
                     sex.textContent = ourDog.gender;
+                    
                     photo.setAttribute('src', currentDog.photo);
                     name.textContent = ourDog.name;
                     dogInfo.appendChild(name);
@@ -508,6 +509,9 @@ function makeDogCard(currentDog) {
                 weightRange.textContent = currentDog.minWeightFemale + "lbs - " + currentDog.maxWeightMale + "lbs";
                 sex.textContent = ourDog.gender;
                 photo.setAttribute('src', currentDog.photo);
+                photo.onerror = function () {
+                  photo.setAttribute('src', "./assets/images/default-dog.png");
+              }
                 name.textContent = ourDog.name;
                 dogInfo.appendChild(name);
                 dogInfo.appendChild(photo);
