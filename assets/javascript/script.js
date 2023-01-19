@@ -7,13 +7,17 @@ var breedInputEl = document.getElementById('breedSelect');
 var nextBtn = document.getElementById('next');
 var shareBtn = document.getElementById('share-button');
 var receiveBtn = document.getElementById('receive-button');
+var receivePackBtn = document.getElementById('receive-pack-button')
 var receiveFormEl = document.getElementById('receive-form');
+var receivePackEl = document.getElementById('receive-form-pack');
 var receiveInput = document.getElementById('receive-input');
-var modalBg = document.querySelector('.modal-background')
+var receivePack = document.getElementById('receive-input-pack');
+var modalBg = document.querySelector('.modal-background');
 var modalBgtwo = document.getElementById('mbgtwo');
 var sendModal = document.getElementById('send-modal');
 var sendPack  = document.getElementById('send-pack');
 var receiveModal = document.getElementById('receive-modal');
+var receiveModalPack = document.getElementById('receive-modal-pack');
 var modalUrl = document.getElementById('modal-url');
 var packUrl = document.getElementById('pack-url');
 var dogContainer = document.querySelector('.doggy-dash');
@@ -593,12 +597,12 @@ modalBg.addEventListener("click", function(){
 receiveBtn.addEventListener('click', function(){
   receiveModal.classList.add("is-active");
 });
+
 receiveFormEl.addEventListener('submit', function(event){
   event.preventDefault();
   $('#receive-modal').hide();
 
-  // makeDogCard(JSON.parse(atob(receiveInput.value)))
-  grabCardsFromStorage(JSON.parse(atob(receiveInput.value)))
+  makeDogCard(JSON.parse(atob(receiveInput.value)));
 });
 donationButton.addEventListener('click', function(){
   window.location.href = 'https://www.aspca.org/ways-to-give' 
@@ -612,7 +616,23 @@ shareCollection.addEventListener('click', function(){
     sendPack.classList.add('is-active');
     packUrl.textContent = urlData;
 });
-console.log(modalBgtwo)
+receivePackBtn.addEventListener('click', function(){
+  receiveModalPack.classList.add("is-active");
+  console.log("hi")
+});
+receivePackEl.addEventListener('submit', function(event){
+  event.preventDefault();
+  $('#receive-modal').hide();
+  let friendsPack = JSON.parse(atob(receivePack.value))
+  console.log(friendsPack)
+  for (var i=0; i<friendsPack.length; i++){
+    makeDogCard(friendsPack[i])
+  }
+
+});
+receivePackEl.addEventListener('submit',function(){
+  $('#receive-modal-pack').hide();
+})
 modalBgtwo.addEventListener("click", function(){
   sendPack.classList.remove('is-active');
 });
