@@ -73,4 +73,4 @@ See repository for MIT License
 
 ## Deployed Webpage
 
-[Click here to see A Bone to Pick!](https://msaylorphila.github.io/awesome-scorpions-proj01/)
+[Click here to see A Bone to Pick!](https://msaylorphila.github.io/A-Bone-To-Pick/)
