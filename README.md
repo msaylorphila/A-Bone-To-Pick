@@ -65,6 +65,7 @@ Collaborators include -
 [The Dogs API from apininja](https://api-ninjas.com/api/dogs)
 [Coolors](https://coolors.co)
 [Google Fonts](https://fonts.google.com)
+[Font Awesome](https://fontawesome.com/)
 
 ## License
 
