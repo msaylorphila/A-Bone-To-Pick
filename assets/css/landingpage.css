@@ -7,8 +7,18 @@ aside{
     background-color: hsl(26, 78%, 82%);
     font-family: 'Barlow Condensed', sans-serif;
 }
+aside >header {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
 section >img {
     border-radius: 10px;
+}
+section >span {
+    max-width: 75%;
+    text-align: center;
 }
 section >
 .dog-info-description {
@@ -26,6 +36,7 @@ a > img {
 #pack-url:active {
     user-select: all;
 }
+
 @media screen and (max-width:768px) {
     main{
         flex-direction: column;
