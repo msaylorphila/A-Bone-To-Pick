@@ -1,26 +1,4 @@
-var pottyDog ={ID: 59269022,
-  age:"Baby",
-  barking:5,
-  breed:"Husky",
-  description:"Blue is a smart and lovable pup who loves to play with my resident cat and just about anyone he...",
-  energy:5,
-  maxHeightFemale:23.5,
-  maxHeightMale:23.5,
-  maxWeightFemale:50,
-  maxWeightMale:60,
-  minHeightFemale:21,
-  minHeightMale:21,
-  minWeightFemale:35,
-  minWeightMale:45,
-  name:"Blue",
-  photo:"https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/59269022/1/?bust=1673471060",
-  playfulness:5,
-  protectiveness:1,
-  sex:"Male",
-  size:"Small",
-  status:"adoptable",
-  trainability:3,
-  houseTrained:true};
+// declare our Global variables for queery selectors
 var pfApiKey = "uKG2SiK0W8aXLAwxchcJPB34yUOTNmhcTbFrnkScrYNAfgvmHU";
 var pfSecret = "pkUPWjL7ux0HicwKDrP0aKXCV9GZv1emPlCXhGmg";
 var dogApiKey = "7VT9G3psGTVpzFOhgUZsag==6qGoaeaUyBn1jA8n";
@@ -30,7 +8,7 @@ var breedInputEl = document.getElementById('breedSelect');
 var nextBtn = document.getElementById('next');
 var shareBtn = document.getElementById('share-button');
 var receiveBtn = document.getElementById('receive-button');
-var receivePackBtn = document.getElementById('receive-pack-button')
+var receivePackBtn = document.getElementById('receive-pack-button');
 var receiveFormEl = document.getElementById('receive-form');
 var receivePackEl = document.getElementById('receive-form-pack');
 var receiveInput = document.getElementById('receive-input');
@@ -49,6 +27,11 @@ var showInfo = document.querySelector('.card');
 var homeButton = document.getElementById('homeButton');
 var donationButton = document.getElementById('donationEl');
 var shareCollection = document.getElementById('share-collection');
+var doggyDash = document.querySelector('.doggy-dash');
+let dogInfo = document.querySelector('.dog-info');
+// local storage variable set here
+let dogCollection = JSON.parse(localStorage.getItem("dogCollectionArr"));
+// all other global variables
 var iterator = 0;
 var iteratorMax = 5;
 var allDogsGoToVar;
@@ -56,6 +39,7 @@ var currentDog;
 
 $("#next").hide();
 $("#share-button").hide();
+// Each time the submit button is clicked iterator variables are reset to 0 and 5 so that the screen will only display a maximum of 6 dog cards at a time.
 function getPetsByZip(event) {
   event.preventDefault();
   iterator = 0;
@@ -89,6 +73,11 @@ function getPetsByZip(event) {
         })
     })
 }
+
+// This function is called when a dog card is clicked. It takes a dog's ID number from the Data attribute added onto each dog card to find specific info for each dog.
+// The API call returns an Object with an "animal" array vs the "animals" array in the other API call so the
+//  allDogsGoToVar Global variable will now need to be manipulated before a dog card can be constructed.
+
 function getPetsByID(dogID) {
   console.log(dogID);
   iterator = 0;
@@ -119,6 +108,9 @@ function getPetsByID(dogID) {
         })
     })
 }
+
+// Breed info is extracted from the Petfinder API to get dog attributes for dog Cards, they are then added to the currentDog object
+
 function dogApiByBreed(currentDog, breedsPrimary) {
   fetch('https://api.api-ninjas.com/v1/dogs?name=' + breedsPrimary, {
     method: "GET",
@@ -132,7 +124,10 @@ function dogApiByBreed(currentDog, breedsPrimary) {
       getDogStats(data, currentDog);
     })
 }
-// if you want to add more data to the card,/ dog Object start here
+
+// Because allDogsGoToVar is an Object BUT it doesnt always have the same properties,(this depends on which API was called). This function deconsctructs whichever object it receives
+// and turns it into a new object "currentDog" that will be stored in local storage, then it sends breed info off to dogApiByBreed().
+
 function getDogInfo(allDogsGoToVar) {
   console.log(allDogsGoToVar);
   if (allDogsGoToVar.hasOwnProperty('animals')) {
@@ -226,6 +221,10 @@ function getDogInfo(allDogsGoToVar) {
     dogApiByBreed(currentDog, breedsPrimary, genderFromPF);
   }
 }
+
+// This function takes the information from the Breed info API and finishing constructing the currentDog Object for each dog
+// then it calls makeDogCard().
+
 function getDogStats(data, currentDog) {
   console.log(data)
   var breed = data[0];
@@ -250,9 +249,10 @@ function getDogStats(data, currentDog) {
   currentDog.maxWeightMale = breed.max_weight_male;
   makeDogCard(currentDog);
 }
-let dogCollection = JSON.parse(localStorage.getItem("dogCollectionArr"));
-var doggyDash = document.querySelector('.doggy-dash');
-let dogInfo = document.querySelector('.dog-info');
+
+// If a user have been to the website before they can view all dog cards they have collected by clicking the Collection button. which parses the local storage stringified object and calls makeDogCard()
+// for each dog
+
 function grabCardsFromStorage() {
     doggyDash.replaceChildren();
     dogCollection = JSON.parse(localStorage.getItem("dogCollectionArr"));
@@ -264,6 +264,9 @@ function grabCardsFromStorage() {
     }
 }
 
+// makeDogCard is a function on which the entire application depends. makeDogCard contains several NESTED functions, five of which are related to actually making the card.
+// event listeners and queery selectors are added within this function which necesitated the nesting of dogInfoDisplay. The first part creates the dog cards template. Then
+// There is a function for adding each icon type to the card.
 function makeDogCard(currentDog) {
     console.log(currentDog);
     let dogCardBorder = document.createElement('div');
@@ -445,6 +448,7 @@ function makeDogCard(currentDog) {
             createSpan.appendChild(createIcon);
         }
     }
+    // Grabs the Data-id from the dar card and then finds the associated dog and appends all applicable information to the screen.
     function dogInfoDisplay() {
         dogInfo.replaceChildren();
         console.log(allDogsGoToVar)
@@ -568,12 +572,13 @@ function makeDogCard(currentDog) {
         dogInfoDisplay();
     })
 }
+  // Checks to see if if the currentDog is already in storage before adding it.
 function collectCurrentDog(currentDog) {
   console.log("collect dog called");
   var dogCollection = JSON.parse(localStorage.getItem("dogCollectionArr"));
   console.log(currentDog)
   if (currentDog.hasOwnProperty('animal')){
-    currentDog= currentDog.animal
+    currentDog= currentDog.animal;
   }
   console.log(dogCollection)
   if (dogCollection == null) {
@@ -581,7 +586,6 @@ function collectCurrentDog(currentDog) {
   } else 
   for (var i = 0; i < dogCollection.length; i++) {
     if (dogCollection[i] === currentDog) {
-      console.log('true')
       localStorage.setItem('dogCollectionArr', JSON.stringify(dogCollection));
       return false;
     }
@@ -599,9 +603,6 @@ function collectCurrentDog(currentDog) {
   };
   localStorage.setItem('dogCollectionArr', JSON.stringify(dogCollection));
 }
-collectionButton.addEventListener('click',function(){ 
-    $("#share-button").show()
-    grabCardsFromStorage()});
 
 // *************SHARE BUTTON STUFF*******************
 function activateShareBtn (currentDog) {
@@ -620,7 +621,6 @@ modalBg.addEventListener("click", function(){
 receiveBtn.addEventListener('click', function(){
   receiveModal.classList.add("is-active");
 });
-
 receiveFormEl.addEventListener('submit', function(event){
   event.preventDefault();
   $('#receive-modal').hide();
@@ -650,7 +650,6 @@ receivePackEl.addEventListener('submit', function(event){
   for (var i=0; i<friendsPack.length; i++){ 
     makeDogCard(friendsPack[i]);
   }
-
 });
 receivePackEl.addEventListener('submit',function(){
   $('#receive-modal-pack').hide();
@@ -669,3 +668,6 @@ dogFormEl.addEventListener('submit', function (event) {
   $("#next").show();
   $("#share-button").show();
 });
+collectionButton.addEventListener('click',function(){ 
+  $("#share-button").show()
+  grabCardsFromStorage()});
